@@ -8,7 +8,7 @@
              Do Check Before Upload
 --]==========================================]--
 module           = "elegantbook"
-version          = "2.62"
+version          = "4.7"
 maintainer       = "Ran Wang"
 uploader         = maintainer
 maintainid       = "ElegantLaTeX"
