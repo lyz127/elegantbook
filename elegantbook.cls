@@ -7,7 +7,7 @@
 % It is available at https://github.com/ElegantLaTeX/ElegantBook
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2026/2/27 v4.6 ElegantBook document class]
+\ProvidesClass{elegantbook}[2026/05/01 v4.7 ElegantBook document class]
 
 %%%
 \RequirePackage{kvoptions}
