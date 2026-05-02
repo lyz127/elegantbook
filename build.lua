@@ -14,7 +14,7 @@ uploader         = maintainer
 maintainid       = "ElegantLaTeX"
 email            = "ranwang.osbert@outlook.com"
 repository       = "https://github.com/" .. maintainid .. "/" .. module
-announcement     = "Fix corrupted image files in previous upload and update metadata."
+announcement     = ""
 note             = ""
 summary          = "Elegant LaTeX Template for Books"
 description      = [[ElegantBook is designed for writing Books. This template is based on the standard LaTeX book class. The goal of this template is to make the writing process more elegant.]]
@@ -37,11 +37,7 @@ specialtypesetting = specialtypesetting or {}
 specialtypesetting[module .. "-cn.tex"] = {cmd = "latexmk -pdfxe"}
 binaryfiles      = {"*.png", "*.jpg", "*.pdf"}
 sourcefiles      = {"*.cls", "*.bib"}
-docfiles         = {
-  "*.pdf", "*.md", "LICENSE", 
-  module .. "-cn.tex", module .. "-en.tex",
-  "figure/*", "image/*"
-}
+docfiles         = {"*.pdf", "*.md", "LICENSE", module .. "-cn.tex", module .. "-en.tex"}
 
 uploadconfig = {
   pkg          = module,
@@ -62,27 +58,48 @@ uploadconfig = {
   update       = true
 }
 
+--[==========================================[--
+         Custom Hooks for Directory Structure
+--]==========================================]--
+
 function tex(file, dir, cmd)
   dir = dir or "."
   cmd = cmd or typesetexe .. " " .. typesetopts
   return run(dir, cmd .. " " .. file)
 end
 
--- Copy required files into the typeset build dir
 function docinit_hook()
-  -- Copy .cls, .bib support files
   for _, glob in pairs(typesetsuppfiles) do
     cp(glob, currentdir, typesetdir)
   end
-  -- Copy image subdirectory
+
   for _, subdir in pairs({imagesuppdir, figuresuppdir}) do
     local dest = typesetdir .. "/" .. subdir
     mkdir(dest)
     cp("*", subdir, dest)
   end
-  -- Copy tex source files
+
   for _, texfile in pairs(typesetfiles) do
     cp(texfile, currentdir, typesetdir)
   end
+  return 0
+end
+
+function copyctan()
+  local target = ctandir .. "/" .. ctanpkg
+  mkdir(target)
+  
+  for _, f in ipairs(textfiles) do
+    cp(f, ".", target)
+  end
+
+  cp("*.pdf", typesetdir, target)
+
+  mkdir(target .. "/" .. figuresuppdir)
+  cp("*", figuresuppdir, target .. "/" .. figuresuppdir)
+
+  mkdir(target .. "/" .. imagesuppdir)
+  cp("*", imagesuppdir, target .. "/" .. imagesuppdir)
+
   return 0
 end
