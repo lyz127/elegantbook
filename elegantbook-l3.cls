@@ -139,6 +139,8 @@
 
 \elegant_load_module:n { font }
 
+\elegant_load_module:n { option }
+
 \elegant_load_module:n { language }
 
 \elegant_load_module:n { theme }
@@ -147,9 +149,19 @@
 
 
 
+\elegant_load_module:n { math }
+
 \elegant_load_module:n { core }
 
 \elegant_load_module:n { theorem }
+
+\elegant_load_module:n { bibliography }
+
+\elegant_load_module:n { toc }
+
+\elegant_load_module:n { code }
+
+\elegant_load_module:n { history }
 
 
 

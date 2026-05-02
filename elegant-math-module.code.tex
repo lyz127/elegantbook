@@ -1,0 +1,48 @@
+\elegant_provide_module:n{math}
+
+
+\tl_if_exist:NF \g__elegant_math_tl
+  {
+    \tl_new:N \g__elegant_math_tl
+    \tl_gset:Nn \g__elegant_math_tl { cm }
+  }
+
+\clist_new:N \g__elegant_math_clist
+
+\elegant_msg_new:nn { not support math }
+  {
+    The~math~option~`#1'~is~not~support.\\
+    Please~select~one~of~the~following~math~options.\\
+    \clist_use:Nn \g__elegant_math_clist {,~}
+  }
+
+
+\cs_new_protected_nopar:Npn \elegant_declare_math:nn #1#2
+  {
+    \hook_new:n { elegant-module / math / #1 / before }
+    \hook_new:n { elegant-module / math / #1 / after }
+    \tl_gset:cn { g_elegant_math_#1_tl } { #2 }
+    \clist_gput_right:Nn \g__elegant_math_clist { #1 }
+  }
+
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  {
+    \tl_if_exist:cTF { g_elegant_math_ \g__elegant_math_tl _tl }
+      {
+        \hook_use:n { elegant-module / math / \g__elegant_math_tl / before }
+        \tl_use:c { g_elegant_math_ \g__elegant_math_tl _tl }
+        \hook_use:n { elegant-module / math / \g__elegant_math_tl / after }
+      }
+      {
+        \elegant_msg_error:nx { not support math } { \g__elegant_math_tl }
+      }
+  }
+
+
+\elegant_declare_math:nn { cm } { \relax }
+\elegant_declare_math:nn { newtx } { \relax }
+\elegant_declare_math:nn { mtpro2 } { \relax }
+
+
+\endinput

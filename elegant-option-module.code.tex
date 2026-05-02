@@ -1,0 +1,33 @@
+\elegant_provide_module:n{option}
+
+
+\prop_new:N \g__elegant_option_alias_prop
+
+\elegant_msg_new:nn { deprecated option }
+  {
+    The~option~`#1'~is~deprecated.\\
+    It~has~been~mapped~to~`#2'.
+  }
+
+
+\cs_new_protected_nopar:Npn \elegant_declare_option_alias:nn #1#2
+  {
+    \prop_gput:Nnn \g__elegant_option_alias_prop { #1 } { #2 }
+  }
+
+
+\cs_new_protected_nopar:Npn \elegant_option_alias_if_exist:nTF #1#2#3
+  {
+    \prop_if_in:NnTF \g__elegant_option_alias_prop { #1 }
+      { #2 }
+      { #3 }
+  }
+
+
+\NewDocumentCommand \ElegantDeclareOptionAlias { m m }
+  { \elegant_declare_option_alias:nn { #1 } { #2 } }
+
+
+% Legacy option mappings will be registered here during the compatibility pass.
+
+\endinput

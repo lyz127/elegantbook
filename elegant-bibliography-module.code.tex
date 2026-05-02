@@ -1,0 +1,39 @@
+\elegant_provide_module:n{bibliography}
+
+
+\tl_if_exist:NF \g__elegant_citestyle_tl
+  {
+    \tl_new:N \g__elegant_citestyle_tl
+    \tl_gset:Nn \g__elegant_citestyle_tl { numeric-comp }
+  }
+
+\tl_if_exist:NF \g__elegant_bibstyle_tl
+  {
+    \tl_new:N \g__elegant_bibstyle_tl
+    \tl_gset:Nn \g__elegant_bibstyle_tl { numeric }
+  }
+
+\tl_if_exist:NF \g__elegant_bibend_tl
+  {
+    \tl_new:N \g__elegant_bibend_tl
+    \tl_gset:Nn \g__elegant_bibend_tl { biber }
+  }
+
+
+\hook_new:n { elegant-module / bibliography / setup / before }
+\hook_new:n { elegant-module / bibliography / setup / after }
+
+
+\cs_new_protected_nopar:Npn \elegant_bibliography_setup:
+  {
+    \hook_use:n { elegant-module / bibliography / setup / before }
+    % Bibliography backend and style compatibility will be migrated here.
+    \hook_use:n { elegant-module / bibliography / setup / after }
+  }
+
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  { \elegant_bibliography_setup: }
+
+
+\endinput

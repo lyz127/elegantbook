@@ -1,0 +1,33 @@
+\elegant_provide_module:n{toc}
+
+
+\tl_if_exist:NF \g__elegant_toc_tl
+  {
+    \tl_new:N \g__elegant_toc_tl
+    \tl_gset:Nn \g__elegant_toc_tl { onecol }
+  }
+
+\tl_if_exist:NF \g__elegant_title_style_tl
+  {
+    \tl_new:N \g__elegant_title_style_tl
+    \tl_gset:Nn \g__elegant_title_style_tl { hang }
+  }
+
+
+\hook_new:n { elegant-module / toc / setup / before }
+\hook_new:n { elegant-module / toc / setup / after }
+
+
+\cs_new_protected_nopar:Npn \elegant_toc_setup:
+  {
+    \hook_use:n { elegant-module / toc / setup / before }
+    % TOC, appendix, and title-style compatibility will be migrated here.
+    \hook_use:n { elegant-module / toc / setup / after }
+  }
+
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  { \elegant_toc_setup: }
+
+
+\endinput

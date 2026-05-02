@@ -1,0 +1,20 @@
+\elegant_provide_module:n{code}
+
+
+\hook_new:n { elegant-module / code / setup / before }
+\hook_new:n { elegant-module / code / setup / after }
+
+
+\cs_new_protected_nopar:Npn \elegant_code_setup:
+  {
+    \hook_use:n { elegant-module / code / setup / before }
+    % listings style compatibility will be migrated here.
+    \hook_use:n { elegant-module / code / setup / after }
+  }
+
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  { \elegant_code_setup: }
+
+
+\endinput
