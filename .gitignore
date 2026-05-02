@@ -1,5 +1,6 @@
 # Ignore the font folder
 font/
+ElegantBook/
 
 # Ignore all PDF files
 *.aux
