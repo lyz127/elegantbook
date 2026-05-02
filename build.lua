@@ -8,13 +8,13 @@
              Do Check Before Upload
 --]==========================================]--
 module           = "elegantbook"
-version          = "4.7"
+version          = "4.7 2026-05-01"
 maintainer       = "Ran Wang"
 uploader         = maintainer
 maintainid       = "ElegantLaTeX"
 email            = "ranwang.osbert@outlook.com"
 repository       = "https://github.com/" .. maintainid .. "/" .. module
-announcement     = ""
+announcement     = "Fix corrupted image files in previous upload and update metadata."
 note             = ""
 summary          = "Elegant LaTeX Template for Books"
 description      = [[ElegantBook is designed for writing Books. This template is based on the standard LaTeX book class. The goal of this template is to make the writing process more elegant.]]
@@ -25,7 +25,7 @@ description      = [[ElegantBook is designed for writing Books. This template is
 --]==========================================]--
 ctanzip          = module
 excludefiles     = {"*~"}
-textfiles        = {"*.md", "LICENSE", "*.lua", "*.cls", "*.bib"}
+textfiles        = {"*.md", "LICENSE", "*.lua", "*.cls", "*.bib", "*.tex"}
 typesetexe       = "latexmk -pdf"
 typesetfiles     = {module .. "-cn.tex", module .. "-en.tex"}
 typesetopts      = "-interaction=nonstopmode"
@@ -35,6 +35,13 @@ imagesuppdir     = "image"
 figuresuppdir    = "figure"
 specialtypesetting = specialtypesetting or {}
 specialtypesetting[module .. "-cn.tex"] = {cmd = "latexmk -pdfxe"}
+binaryfiles      = {"*.png", "*.jpg", "*.pdf"}
+sourcefiles      = {"*.cls", "*.bib"}
+docfiles         = {
+  "*.pdf", "*.md", "LICENSE", 
+  module .. "-cn.tex", module .. "-en.tex",
+  "figure/*", "image/*"
+}
 
 uploadconfig = {
   pkg          = module,
@@ -48,7 +55,6 @@ uploadconfig = {
   note         = note,
   license      = "lppl1.3c",
   ctanPath     = "/macros/latex/contrib/" .. module .. "/",
-  home         = repository,
   support      = repository .. "/issues",
   bugtracker   = repository .. "/issues",
   repository   = repository,
@@ -79,24 +85,4 @@ function docinit_hook()
     cp(texfile, currentdir, typesetdir)
   end
   return 0
-end
-
--- Pack CTAN directory: cls, bib, tex sources, PDFs, and asset subdirs
-function copyctan()
-  local pkgdir = ctandir .. "/" .. ctanpkg
-  mkdir(pkgdir)
-  for _, glob in pairs(typesetsuppfiles) do
-    cp(glob, currentdir, pkgdir)
-  end
-  for _, texfile in pairs(typesetfiles) do
-    cp(texfile, currentdir, pkgdir)
-  end
-  for _, glob in pairs(pdffiles or {"*.pdf"}) do
-    cp(glob, typesetdir, pkgdir)
-  end
-  for _, subdir in pairs({imagesuppdir, figuresuppdir}) do
-    local dest = pkgdir .. "/" .. subdir
-    mkdir(dest)
-    cp("*", subdir, dest)
-  end
 end
