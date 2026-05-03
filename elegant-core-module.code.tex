@@ -3,7 +3,8 @@
 
 \hook_gput_code:nnn{begindocument/before}{.} 
   {
-    \cs_set:Npx \contentsname { \elegant_use_name:n { contents } }
+    \elegant_name_if_exist:nT { contents }
+      { \cs_set:Npx \contentsname { \elegant_use_name:n { contents } } }
   }
 
 

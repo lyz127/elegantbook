@@ -1,0 +1,36 @@
+\documentclass[nl, font = none, mode = simple]{elegantbook-l3}
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Taaltest}
+\section{Namen en verwijzingen}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\rule{0pt}{2cm}\rule{3cm}{0pt}}
+  \caption{Een figuur}\label{fig:language-test}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Een tabel}\label{tab:language-test}
+  \begin{tabular}{cc}
+    A & B
+  \end{tabular}
+\end{table}
+
+\figref{fig:language-test}; \tabref{tab:language-test}.
+
+\begin{theorem}[Voorbeeld]
+  Dit is een stelling.
+\end{theorem}
+
+\begin{definition}
+  Dit is een definitie.
+\end{definition}
+
+\end{document}

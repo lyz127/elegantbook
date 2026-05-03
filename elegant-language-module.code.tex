@@ -66,15 +66,98 @@
       \prg_return_false:
   }  
 
+\cs_new_protected:Npn \elegant_define_legacy_name:nn #1#2
+  { \cs_set:cpn { #1 name } { #2 } }
+
+\cs_new_protected:Npn \elegant_define_bioinfo:n #1
+  {
+    \cs_set_protected:Npn \bioinfo ##1##2
+      { \tl_gset:cn { @bioinfo } { #1 } }
+  }
+
+\cs_new_protected:Npn \elegant_define_figure_ref_prefix:n #1
+  {
+    \cs_set_protected:Npn \figref ##1 { \textbf{#1}~\ref{##1} }
+  }
+
+\cs_new_protected:Npn \elegant_define_figure_ref_suffix:n #1
+  {
+    \cs_set_protected:Npn \figref ##1 { \ref{##1}~\textbf{#1} }
+  }
+
+\cs_new_protected:Npn \elegant_define_table_ref_prefix:n #1
+  {
+    \cs_set_protected:Npn \tabref ##1 { \textbf{#1}~\ref{##1} }
+  }
+
+\cs_new_protected:Npn \elegant_define_table_ref_suffix:n #1
+  {
+    \cs_set_protected:Npn \tabref ##1 { \ref{##1}~\textbf{#1} }
+  }
+
+\cs_new_protected:Npn \elegant_language_common_names:n #1
+  {
+    \elegant_define_name:n
+      {
+        chapter / before = #1,
+        chapter / number = \thechapter,
+        chapter / after = ,
+        section / before = ,
+        section / number = \thesection,
+        section / after = ,
+        subsection / before = ,
+        subsection / number = \thesubsection,
+        subsection / after = ,
+        subsubsection / before = ,
+        subsubsection / number = \thesubsubsection,
+        subsubsection / after = ,
+        introduction / icon = \textbullet
+      }
+  }
+
+\cs_new_protected:Npn \elegant_language_define_text_names:n #1
+  {
+    \prop_set_from_keyval:Nn \l__elegant_names_prop { #1 }
+    \prop_map_inline:Nn \l__elegant_names_prop
+      {
+        \elegant_define_name:nn { ##1 } { ##2 }
+        \elegant_define_legacy_name:nn { ##1 } { ##2 }
+      }
+  }
+
+\cs_new_protected:Npn \elegant_language_define_caption_names:n #1
+  {
+    \prop_set_from_keyval:Nn \l__elegant_names_prop { #1 }
+    \prop_map_inline:Nn \l__elegant_names_prop
+      { \cs_set:cpn { ##1 name } { ##2 } }
+  }
+
 \elegant_declare_language:nn { cn }
   {
     \RequirePackage[UTF8]{ctex}
     \RequirePackage{bbding}
-    \elegant_define_name:n 
+    \renewcommand{\baselinestretch}{1.3}
+    \cs_set:Npn \partname { \color_select:o { \elegant_use_color:n { structure } } }
+    \cs_set:Npn \thepart { 第 \chinese{part} 部分 }
+    \elegant_language_define_caption_names:n
       {
         contents = 目录,
         figure = 图,
         table = 表,
+        listfigure = 插图目录,
+        listtable = 表格目录,
+        bib = 参考文献,
+        appendix = 附录,
+        appendixtoc = 附录,
+        index = 索 \hspace{2em} 引
+      }
+    \elegant_define_name:n
+      {
+        contents = 目录,
+        figure = 图,
+        table = 表,
+        bib = 参考文献,
+        appendix = 附录,
         listoffigure = 插图目录,
         listoftable = 表格目录,
         chapter / before  = 第,
@@ -94,10 +177,492 @@
         lemma = 引理,
         lemma / icon = $\spadesuit$,
         proposition = 命题,
+        example = 例题,
+        instance = 示例,
+        problem = 问题,
+        exercise = 练习,
         remark = 注,
+        assumption = 假设,
+        conclusion = 结论,
+        solution = 解,
+        property = 性质,
         introduction = 内容提要,
-        introduction / icon = \SquareShadowBottomRight
+        introduction / icon = \SquareShadowBottomRight,
+        note = 笔记,
+        update = 更新：,
+        history = 版本更新历史
       }
+    \elegant_language_define_text_names:n
+      {
+        definition = 定义,
+        theorem = 定理,
+        axiom = 公理,
+        postulate = 公设,
+        lemma = 引理,
+        proposition = 命题,
+        corollary = 推论,
+        example = 例题,
+        instance = 示例,
+        problem = 问题,
+        exercise = 练习,
+        remark = 注,
+        assumption = 假设,
+        conclusion = 结论,
+        solution = 解,
+        property = 性质,
+        introduction = 内容提要,
+        note = 笔记,
+        update = 更新：,
+        history = 版本更新历史
+      }
+    \cs_set:Npn \proofname { 证明 }
+    \cs_set:Npn \authorname { \citshape 作者： }
+    \cs_set:Npn \institutename { \citshape 组织： }
+    \cs_set:Npn \datename { \citshape 时间： }
+    \cs_set:Npn \versionname { \citshape 版本： }
+    \cs_set:Npn \ebibname { 参考文献 }
+    \cs_set:Npn \beforechap { 第 }
+    \cs_set:Npn \afterchap { 章 }
+    \elegant_define_figure_ref_prefix:n { 图 }
+    \elegant_define_table_ref_prefix:n  { 表 }
+    \elegant_define_bioinfo:n { { \citshape ##1 }：##2 }
+  }
+
+\elegant_declare_language:nn { en }
+  {
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Chapter }
+    \cs_set:Npn \partname { \color_select:o { \elegant_use_color:n { structure } } Part }
+    \cs_set:Npn \appendixname { Appendix }
+    \cs_set:Npn \ebibname { Bibliography }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_define_name:n { contents = Contents, figure = Figure, table = Table, bib = Bibliography, appendix = Appendix }
+    \elegant_language_define_text_names:n
+      {
+        note = Note,
+        problem = Problem,
+        definition = Definition,
+        theorem = Theorem,
+        axiom = Axiom,
+        postulate = Postulate,
+        lemma = Lemma,
+        proposition = Proposition,
+        corollary = Corollary,
+        example = Example,
+        exercise = Exercise,
+        remark = Remark,
+        assumption = Assumption,
+        conclusion = Conclusion,
+        solution = Solution,
+        property = Property,
+        introduction = Introduction,
+        update = Updates:,
+        history = Version~History
+      }
+    \cs_set:Npn \proofname { Proof }
+    \cs_set:Npn \authorname { \textbf{Author:~} }
+    \cs_set:Npn \institutename { \textbf{Institute:~} }
+    \cs_set:Npn \datename { \textbf{Date:~} }
+    \cs_set:Npn \versionname { \textbf{Version:~} }
+    \elegant_define_figure_ref_prefix:n { Figure }
+    \elegant_define_table_ref_prefix:n  { Table }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { it }
+  {
+    \RequirePackage[italian]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Chapter }
+    \cs_set:Npn \ebibname { Bibliografia }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Nota,
+        problem = Problema,
+        definition = Definizione,
+        theorem = Teorema,
+        axiom = Assioma,
+        postulate = Postulato,
+        lemma = Lemma,
+        proposition = Proposizione,
+        corollary = Corollario,
+        example = Esempio,
+        exercise = Esercizio,
+        remark = Commento,
+        assumption = Assunto,
+        conclusion = Conclusione,
+        solution = Soluzione,
+        property = Proprietà,
+        introduction = Introduzione,
+        update = Aggiornamenti:,
+        history = Cronologia~delle~versioni
+      }
+    \cs_set:Npn \proofname { Dimostrazione }
+    \cs_set:Npn \authorname { \textbf{Autore:~} }
+    \cs_set:Npn \institutename { \textbf{Istituto:~} }
+    \cs_set:Npn \datename { \textbf{Data:~} }
+    \cs_set:Npn \versionname { \textbf{Versione:~} }
+    \elegant_define_figure_ref_prefix:n { Figura }
+    \elegant_define_table_ref_prefix:n  { Tabella }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { fr }
+  {
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage[french]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Chapitre }
+    \cs_set:Npn \ebibname { Bibliographie }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Note,
+        problem = Problème,
+        definition = Définition,
+        theorem = Théorème,
+        axiom = Axiôme,
+        postulate = Postulat,
+        lemma = Lemme,
+        proposition = Proposition,
+        corollary = Corollaire,
+        example = Exemple,
+        exercise = Exercice,
+        remark = Remarque,
+        assumption = Supposition,
+        conclusion = Conclusion,
+        solution = Solution,
+        property = Propriété,
+        introduction = Introduction,
+        problemset = Exercice,
+        update = Mises~à~jour:,
+        history = Historique~des~versions
+      }
+    \cs_set:Npn \proofname { Démonstration }
+    \cs_set:Npn \authorname { \textbf{Auteur:~} }
+    \cs_set:Npn \institutename { \textbf{Institut:~} }
+    \cs_set:Npn \datename { \textbf{Date:~} }
+    \cs_set:Npn \versionname { \textbf{Version:~} }
+    \elegant_define_figure_ref_prefix:n { Figure }
+    \elegant_define_table_ref_prefix:n  { Tableau }
+  }
+
+\elegant_declare_language:nn { nl }
+  {
+    \RequirePackage[dutch]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Hoofdstuk }
+    \cs_set:Npn \ebibname { Bibliographie }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Opmerking,
+        problem = Probleem,
+        definition = Definitie,
+        theorem = Stelling,
+        axiom = Uitgangspunt,
+        postulate = Hypothese,
+        lemma = Lemma,
+        proposition = Voorstel,
+        corollary = Gevolgtrekking,
+        example = Voorbeeld,
+        exercise = Oefening,
+        remark = Commentaar,
+        assumption = Veronderstelling,
+        conclusion = Besluit,
+        solution = Oplossing,
+        property = Eigenschap,
+        introduction = Introductie,
+        problemset = Probleemcomplex,
+        update = Update:,
+        history = Versie~Geschiedenis
+      }
+    \cs_set:Npn \proofname { Bewijs }
+    \cs_set:Npn \authorname { \textbf{Auteur:~} }
+    \cs_set:Npn \institutename { \textbf{Instituut:~} }
+    \cs_set:Npn \datename { \textbf{Datum:~} }
+    \cs_set:Npn \versionname { \textbf{Versie:~} }
+    \elegant_define_figure_ref_prefix:n { Figuur }
+    \elegant_define_table_ref_prefix:n  { Tabel }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { hu }
+  {
+    \RequirePackage[magyar]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Fejezet }
+    \cs_set:Npn \ebibname { Bibliográfia }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Jegyzet,
+        problem = Probléma,
+        definition = Definíció,
+        theorem = Tétel,
+        axiom = Axióma,
+        postulate = Követelmény,
+        lemma = Lemma,
+        proposition = Előzmény,
+        corollary = Következmény,
+        example = Példa,
+        exercise = Feladat,
+        remark = Megjegyzés,
+        assumption = Sejtés,
+        conclusion = Összefoglalás,
+        solution = Megoldás,
+        property = Tulajdonság,
+        introduction = Bevezetés,
+        problemset = Feladatok,
+        update = Frissítve:,
+        history = Korábbi~verziók
+      }
+    \cs_set:Npn \proofname { Bizonyítás }
+    \cs_set:Npn \authorname { \textbf{Szerző:~} }
+    \cs_set:Npn \institutename { \textbf{Intézmény:~} }
+    \cs_set:Npn \datename { \textbf{Dátum:~} }
+    \cs_set:Npn \versionname { \textbf{Verziószám:~} }
+    \elegant_define_figure_ref_suffix:n { Ábra }
+    \elegant_define_table_ref_suffix:n  { Táblázat }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { de }
+  {
+    \setlength\parindent{2em}
+    \elegant_language_define_caption_names:n
+      {
+        contents = Inhaltsverzeichnis,
+        listfigure = Abbildungsverzeichnis,
+        listtable = Tabellenverzeichnis,
+        bib = Bibliographie,
+        appendix = Anhang
+      }
+    \cs_set:Npn \chaptername { Kapitel }
+    \cs_set:Npn \partname { \color_select:o { \elegant_use_color:n { structure } } Teil }
+    \cs_set:Npn \ebibname { Bibliographie }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Notiz,
+        problem = Problem,
+        definition = Definition,
+        theorem = Theorem,
+        axiom = Axiom,
+        postulate = Postulat,
+        lemma = Lemma,
+        proposition = Behauptung,
+        corollary = Corollary,
+        example = Beispiel,
+        instance = Beispiel,
+        exercise = \"{U}bung,
+        remark = Anmerkung,
+        assumption = Annahme,
+        conclusion = Abschluss,
+        solution = Aufl\"{o}sung,
+        property = Property,
+        introduction = Einleitung,
+        update = Updates:,
+        history = Version~der~Geschichte
+      }
+    \cs_set:Npn \proofname { Beweis }
+    \cs_set:Npn \authorname { \textbf{Autor:~} }
+    \cs_set:Npn \institutename { \textbf{Institut:~} }
+    \cs_set:Npn \datename { \textbf{Datum:~} }
+    \cs_set:Npn \versionname { \textbf{Version:~} }
+    \elegant_define_figure_ref_prefix:n { Figur }
+    \elegant_define_table_ref_prefix:n  { Tabelle }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { es }
+  {
+    \RequirePackage[spanish]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \spanishchaptername { Capítulo }
+    \cs_set:Npn \chaptername { Capítulo }
+    \cs_set:Npn \ebibname { Bibliografía }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Nota,
+        problem = Problema,
+        definition = Definición,
+        theorem = Teorema,
+        axiom = Axioma,
+        postulate = Postulado,
+        lemma = Lema,
+        proposition = Proposición,
+        corollary = Corolario,
+        example = Ejemplo,
+        exercise = Ejercicio,
+        remark = Comentario,
+        assumption = Asunto,
+        conclusion = Conclusión,
+        solution = Solución,
+        property = Propiedad,
+        introduction = Introducción,
+        problemset = Ejercicio,
+        update = Actualización:,
+        history = Historial~de~versiones
+      }
+    \cs_set:Npn \proofname { Demostración }
+    \cs_set:Npn \authorname { \textbf{Autor:~} }
+    \cs_set:Npn \institutename { \textbf{Instituto:~} }
+    \cs_set:Npn \datename { \textbf{Fecha:~} }
+    \cs_set:Npn \versionname { \textbf{Versión:~} }
+    \elegant_define_figure_ref_prefix:n { Figura }
+    \elegant_define_table_ref_prefix:n  { Tabla }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { mn }
+  {
+    \RequirePackage[mongolian]{babel}
+    \setlength\parindent{2em}
+    \setlocalecaption{mongolian}{contents}{Гарчиг}
+    \setlocalecaption{mongolian}{chapter}{Бүлэг}
+    \setlocalecaption{mongolian}{figure}{Зураг}
+    \setlocalecaption{mongolian}{table}{Хүснэгт}
+    \cs_set:Npn \chaptername { Бүлэг }
+    \cs_set:Npn \ebibname { Ном~зүй }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_define_name:n
+      {
+        contents = Гарчиг,
+        figure = Зураг,
+        table = Хүснэгт,
+        bib = Ном~зүй
+      }
+    \elegant_language_define_text_names:n
+      {
+        note = Тэмдэглэл,
+        problem = Бодлого,
+        definition = Тодорхойлолт,
+        theorem = Томьёо,
+        axiom = Аксиом,
+        postulate = Постулат,
+        lemma = Лемма,
+        proposition = Таамаглал,
+        corollary = Үр~дүн,
+        example = Жишээ,
+        exercise = Дасгал,
+        remark = Тайлбар,
+        assumption = Урьдчилсан~нөхцөл,
+        conclusion = Дүгнэлт,
+        solution = Хариулт,
+        property = Шинж~чанар,
+        introduction = Удиртгал,
+        problemset = Бодлогууд,
+        update = Шинэчлэлтүүд:,
+        history = Хувилбарын~түүх
+      }
+    \cs_set:Npn \proofname { Баталгаа }
+    \cs_set:Npn \authorname { \textbf{Зохиогч:~} }
+    \cs_set:Npn \institutename { \textbf{Сургууль:~} }
+    \cs_set:Npn \datename { \textbf{Огноо:~} }
+    \cs_set:Npn \versionname { \textbf{Хувилбар:~} }
+    \elegant_define_figure_ref_prefix:n { Зураг }
+    \elegant_define_table_ref_prefix:n  { Хүснэгт }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { pt }
+  {
+    \RequirePackage[portuguese]{babel}
+    \setlength\parindent{2em}
+    \cs_set:Npn \chaptername { Capítulo }
+    \cs_set:Npn \ebibname { Bibliografia }
+    \elegant_language_common_names:n { \chaptername }
+    \elegant_language_define_text_names:n
+      {
+        note = Observação,
+        problem = Problema,
+        definition = Definição,
+        theorem = Teorema,
+        axiom = Axioma,
+        postulate = Postulado,
+        lemma = Lema,
+        proposition = Proposição,
+        corollary = Corolário,
+        example = Exemplo,
+        exercise = Exercício,
+        remark = Comentário,
+        assumption = Assunto,
+        conclusion = Conclusão,
+        solution = Soluções,
+        property = Propiedade,
+        introduction = Introdução,
+        problemset = Questão,
+        update = Atualização:~,
+        history = Histórico~de~versões
+      }
+    \cs_set:Npn \proofname { Demostração }
+    \cs_set:Npn \authorname { \textbf{Autor:~} }
+    \cs_set:Npn \institutename { \textbf{Instituição:~} }
+    \cs_set:Npn \datename { \textbf{Data:~} }
+    \cs_set:Npn \versionname { \textbf{Versão:~} }
+    \elegant_define_figure_ref_prefix:n { Figura }
+    \elegant_define_table_ref_prefix:n  { Tabela }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
+  }
+
+\elegant_declare_language:nn { jp }
+  {
+    \RequirePackage{luatexja}
+    \setlength\parindent{2em}
+    \elegant_language_define_caption_names:n
+      {
+        contents = 目次,
+        listfigure = イラストカタログ,
+        listtable = 表カタログ,
+        bib = 参考文献,
+        appendix = 付録
+      }
+    \cs_set:Npn \partname { \color_select:o { \elegant_use_color:n { structure } } }
+    \cs_set:Npn \chaptername { 第~\thechapter~章 }
+    \cs_set:Npn \ebibname { 参考文献 }
+    \elegant_define_name:n
+      {
+        chapter / before = 第,
+        chapter / number = \thechapter,
+        chapter / after = 章
+      }
+    \elegant_language_common_names:n { 第 }
+    \elegant_language_define_text_names:n
+      {
+        note = ノート,
+        problem = 問題,
+        definition = 定義,
+        theorem = 定理,
+        axiom = 公理,
+        postulate = 公準,
+        lemma = 補題,
+        proposition = 命題,
+        corollary = 系,
+        example = 例題,
+        instance = 例,
+        exercise = 練習,
+        remark = 注,
+        assumption = 仮設,
+        conclusion = 結論,
+        solution = 解答,
+        property = 性質,
+        introduction = 内容概要,
+        update = 更新：,
+        history = バージョン更新履歴
+      }
+    \elegant_define_name:n { chapter / before = 第, chapter / number = \thechapter, chapter / after = 章 }
+    \cs_set:Npn \proofname { 証明 }
+    \cs_set:Npn \authorname { \textbf{著者：} }
+    \cs_set:Npn \institutename { \textbf{組織団体：} }
+    \cs_set:Npn \datename { \textbf{日付：} }
+    \cs_set:Npn \versionname { \textbf{\citshape バージョン：} }
+    \elegant_define_figure_ref_prefix:n { 図 }
+    \elegant_define_table_ref_prefix:n  { 表 }
+    \elegant_define_bioinfo:n { \textbf{##1}:~##2 }
   }
 
 \endinput

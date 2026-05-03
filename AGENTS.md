@@ -29,6 +29,12 @@
 
 新增或迁移代码优先使用 expl3/LaTeX3 接口，命名应体现模块职责，并和现有 `elegant-<area>-module.code.tex` 格式保持一致，例如 `elegant-theme-module.code.tex`。迁移时尽量保持原 `elegantbook.cls` 的用户接口、选项名和默认行为不变，只在有明确需求时做微调。Lua 文件（`build.lua`）使用两个空格缩进，并保持已有赋值块对齐。避免对原成熟版本、生成的 `.cls` 文件和示例文档做无关格式化。
 
+LaTeX3 宏命名应遵循 expl3 语义化签名和作用域约定。对外或跨模块复用的内部 API 使用 `\elegant_<verb>_<object>:<arg-spec>`，例如 `\elegant_declare_theme:nn`、`\elegant_use_color:n`、`\elegant_add_to_hook:nnnn`；仅模块内部使用的辅助宏使用 `\__elegant_<module>_<verb>_<object>:<arg-spec>`，例如 `\__elegant_parse_unknown_option:n`。函数名中的 `<arg-spec>` 必须真实反映参数类型与展开行为，例如 `:n`、`:N`、`:nn`、`:nx`、`:TF`，需要变体时使用 `\cs_generate_variant:Nn` 生成，避免手写语义不清的重复宏。
+
+变量命名使用 expl3 类型后缀并标出作用域。全局状态使用 `\g__elegant_<module-or-purpose>_<type>`，局部状态使用 `\l__elegant_<module-or-purpose>_<type>`，常量使用 `\c__elegant_<module-or-purpose>_<type>`；类型后缀应匹配数据结构，例如 `_tl`、`_bool`、`_int`、`_dim`、`_clist`、`_seq`、`_prop`。临时变量也应保持双下划线内部命名，例如优先写 `\l__elegant_tmp_cnt_name_tl`，不要新增 `\l_elegant_...` 这类缺少内部命名标记的变量。通过 `:c`/`:cn` 动态构造的内部变量名也应尽量保持同一规范，即使用 `g__elegant_...` 或 `l__elegant_...` 前缀；若为兼容既有代码暂用旧式 `g_elegant_...` 名称，应局部限定并避免继续扩散。
+
+用户可见命令和环境继续使用 LaTeX2e 风格接口，由 `\NewDocumentCommand`、`\RenewDocumentCommand`、`\DeclareDocumentCommand`、`\NewDocumentEnvironment` 或 `\DeclareDocumentEnvironment` 定义，例如 `\elegantnewtheorem`、`introduction`。这类命令不带 expl3 参数签名，命名优先兼容原 `elegantbook.cls` 和示例文档；实现细节则委托给带签名的 `\elegant_...:` 或 `\__elegant_...:` 函数。消息名、键路径和 hook 名称使用稳定的文本命名空间：消息归入 `elegant`，类选项归入 `elegant / classoption`，模块 hook 采用 `elegant-module / <module> / <name> / <before|after>`。
+
 ## 测试指南
 
 本仓库没有独立自动化测试套件。请把示例文档构建和 PDF 对照作为主要回归检查。修改模块后，至少构建顶层 `elegantbook-cn.tex`，检查编译错误、警告、缺失引用和页面视觉变化。涉及用户接口、字体、主题、定理环境或封面逻辑时，应和 `ElegantBook/` 中原示例输出对照，确认改动属于预期迁移或微调。

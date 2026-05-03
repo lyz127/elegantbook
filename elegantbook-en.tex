@@ -1,0 +1,36 @@
+\documentclass[en, font = none, mode = simple]{elegantbook-l3}
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Language Test}
+\section{Names and References}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\rule{0pt}{2cm}\rule{3cm}{0pt}}
+  \caption{A figure}\label{fig:language-test}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{A table}\label{tab:language-test}
+  \begin{tabular}{cc}
+    A & B
+  \end{tabular}
+\end{table}
+
+\figref{fig:language-test}; \tabref{tab:language-test}.
+
+\begin{theorem}[Sample]
+  This is a theorem.
+\end{theorem}
+
+\begin{definition}
+  This is a definition.
+\end{definition}
+
+\end{document}

@@ -9,3 +9,6 @@ ElegantBook/
 *.synctex
 *.out
 *.toc
+*.fls 
+*.fdb_latexmk
+*.xdv

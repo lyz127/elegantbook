@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1777730706.81756 "elegantbook-cn.xdv" "elegantbook-cn.pdf" "elegantbook-cn" 1777730708.00965 0
-  "elegantbook-cn.xdv" 1777730706 115564 c973ccb0e986c4d1efddbc97a930b702 "xelatex"
+["xdvipdfmx"] 1777811440.25012 "elegantbook-cn.xdv" "elegantbook-cn.pdf" "elegantbook-cn" 1777811441.43999 0
+  "elegantbook-cn.xdv" 1777811440 115564 48417f10df3e039a1b511fe4f4885d74 "xelatex"
   (generated)
   "elegantbook-cn.pdf"
   (rewritten before read)
-["xelatex"] 1777730704.91042 "elegantbook-cn.tex" "elegantbook-cn.xdv" "elegantbook-cn" 1777730708.00269 0
+["xelatex"] 1777811438.61296 "elegantbook-cn.tex" "elegantbook-cn.xdv" "elegantbook-cn" 1777811441.43194 0
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1771408370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1771409265 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1771408076 1004 54797486969f23fa377b128694d548df ""
@@ -198,21 +198,21 @@
   "c:/texlive/2026/texmf.cnf" 1771409276 713 614551405fc44b98efbf516466e3c909 ""
   "elegant-bibliography-module.code.tex" 1777729800 953 5d98fccd1f6932c5326d5dee647e2cc6 ""
   "elegant-code-module.code.tex" 1777729800 463 75de2cad2d1ed72e7d6366aed4e25e59 ""
-  "elegant-core-module.code.tex" 1767787659 5566 02ee7c2404fb98c0fb41aff59f8f03b2 ""
+  "elegant-core-module.code.tex" 1777810100 5612 a87c0bc21319058aa9c2991a273cb8ec ""
   "elegant-cover-module.code.tex" 1767787659 5661 6b06ecc90e3bdeef5255d51d19b6d9c2 ""
   "elegant-font-module.code.tex" 1767787659 3748 33ffc48d7b3ca6ba673e2ab21ef7040d ""
   "elegant-history-module.code.tex" 1777729800 548 6417925abdfbe9da753fcab5e9cbba1e ""
-  "elegant-language-module.code.tex" 1777730031 2873 78284c12b6ca665ef287efaf696a6e24 ""
+  "elegant-language-module.code.tex" 1777810856 21514 e457774b79ef7bb3e409189b2848d8a9 ""
   "elegant-math-module.code.tex" 1777729800 1260 e7bdc8a1608192e4feac91951add2f9d ""
   "elegant-option-module.code.tex" 1777729800 704 7e40e305b45a23ece09bd04a89e8fec1 ""
   "elegant-theme-module.code.tex" 1767787659 4549 d8e9aedd2b84fed141ffe496cc677b29 ""
   "elegant-theorem-module.code.tex" 1767787659 5939 3d286e04dde26526bdde760e452ef281 ""
   "elegant-toc-module.code.tex" 1777729800 741 64d2da08a1fdf89b1f538651920b7da6 ""
-  "elegantbook-cn.aux" 1777730706 888 1442af45ac978edac3797c92e29ecaea "xelatex"
-  "elegantbook-cn.out" 1777730706 353 0b2e4595a518f0af0d91470cc8a0d7c7 "xelatex"
+  "elegantbook-cn.aux" 1777811440 888 1442af45ac978edac3797c92e29ecaea "xelatex"
+  "elegantbook-cn.out" 1777811440 353 0b2e4595a518f0af0d91470cc8a0d7c7 "xelatex"
   "elegantbook-cn.tex" 1767787659 67207 a5689b9d0eee0f84cd2e1bad297653ee ""
-  "elegantbook-cn.toc" 1777730706 386 b1e45570c7769a12e0eab385ec1d6043 "xelatex"
-  "elegantbook-l3.cls" 1777729800 3980 c6b07fbb9245b950781f0f890f65dd14 ""
+  "elegantbook-cn.toc" 1777811440 386 b1e45570c7769a12e0eab385ec1d6043 "xelatex"
+  "elegantbook-l3.cls" 1777811389 4678 7607333ef8878bd72778177975451644 ""
   "figure/cover.jpg" 1767787659 426434 430bf60f65350d914a9d0df352351854 ""
   "figure/logo-blue.png" 1767787659 91664 72e517dd6ec7c47b09f477829f5b6167 ""
   (generated)
