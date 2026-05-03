@@ -22,6 +22,6 @@ latexmk -g -pdfxe -interaction=nonstopmode -halt-on-error elegantbook-cn-font-ct
 | `ctex-mac` | 未通过 | 当前 Windows 环境缺少 macOS 字体 `STHeiti`。 |
 | `ctex-macnew` | 未通过 | 当前 Windows 环境缺少 macOS 字体 `Kaiti SC`。 |
 | `ctex-macold` | 未通过 | 当前 Windows 环境缺少 macOS 字体 `STHeiti`。 |
-| `ctex-ubuntu` | 未通过 | XeLaTeX 阶段通过，`xdvipdfmx` 在当前本机字体映射下报 `Invalid TTC index number`。 |
+| `ctex-ubuntu` | 未通过 | XeLaTeX 阶段通过，`xdvipdfmx` 在当前本机字体映射下报 `Invalid TTC index number`。？？？？ |
 
 `ctex-mac`、`ctex-macnew`、`ctex-macold` 和 `ctex-ubuntu` 是平台字体方案；上述失败说明当前机器缺少或无法正确解析对应平台字体，不表示 `font = ctex-*` 选项映射本身失效。
