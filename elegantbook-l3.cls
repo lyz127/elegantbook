@@ -18,6 +18,9 @@
 \cs_new_protected:Npn \elegant_msg_error:nn #1#2
   { \msg_error:nnn { elegant } { #1 } { #2 } }
 
+\cs_new_protected:Npn \elegant_msg_warning:nnn #1#2#3
+  { \msg_warning:nnnn { elegant } { #1 } { #2 } { #3 } }
+
 \cs_generate_variant:Nn \elegant_msg_error:nn { nx }
 
 
@@ -25,6 +28,24 @@
 \elegant_msg_new:nn { not found module }
   {
     The~Elegant~module~`#1'~not~found.
+  }
+
+\elegant_msg_new:nn { deprecated color option }
+  {
+    The~color~option~`#1'~is~deprecated.\\
+    Please~use~`theme=#2'~instead.
+  }
+
+\elegant_msg_new:nn { unsupported color option }
+  {
+    The~color~option~`#1'~is~not~supported.\\
+    Please~use~one~of~green,~cyan,~blue,~gray,~black,~or~none.
+  }
+
+\elegant_msg_new:nn { unsupported device option }
+  {
+    The~device~option~`#1'~is~not~supported.\\
+    Please~use~`normal'~or~`pad'.
   }
 
 
@@ -65,6 +86,36 @@
 % class options
 \clist_new:N \g__elegant_base_class_options_clist
 
+\cs_new_protected_nopar:Npn \__elegant_set_theme_from_legacy_color:nn #1#2
+  {
+    \tl_gset:Nn \g__elegant_theme_tl { #2 }
+    \elegant_msg_warning:nnn { deprecated color option } { #1 } { #2 }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_set_theme_from_legacy_color:n #1
+  {
+    \str_case:nnF { #1 }
+      {
+        { green } { \__elegant_set_theme_from_legacy_color:nn { color=green } { Fresh~Green } }
+        { cyan  } { \__elegant_set_theme_from_legacy_color:nn { color=cyan  } { Polar~Blue } }
+        { blue  } { \__elegant_set_theme_from_legacy_color:nn { color=blue  } { Techno~Blue } }
+        { gray  } { \__elegant_set_theme_from_legacy_color:nn { color=gray  } { Rocky~Gray } }
+        { black } { \__elegant_set_theme_from_legacy_color:nn { color=black } { Neon~Black } }
+        { none  } { \__elegant_set_theme_from_legacy_color:nn { color=none  } { Plain } }
+      }
+      { \elegant_msg_error:nn { unsupported color option } { #1 } }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_set_device:n #1
+  {
+    \str_case:nnF { #1 }
+      {
+        { normal } { \tl_gset:Nn \g__elegant_device_tl { normal } }
+        { pad    } { \tl_gset:Nn \g__elegant_device_tl { pad } }
+      }
+      { \elegant_msg_error:nn { unsupported device option } { #1 } }
+  }
+
 
 % keys define 
 \keys_define:nn { elegant / classoption }
@@ -84,6 +135,17 @@
     jp .code:n = \tl_gset:Nn \g__elegant_language_tl { jp },
     theme .tl_set:N = \g__elegant_theme_tl,
     theme .initial:n = {Techno~Blue},
+    color .code:n = \__elegant_set_theme_from_legacy_color:n { #1 },
+    green .code:n = \__elegant_set_theme_from_legacy_color:nn { green } { Fresh~Green },
+    cyan .code:n = \__elegant_set_theme_from_legacy_color:nn { cyan } { Polar~Blue },
+    blue .code:n = \__elegant_set_theme_from_legacy_color:nn { blue } { Techno~Blue },
+    gray .code:n = \__elegant_set_theme_from_legacy_color:nn { gray } { Rocky~Gray },
+    black .code:n = \__elegant_set_theme_from_legacy_color:nn { black } { Neon~Black },
+    nocolor .code:n = \__elegant_set_theme_from_legacy_color:nn { nocolor } { Plain },
+    device .code:n = \__elegant_set_device:n { #1 },
+    device .initial:n = normal,
+    normal .code:n = \tl_gset:Nn \g__elegant_device_tl { normal },
+    pad .code:n = \tl_gset:Nn \g__elegant_device_tl { pad },
     font .tl_set:N = \g__elegant_font_tl,
     font .initial:n = { none },
     math .tl_set:N = \g__elegant_math_tl,

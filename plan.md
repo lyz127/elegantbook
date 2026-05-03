@@ -112,79 +112,80 @@
 ## 按模块迁移清单
 
 - [ ] `elegantbook-l3.cls`
-  - [x] 已迁移：类版本信息、模块加载机制、全局消息接口。
-  - [x] 已迁移：基础选项解析、未知选项转发给 `book` 类、`tocdepth` 与 `secnumdepth` 设置。
+
+  - [X] 已迁移：类版本信息、模块加载机制、全局消息接口。
+  - [X] 已迁移：基础选项解析、未知选项转发给 `book` 类、`tocdepth` 与 `secnumdepth` 设置。
   - [ ] 未迁移：完整原版选项声明与旧式 void option 兼容。
   - [ ] 未迁移：发布时类名、版本号、生成目标和 CTAN 打包策略。
-
 - [ ] `elegant-option-module.code.tex`
-  - [x] 已迁移：模块文件骨架、选项别名表和声明接口占位。
+
+  - [X] 已迁移：模块文件骨架、选项别名表和声明接口占位。
   - [ ] 未迁移：`color`、`result`、`device`、`math`、`marginpar`、`toc`、`scheme` 等原版选项。
   - [ ] 未迁移：`green`、`cyan`、`blue`、`gray`、`black`、`nocolor` 等旧颜色选项映射。
   - [ ] 未迁移：`answer/noanswer`、`normal/pad`、`onecol/twocol`、`chapter/section`、`biber/bibtex`、`hang/display` 等 void option 映射。
-
 - [ ] `elegant-font-module.code.tex`
-  - [x] 已迁移：字体声明框架、`founder`、`source-han`、`ctex-*`、`none` 字体入口。
-  - [ ] 未迁移：pdfTeX/XeTeX/LuaTeX 完整分支。
+
+  - [X] 已迁移：字体声明框架、`founder`、`source-han`、`ctex-*`、`none` 字体入口。
+  - [ ] 未迁移：XeTeX/LuaTeX 完整分支。
   - [ ] 未迁移：原版 `chinesefont=ctexfont/founder/nofont` 行为兼容。
   - [ ] 未迁移：`\cbfseries`、`\citshape`、`\cnormal`、`\cfs` 等辅助命令。
-
 - [ ] `elegant-language-module.code.tex`
-  - [x] 已迁移：语言声明框架、中文 `cn` 的部分名称表。
-  - [ ] 未迁移：`en`、`it`、`fr`、`nl`、`hu`、`de`、`es`、`mn`、`pt`、`jp`。
+
+  - [X] 已迁移：语言声明框架、中文 `cn` 的部分名称表。
+  - [X] 未迁移：`en`、`it`、`fr`、`nl`、`hu`、`de`、`es`、`mn`、`pt`、`jp`。
   - [ ] 未迁移：多语言下的 `babel`、`luatexja`、目录名、附录名、引用名和环境名完整映射。
   - [ ] 未迁移：`\figref`、`\tabref`、`\authorname`、`\historyname` 等语言化命令。
-
 - [ ] `elegant-theme-module.code.tex`
-  - [x] 已迁移：主题声明框架和 `Techno Blue`、`Fresh Green`、`Polar Blue`、`Rocky Gray`、`Neon Black`。
+
+  - [X] 已迁移：主题声明框架和 `Techno Blue`、`Fresh Green`、`Polar Blue`、`Rocky Gray`、`Neon Black`。
   - [ ] 未迁移：原版 `color=green/cyan/blue/gray/black/none` 兼容。
   - [ ] 未迁移：`structurecolor`、`main`、`second`、`third`、`winered`、`bule` 等原版颜色语义。
   - [ ] 未迁移：表格颜色、链接颜色和定理颜色的完整对应关系。
-
 - [ ] `elegant-cover-module.code.tex`
-  - [x] 已迁移：封面信息表、封面样式声明接口、`default`、`Skyrmion`、`mono` 样式。
-  - [x] 已迁移：`\ElegantCoverInfo`、`\ElegantDeclareCoverStyle`、`\ElegantUseCoverInfo`。
+
+  - [X] 已迁移：封面信息表、封面样式声明接口、`default`、`Skyrmion`、`mono` 样式。
+  - [X] 已迁移：`\ElegantCoverInfo`、`\ElegantDeclareCoverStyle`、`\ElegantUseCoverInfo`。
   - [ ] 未迁移：原版 `\subtitle`、`\institute`、`\version`、`\extrainfo`、`\logo`、`\cover`、`\email` 接口。
   - [ ] 未迁移：原版 `\maketitle` 的版式、作者信息、logo、封面图和 extra info 行为。
-
 - [ ] `elegant-math-module.code.tex`
-  - [x] 已迁移：模块骨架和 `cm/newtx/mtpro2` 数学选项占位。
+
+  - [X] 已迁移：模块骨架和 `cm/newtx/mtpro2` 数学选项占位。
   - [ ] 未迁移：`math=cm/newtx/mtpro2` 的实际包加载。
   - [ ] 未迁移：`newtxmath`、`mtpro2`、`esint`、`bm`、数学符号包和相关字体默认值。
   - [ ] 未迁移：不同引擎下数学字体与文本字体协调逻辑。
-
 - [ ] `elegant-core-module.code.tex`
-  - [x] 已迁移：基础 geometry、`graphicspath`、章节标题、页眉页脚、hyperref、英文字体、列表样式。
-  - [x] 已迁移：`\circled`、列表项目符号和 `introduction` 环境。
+
+  - [X] 已迁移：基础 geometry、`graphicspath`、章节标题、页眉页脚、hyperref、英文字体、列表样式。
+  - [X] 已迁移：`\circled`、列表项目符号和 `introduction` 环境。
   - [ ] 未迁移：`setspace`、`csquotes`、`indentfirst`、`comment`、`caption`、`booktabs`、`multirow`、`fancyvrb`、`makecell`、`hologo`、`appendix`、`apptools` 等原版基础依赖。
   - [ ] 未迁移：`\mailto`、`\question`、`\bioinfo`、`\dollar` 等常用宏。
-
 - [ ] `elegant-theorem-module.code.tex`
-  - [x] 已迁移：`fancy/simple` 模式框架。
-  - [x] 已迁移：`theorem`、`definition`、`postulate`、`axiom`、`corollary`、`lemma`、`proposition`、`remark`。
+
+  - [X] 已迁移：`fancy/simple` 模式框架。
+  - [X] 已迁移：`theorem`、`definition`、`postulate`、`axiom`、`corollary`、`lemma`、`proposition`、`remark`。
   - [ ] 未迁移：`example`、`exercise`、`problem`、`note`、`proof`、`solution`、`assumption`、`conclusion`、`property`、`custom`、`problemset`。
   - [ ] 未迁移：原版 `\elegantnewtheorem` 的完整参数签名、样式选择、前缀、共享计数、警告和错误处理。
-
 - [ ] `elegant-bibliography-module.code.tex`
-  - [x] 已迁移：模块骨架和 `citestyle`、`bibstyle`、`bibend` 变量占位。
+
+  - [X] 已迁移：模块骨架和 `citestyle`、`bibstyle`、`bibend` 变量占位。
   - [ ] 未迁移：`biber/bibtex` 后端选择。
   - [ ] 未迁移：参考文献包加载、样式选择和 bibliography 名称语言化。
   - [ ] 未迁移：原版示例文档的参考文献编译兼容。
-
 - [ ] `elegant-toc-module.code.tex`
-  - [x] 已迁移：模块骨架、`toc` 与 `title style` 变量占位。
+
+  - [X] 已迁移：模块骨架、`toc` 与 `title style` 变量占位。
   - [ ] 未迁移：`toc=onecol/twocol`。
   - [ ] 未迁移：`\tableofcontents` 重定义、`tocloft`、`\numberline` 定制。
   - [ ] 未迁移：附录目录显示、`\cleardoublepage` 调整和章节名前后缀处理。
-
 - [ ] `elegant-code-module.code.tex`
-  - [x] 已迁移：模块骨架和 setup hook。
+
+  - [X] 已迁移：模块骨架和 setup hook。
   - [ ] 未迁移：`listings` 加载与默认样式。
   - [ ] 未迁移：LaTeX 代码高亮关键字、`lightgrey`、`frenchplum` 等颜色。
   - [ ] 未迁移：原版等宽字体切换和代码展示默认行为。
-
 - [ ] `elegant-history-module.code.tex`
-  - [x] 已迁移：模块骨架、版本历史序列和 setup hook。
+
+  - [X] 已迁移：模块骨架、版本历史序列和 setup hook。
   - [ ] 未迁移：`\dateinfoline`、`\datechange`、`\listofchanges`。
   - [ ] 未迁移：`change` 环境。
   - [ ] 未迁移：更新历史标题的多语言名称和目录行为。
