@@ -21,17 +21,17 @@
   {
     \hook_new:n { elegant-module / math / #1 / before }
     \hook_new:n { elegant-module / math / #1 / after }
-    \tl_gset:cn { g_elegant_math_#1_tl } { #2 }
+    \tl_gset:cn { g__elegant_math_#1_tl } { #2 }
     \clist_gput_right:Nn \g__elegant_math_clist { #1 }
   }
 
 
-\hook_gput_code:nnn{begindocument/before}{.}
+\cs_new_protected_nopar:Npn \elegant_apply_selected_math:
   {
-    \tl_if_exist:cTF { g_elegant_math_ \g__elegant_math_tl _tl }
+    \tl_if_exist:cTF { g__elegant_math_ \g__elegant_math_tl _tl }
       {
         \hook_use:n { elegant-module / math / \g__elegant_math_tl / before }
-        \tl_use:c { g_elegant_math_ \g__elegant_math_tl _tl }
+        \tl_use:c { g__elegant_math_ \g__elegant_math_tl _tl }
         \hook_use:n { elegant-module / math / \g__elegant_math_tl / after }
       }
       {
@@ -39,10 +39,90 @@
       }
   }
 
+\cs_new_protected_nopar:Npn \__elegant_math_load_unicode_math:
+  {
+    \RequirePackage { unicode-math }
+    \keys_set:nn { unicode-math }
+      {
+        math-style = ISO,
+        bold-style = ISO,
+      }
+  }
+
 
 \elegant_declare_math:nn { cm } { \relax }
-\elegant_declare_math:nn { newtx } { \relax }
-\elegant_declare_math:nn { mtpro2 } { \relax }
+
+\elegant_declare_math:nn { newtx }
+  {
+    \let \oldencodingdefault \encodingdefault
+    \let \oldrmdefault \rmdefault
+    \let \oldsfdefault \sfdefault
+    \let \oldttdefault \ttdefault
+    \def \encodingdefault { T1 }
+    \renewcommand { \rmdefault } { ntxtlf }
+    \renewcommand { \sfdefault } { qhv }
+    \renewcommand { \ttdefault } { ntxtt }
+    \RequirePackage { newtxmath }
+    \let \encodingdefault \oldencodingdefault
+    \let \rmdefault \oldrmdefault
+    \let \sfdefault \oldsfdefault
+    \let \ttdefault \oldttdefault
+    \let \Bbbk \relax
+    \RequirePackage { esint }
+
+    %%% use yhmath pkg, uncomment following code
+    % \let \oldwidering \widering
+    % \let \widering \undefined
+    % \RequirePackage { yhmath }
+    % \let \widering \oldwidering
+
+    %%% use esvect pkg, uncomment following code
+    % \RequirePackage { esvect }
+
+    \DeclareSymbolFont { CMlargesymbols } { OMX } { cmex } { m } { n }
+    \let \sumop \relax
+    \let \prodop \relax
+    \DeclareMathSymbol { \sumop } { \mathop } { CMlargesymbols } { "50 }
+    \DeclareMathSymbol { \prodop } { \mathop } { CMlargesymbols } { "51 }
+  }
+
+\elegant_declare_math:nn { mtpro2 }
+  {
+    \let \Bbbk \relax
+    \RequirePackage [ lite ] { mtpro2 }
+  }
+
+\elegant_declare_math:nn { stixtwo }
+  {
+    \__elegant_math_load_unicode_math:
+    \setmathfont { STIXTwoMath-Regular.otf }
+    \setmathfont { STIXTwoMath-Regular.otf }
+      [ range = { scr, bfscr }, StylisticSet = 01 ]
+  }
+
+\elegant_declare_math:nn { xits }
+  {
+    \__elegant_math_load_unicode_math:
+    \setmathfont { XITSMath-Regular.otf }
+      [ BoldFont = XITSMath-Bold.otf ]
+    \setmathfont { XITSMath-Regular.otf }
+      [ range = { cal, bfcal }, StylisticSet = 01 ]
+  }
+
+\elegant_declare_math:nn { tg }
+  {
+    \__elegant_math_load_unicode_math:
+    \setmathfont { texgyretermes-math.otf }
+    \setmathfont { XITSMath-Regular.otf }
+      [ range = { cal, bfcal }, StylisticSet = 01 ]
+  }
+
+\PassOptionsToPackage { no-math } { fontspec }
+\PassOptionsToPackage { quiet } { fontspec }
+
+\elegant_apply_selected_math:
+
+\RequirePackage { fixdif }
 
 
 \endinput

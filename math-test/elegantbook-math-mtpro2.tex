@@ -1,0 +1,25 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[lang = en, math = mtpro2, font = none, mode = simple]{elegantbook-l3}
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Math Font Test: mtpro2}
+
+This document checks whether the \texttt{math = mtpro2} font option can load,
+typeset, and generate a PDF correctly.
+
+\section{Basic Formula}
+
+\[
+  \sum_{n=1}^{\infty} \frac{1}{n^2}
+  =
+  \int_0^1 x\d x + \mathcal{F}(x)
+\]
+
+\end{document}
