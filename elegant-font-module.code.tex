@@ -22,18 +22,17 @@
   }
 
 
-\hook_gput_code:nnn{begindocument/before}{.}
+\cs_new_protected_nopar:Npn \elegant_apply_selected_font:
   {
     \tl_if_exist:cTF { g_elegant_font_ \g__elegant_font_tl _tl }
-    {
-      \hook_use:n { elegant-module / font / \g__elegant_font_tl / before }
-      \tl_use:c { g_elegant_font_ \g__elegant_font_tl _tl }
-      \hook_use:n { elegant-module / font / \g__elegant_font_tl / after }
-    }
-    {
-      % error / message
-      \elegant_msg_error:nx { not support font } { \g__elegant_font_tl }
-    }
+      {
+        \hook_use:n { elegant-module / font / \g__elegant_font_tl / before }
+        \tl_use:c { g_elegant_font_ \g__elegant_font_tl _tl }
+        \hook_use:n { elegant-module / font / \g__elegant_font_tl / after }
+      }
+      {
+        \elegant_msg_error:nx { not support font } { \g__elegant_font_tl }
+      }
   }
 
 \clist_map_inline:nn { adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, lxgw }
@@ -45,7 +44,7 @@
             \ctex_set:n { fontset = #1 }
           }
           {
-            \RequirePackage[fontset = #1]{ ctex }
+            \RequirePackage[UTF8, fontset = #1]{ ctex }
           }
       }
   }
@@ -91,7 +90,9 @@
 
 \elegant_declare_font:nn { source-han }
   {
-    % \RequirePackage{xeCJK}
+    \elegant_if_package_loaded:nF { ctex }
+      { \RequirePackage[UTF8, fontset = none]{ctex} }
+
     \setCJKmainfont{SourceHanSerifSC}[
       UprightFont = *-Regular,
       BoldFont = *-Bold,
@@ -123,4 +124,7 @@
     \DeclareDocumentCommand \heiti    {}{ \CJKfamily{zhhei} }
     \DeclareDocumentCommand \kaishu   {}{ \CJKfamily{zhkai} }
   }
+
+\elegant_apply_selected_font:
+
 \endinput

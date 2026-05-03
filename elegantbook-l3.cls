@@ -85,7 +85,7 @@
     theme .tl_set:N = \g__elegant_theme_tl,
     theme .initial:n = {Techno~Blue},
     font .tl_set:N = \g__elegant_font_tl,
-    font .initial:n = { ctex-fandol },
+    font .initial:n = { none },
     mode .tl_set:N = \g__elegant_theorem_mode_tl,
     mode .initial:n = { fancy },
     tocdepth .int_set:N = \g__elegant_tocdepth_int,
@@ -142,11 +142,12 @@
     \hook_gput_code:nnn { elegant-module / #1 / #2 / #3 }{.}{#4}
   }
 
-\hook_gput_code:nnn{begindocument/before}{.}
-  {
-    \let \xeCJK@document@left@hook \relax
-    \let \xeCJK@document@hook \relax
-  }
+% I don't know why... But I want to remove xeCJK dependency in elegantbook...
+% \hook_gput_code:nnn{begindocument/before}{.}
+%   {
+%     \let \xeCJK@document@left@hook \relax
+%     \let \xeCJK@document@hook \relax
+%   }
 
 \elegant_load_module:n { font }
 
