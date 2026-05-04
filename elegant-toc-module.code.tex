@@ -17,11 +17,202 @@
 \hook_new:n { elegant-module / toc / setup / before }
 \hook_new:n { elegant-module / toc / setup / after }
 
+\RequirePackage{multicol}
+\RequirePackage{calc}
+\RequirePackage[titles]{tocloft}
+\RequirePackage{apptools}
+
+
+\cs_new:Npn \__elegant_toc_chapter_title_fallback:
+  {
+    \elegant_use_name:n { chapter / before }
+    \elegant_use_name:n { chapter / number }
+    \elegant_use_name:n { chapter / after }
+  }
+
+\cs_new:Npn \__elegant_toc_appendix_title:
+  {
+    \cs_if_exist:NTF \appendixname
+      { \appendixname }
+      { \elegant_use_name:n { appendix } }
+    \;
+    \thechapter
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_define_chapter_title:
+  {
+    \str_if_eq:VnTF \g__elegant_language_tl { cn }
+      {
+        \cs_if_exist:NTF \beforechap
+          {
+            \cs_set:Npn \xchaptertitle
+              { \beforechap \chinese{chapter} \afterchap }
+          }
+          {
+            \cs_set_eq:NN \xchaptertitle
+              \__elegant_toc_chapter_title_fallback:
+          }
+      }
+      {
+        \cs_if_exist:NTF \chaptername
+          {
+            \cs_set:Npn \xchaptertitle
+              { \chaptername~\thechapter~ }
+          }
+          {
+            \cs_set_eq:NN \xchaptertitle
+              \__elegant_toc_chapter_title_fallback:
+          }
+      }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_patch_chapter_numberline_aux:Nnn #1#2#3
+  {
+    \cs_if_exist:NT #1
+      { \patchcmd #1 {#2} {#3} { } { } }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_patch_chapter_numberline:nn #1#2
+  {
+    \@ifpackagelater { hyperref } { 2022/05/16 }
+      {
+        \__elegant_toc_patch_chapter_numberline_aux:Nnn
+          \NR@chapter {#1} {#2}
+      }
+      {
+        \__elegant_toc_patch_chapter_numberline_aux:Nnn
+          \Hy@org@chapter {#1} {#2}
+      }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_recover_appendix_numberline_patch:
+  {
+    \__elegant_toc_patch_chapter_numberline:nn
+      { \numberline { \xchaptertitle } }
+      { \numberline { \thechapter } }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_patch_regular_chapter_numberline:
+  {
+    \__elegant_toc_patch_chapter_numberline:nn
+      { \numberline { \thechapter } }
+      { \numberline { \xchaptertitle } }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_setup_cn_numberline:
+  {
+    \RenewDocumentCommand \numberline { m }
+      {
+        \@cftbsnum ##1\@cftasnum ~\@cftasnumb ~
+      }
+    \__elegant_toc_patch_regular_chapter_numberline:
+    \g@addto@macro \appendix
+      {
+        \__elegant_toc_recover_appendix_numberline_patch:
+        \addtocontents{toc}
+          {
+            \protect\renewcommand{\protect\cftchappresnum}
+              {\appendixname\space}
+            \protect\renewcommand{\protect\cftchapaftersnum}{}
+          }
+      }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_setup_other_numberline:
+  {
+    \renewcommand{\cftchappresnum}{\chaptername\space}
+    \renewcommand{\cftchapaftersnum}{\space}
+    \setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~9}}}
+    \g@addto@macro \appendix
+      {
+        \addtocontents{toc}
+          {
+            \protect\renewcommand{\protect\cftchappresnum}
+              {\appendixname\space}
+            \protect\renewcommand{\protect\cftchapaftersnum}{}
+            \setlength{\cftchapnumwidth}
+              {\widthof{\textbf{Appendix~999}}}
+          }
+      }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_setup_numberline:
+  {
+    \str_if_eq:VnTF \g__elegant_language_tl { cn }
+      { \__elegant_toc_setup_cn_numberline: }
+      { \__elegant_toc_setup_other_numberline: }
+  }
+
+
+\cs_new_protected_nopar:Npn \__elegant_toc_start_toc:
+  {
+    \str_case:VnF \g__elegant_toc_tl
+      {
+        { twocol }
+          {
+            \setlength{\columnsep}{2em}
+            \begin{multicols}{2}
+              \@starttoc{toc}
+            \end{multicols}
+          }
+        { onecol }
+          { \@starttoc{toc} }
+      }
+      { \@starttoc{toc} }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_toc_table_of_contents:
+  {
+    \hypersetup
+      {
+        linktoc = all,
+        linkcolor = black
+      }
+    \if@twocolumn
+      \@restonecoltrue
+      \onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*
+      {
+        \contentsname
+        \@mkboth
+          { \MakeUppercase \contentsname }
+          { \MakeUppercase \contentsname }
+      }
+    \__elegant_toc_start_toc:
+    \if@restonecol
+      \twocolumn
+    \fi
+    \hypersetup { linkcolor = \elegant_use_color:n { structure } }
+  }
+
+\RenewDocumentCommand \cleardoublepage { }
+  {
+    \clearpage
+    \if@twoside
+      \ifodd \c@page
+      \else
+        \hbox{}
+        \thispagestyle{empty}
+        \newpage
+        \if@twocolumn
+          \hbox{}
+          \newpage
+        \fi
+      \fi
+    \fi
+  }
+
 
 \cs_new_protected_nopar:Npn \elegant_toc_setup:
   {
     \hook_use:n { elegant-module / toc / setup / before }
-    % TOC, appendix, and title-style compatibility will be migrated here.
+    \__elegant_toc_define_chapter_title:
+    \__elegant_toc_setup_numberline:
+    \RenewDocumentCommand \tableofcontents { }
+      { \__elegant_toc_table_of_contents: }
     \hook_use:n { elegant-module / toc / setup / after }
   }
 

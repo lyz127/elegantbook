@@ -52,6 +52,76 @@
 
 \RequirePackage[explicit]{titlesec}
 
+\tl_if_exist:NF \g__elegant_title_style_tl
+  {
+    \tl_new:N \g__elegant_title_style_tl
+    \tl_gset:Nn \g__elegant_title_style_tl { hang }
+  }
+
+\cs_new:Npn \__elegant_chapter_title_label_fallback:
+  {
+    \elegant_use_name:n { chapter / before }
+    \elegant_use_name:n { chapter / number }
+    \elegant_use_name:n { chapter / after }
+  }
+
+\cs_new:Npn \__elegant_chapter_title_label:
+  {
+    \cs_if_exist:NTF \IfAppendix
+      {
+        \IfAppendix
+          {
+            \cs_if_exist:NTF \__elegant_toc_appendix_title:
+              { \__elegant_toc_appendix_title: }
+              { \__elegant_chapter_title_label_fallback: }
+          }
+          {
+            \cs_if_exist:NTF \xchaptertitle
+              { \xchaptertitle }
+              { \__elegant_chapter_title_label_fallback: }
+          }
+      }
+      {
+        \cs_if_exist:NTF \xchaptertitle
+          { \xchaptertitle }
+          { \__elegant_chapter_title_label_fallback: }
+      }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_chapter_title_format:n #1
+  {
+    \titleformat{\chapter}[#1]
+      { \bfseries }
+      {
+        \filcenter
+        \LARGE
+        \enspace
+        \bfseries
+        \color_select:o { \elegant_use_color:n { structure } }
+        \__elegant_chapter_title_label:
+        \;
+      }
+      { 1pt }
+      {
+        \LARGE
+        \bfseries
+        \color_select:o { \elegant_use_color:n { structure } }
+        \filcenter
+        ##1
+      }
+      [ ]
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_chapter_title_format:
+  {
+    \str_case:VnF \g__elegant_title_style_tl
+      {
+        { display } { \__elegant_chapter_title_format:n { display } }
+        { hang }    { \__elegant_chapter_title_format:n { hang } }
+      }
+      { \__elegant_chapter_title_format:n { hang } }
+  }
+
 % #1 name #2 format
 \cs_new_protected_nopar:Npn \__elegant_title_format:nn #1#2 
   {
@@ -72,7 +142,7 @@
 
 \titlespacing{\chapter}{0pt}{-20pt}{1.3\baselineskip}
 
-\__elegant_title_format:nn { chapter }      { \centering\bfseries\LARGE }
+\__elegant_chapter_title_format:
 \__elegant_title_format:nn { section }      { \bfseries\Large }
 \__elegant_title_format:nn { subsection }   { \bfseries\large }
 \__elegant_title_format:nn { subsubsection }{ \bfseries\large }
@@ -99,9 +169,7 @@
   \elegant_use_name:n { section / after }  
 \, #1}{}}
 \RenewDocumentCommand{\chaptermark}{ m }{\markboth{
-  \elegant_use_name:n { chapter / before } 
-  \elegant_use_name:n { chapter / number } 
-  \elegant_use_name:n { chapter / after }  
+  \__elegant_chapter_title_label:
 \, #1}{}}
 
 

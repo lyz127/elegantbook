@@ -79,7 +79,7 @@
 
 归属：`elegant-toc-module.code.tex`
 
-需迁移 `toc=onecol/twocol`、`\tableofcontents` 重定义、`tocloft`、`cleardoublepage` 调整、附录目录显示、`\numberline` 定制，以及不同语言下章节名前后缀处理。`titlestyle=hang/display` 也可放在此模块，或由 `core` 提供底层标题格式后在此模块处理兼容选项。
+已迁移 `toc=onecol/twocol`、`\tableofcontents` 重定义、`tocloft`、`\cleardoublepage` 调整、附录目录显示、`\numberline` 定制，以及不同语言下章节名前后缀处理。`titlestyle=hang/display` 当前由 `core` 提供底层标题格式，`toc` 模块负责章节标题文本和附录状态的兼容支撑。
 
 ### 10. 代码列表样式
 
@@ -167,9 +167,9 @@
 - [ ] `elegant-toc-module.code.tex`
 
   - [X] 已迁移：模块骨架、`toc` 与 `title style` 变量占位。
-  - [X] 未迁移：`toc=onecol/twocol`。
-  - [ ] 未迁移：`\tableofcontents` 重定义、`tocloft`、`\numberline` 定制。
-  - [ ] 未迁移：附录目录显示、`\cleardoublepage` 调整和章节名前后缀处理。
+  - [X] 已迁移：`toc=onecol/twocol`。
+  - [X] 已迁移：`\tableofcontents` 重定义、`tocloft`、`\numberline` 定制。
+  - [X] 已迁移：附录目录显示、`\cleardoublepage` 调整和章节名前后缀处理。
 - [ ] `elegant-code-module.code.tex`
 
   - [X] 已迁移：模块骨架和 setup hook。
