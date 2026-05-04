@@ -3,6 +3,21 @@
 % \g__elegant_theorem_mode_tl
 
 \clist_new:N \g__elegant_theorem_mode_clist
+\seq_new:N \g__elegant_theorem_declarations_seq
+
+\NewDocumentCommand \elegantnewtheorem { m m m g O{} }
+  {
+    \seq_gput_right:Nn \g__elegant_theorem_declarations_seq
+      { \__elegant_theorem_declare_tcolorbox:nnnnn { #1 } { #2 } { #3 } { #4 } { #5 } }
+  }
+
+\elegantnewtheorem { theorem }     { \elegant_use_name:n { theorem } }     { thmstyle } { thm }
+\elegantnewtheorem { definition }  { \elegant_use_name:n { definition } }  { defstyle } { def }
+\elegantnewtheorem { postulate }   { \elegant_use_name:n { postulate } }   { thmstyle } { pos }
+\elegantnewtheorem { axiom }       { \elegant_use_name:n { axiom } }       { thmstyle } { axi }
+\elegantnewtheorem { corollary }   { \elegant_use_name:n { corollary } }   { thmstyle } { cor }
+\elegantnewtheorem { lemma }       { \elegant_use_name:n { lemma } }       { thmstyle } { lem }
+\elegantnewtheorem { proposition } { \elegant_use_name:n { proposition } } { prostyle } { pro }
 
 \elegant_msg_new:nn { not support theorem mode }
   {
@@ -57,16 +72,16 @@
         fontupper = \rmfamily,
         lower~separated = false,
         coltitle = white,
+        colback = gray!5,
         boxrule = 0.5pt,
         fonttitle = \bfseries,
-        before~upper*={\setlength{\parindent}{2em}},
         enhanced,
         breakable,
-        top = 8pt,
-        bottom = 8pt,
+        % top = 8pt,
+        top = 12pt,
         before~skip = 8pt,
         attach~boxed~title~to~top~left = {
-          yshift = -0.11in,
+          yshift = -0.125in,
           xshift = 0.15in
         },
         boxed~title~style = {
@@ -76,72 +91,122 @@
           outer~arc = 0pt
         },
         separator~sign={.}
+      },
+      defstyle /.style = {
+        common,
+        colframe = main,
+        colback = main!5,
+        colbacktitle = main,
+        overlay~unbroken~and~last = {
+          \node[anchor = south~east, outer~sep = 0pt] at (\linewidth-width, 0)
+            { \textcolor{main}{$\clubsuit$} };
+        }
+      },
+      thmstyle /.style = {
+        common,
+        colframe = second,
+        colback = second!5,
+        colbacktitle = second,
+        overlay~unbroken~and~last = {
+          \node[anchor = south~east, outer~sep = 0pt] at (\linewidth-width, 0)
+            { \textcolor{second}{$\heartsuit$} };
+        }
+      },
+      prostyle /.style = {
+        common,
+        colframe = third,
+        colback = third!5,
+        colbacktitle = third,
+        overlay~unbroken~and~last = {
+          \node[anchor = south~east, outer~sep = 0pt] at (\linewidth-width, 0)
+            { \textcolor{third}{$\spadesuit$} };
+        }
+      },
+      ELEGANT@title /.code~n~args = { 2 }
+        {
+          \tcbset
+            {
+              title =
+                {
+                  \cs:w #1name \cs_end:~
+                  \ifdef{\thetcbcounter}{\thetcbcounter}{}
+                  \tl_if_blank:nF { #2 } { \ (#2) }
+                }
+            }
+        },
+      ELEGANT@label /.code~n~args = { 2 }
+        {
+          \tl_if_blank:nF { #2 }
+            { \tcbset { label = { #1:#2 } } }
+        },
+      ELEGANT@star@title /.code~n~args = { 2 }
+        {
+          \tcbset
+            {
+              title =
+                {
+                  \cs:w #1name \cs_end:
+                  \tl_if_blank:nF { #2 } { \ (#2) }
+                }
+            }
+        }
       }
-    }
-    \tl_new:N \l__elegant_tmp_cnt_name_tl 
-    
-    \cs_new_nopar:Npn \__elegant_theorem_new_enviroment_handle:nn #1#2 
+
+    \cs_new_protected_nopar:Npn \__elegant_theorem_new_tcolorbox_environment:nnnnn #1#2#3#4#5
       {
-				\DeclareDocumentEnvironment{#1*}{ o }
-					{
-						\begin{tcolorbox}[
-							common,
-							colframe = \elegant_use_color:n { #1 },
-							colback = \elegant_use_color:n { #1 }!5,
-							colbacktitle = \elegant_use_color:n { #1 },
-							title = \elegant_use_name:n { #1 } \ \IfNoValueF{##1}{(##1)},
-							overlay~unbroken~and~last = {
-								\node[anchor = south~east, outer~sep = 0pt, text = \elegant_use_color:n { #1 }] at (\linewidth-width, 0) 
-								{ \elegant_use_name:n { #1 / icon } };
-							}
-						]
-					}
-					{
-						\end{tcolorbox}
-					}
+        \cs_set:cpn { #1name } { #2 }
 
-				\DeclareDocumentEnvironment{#1}{ o }
-					{
-						\exp_args:No \refstepcounter{ #2 }
-						\begin{tcolorbox}[
-							common,
-							colframe = \elegant_use_color:n { #1 },
-							colback = \elegant_use_color:n { #1 }!5,
-							colbacktitle = \elegant_use_color:n { #1 },
-							title = {\elegant_use_name:n { #1 }~\use:c { the#2 } ~\IfNoValueF{##1}{(##1)}},
-							overlay~unbroken~and~last = {
-								\node[anchor = south~east, outer~sep = 0pt, text = \elegant_use_color:n { #1 }] at (\linewidth-width, 0) 
-								{ \elegant_use_name:n { #1 / icon } };
-							}
-						]
-					}
-					{
-						\end{tcolorbox}
-					}
-			}
-
-
-    % #1, name
-    \NewDocumentCommand \elegantnewtheorem { m }
-      {
-        \bool_if:NTF \g__elegant_usesamecnt_bool 
+        \tl_if_blank:nTF { #5 }
           {
-            \tl_set:Nn \l__elegant_tmp_cnt_name_tl { elegant@theorem }
+            \DeclareTColorBox [ auto~counter, number~within = \g__elegant_thmcnt_tl ] { #1 } { g o t\label g }
           }
           {
-            \newcounter{ #1 }
-            \exp_args:NnV \counterwithin{ #1 } \g__elegant_thmcnt_tl
-            \tl_set:Nn \l__elegant_tmp_cnt_name_tl { #1 }
+            \DeclareTColorBox [ auto~counter, use~counter~from = #5 ] { #1 } { g o t\label g }
           }
-        
-          \exp_args:NnV \__elegant_theorem_new_enviroment_handle:nn { #1 } \l__elegant_tmp_cnt_name_tl
+          {
+            common,
+            #3,
+            IfValueTF = { ##1 }
+              { ELEGANT@title = { #1 } { ##1 } }
+              {
+                IfValueTF = { ##2 }
+                  { ELEGANT@title = { #1 } { ##2 } }
+                  { ELEGANT@title = { #1 } { } }
+              },
+            IfValueT = { ##4 }
+              {
+                IfBooleanTF = { ##3 }
+                  { label = { ##4 } }
+                  { ELEGANT@label = { #4 } { ##4 } }
+              }
+          }
+
+        \DeclareTColorBox { #1* } { g o }
+          {
+            common,
+            #3,
+            IfValueTF = { ##1 }
+              { ELEGANT@star@title = { #1 } { ##1 } }
+              {
+                IfValueTF = { ##2 }
+                  { ELEGANT@star@title = { #1 } { ##2 } }
+                  { ELEGANT@star@title = { #1 } { } }
+              }
+          }
       }
-    % define the tcbs
-    \clist_map_inline:nn 
-      { theorem, definition, postulate, axiom, corollary, lemma, proposition, remark }
+
+    \cs_new_protected_nopar:Npn \__elegant_theorem_declare_tcolorbox:nnnnn #1#2#3#4#5
       {
-        \elegantnewtheorem { #1 }
+        \tl_if_novalue:nTF { #4 }
+          { \__elegant_theorem_new_tcolorbox_environment:nnnnn { #1 } { #2 } { #3 } { #1 } { #5 } }
+          { \__elegant_theorem_new_tcolorbox_environment:nnnnn { #1 } { #2 } { #3 } { #4 } { #5 } }
       }
+
+    \seq_map_inline:Nn \g__elegant_theorem_declarations_seq
+      { #1 }
+
+    \RenewDocumentCommand \elegantnewtheorem { m m m g O{} }
+      { \__elegant_theorem_declare_tcolorbox:nnnnn { #1 } { #2 } { #3 } { #4 } { #5 } }
 
   }
 
@@ -176,7 +241,7 @@
 						\AddToHook { env/#1*/after }{ \hfill \textcolor{ \elegant_use_color:n { #1 } } { \elegant_use_name:n { #1 / icon } } }
 					}
 			}
-		\NewDocumentCommand \elegantnewtheorem { m }
+		\RenewDocumentCommand \elegantnewtheorem { m }
 			{
 				\bool_if:NTF \g__elegant_usesamecnt_bool 
           {
@@ -189,10 +254,154 @@
 			}
 		
 		\clist_map_inline:nn 
-      { theorem, definition, postulate, axiom, corollary, lemma, proposition, remark }
+      { theorem, definition, postulate, axiom, corollary, lemma, proposition }
       {
         \elegantnewtheorem { #1 }
       }
 	}
 
+\RequirePackage{manfnt, bbding, adforn}
 
+\cs_if_exist:NF \citshape
+  { \cs_new:Npn \citshape { \itshape } }
+\cs_if_exist:NF \cfs
+  { \cs_new:Npn \cfs { \normalfont } }
+
+\cs_new:Npn \__elegant_chapter_exercise_title:
+  {
+    \elegant_use_name:n { chapter / before }
+    \elegant_use_name:n { chapter / number }
+    \elegant_use_name:n { chapter / after }
+    ~
+    \elegant_use_name:n { exercise }
+  }
+
+\newcounter{exam}[chapter]
+\setcounter{exam}{0}
+\RenewDocumentCommand \theexam {} { \thechapter.\arabic{exam} }
+
+\NewDocumentEnvironment{example}{ O{} }
+  {
+    \refstepcounter{exam}
+    \par\noindent
+    \textbf{\color{main}\elegant_use_name:n { example }~\theexam\space #1}
+    \rmfamily
+  }
+  { \par\ignorespacesafterend }
+
+\newcounter{exer}[chapter]
+\setcounter{exer}{0}
+\RenewDocumentCommand \theexer {} { \thechapter.\arabic{exer} }
+
+\NewDocumentEnvironment{exercise}{ O{} }
+  {
+    \refstepcounter{exer}
+    \par\noindent
+    \makebox[0pt][r]{\scriptsize\color{red!90}\HandPencilLeft\quad}
+    \textbf{\color{main}\elegant_use_name:n { exercise }~\theexer\space #1}
+    \rmfamily
+  }
+  { \par\ignorespacesafterend }
+
+\newcounter{prob}[chapter]
+\setcounter{prob}{0}
+\RenewDocumentCommand \theprob {} { \thechapter.\arabic{prob} }
+
+\NewDocumentEnvironment{problem}{ O{} }
+  {
+    \refstepcounter{prob}
+    \par\noindent
+    \textbf{\color{main}\elegant_use_name:n { problem }~\theprob\space #1}
+    \rmfamily
+  }
+  { \par\ignorespacesafterend }
+
+\NewDocumentEnvironment{note}{}
+  {
+    \par\noindent
+    \makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}
+    \textbf{\color{second}\elegant_use_name:n { note }}~
+    \citshape
+  }
+  { \par }
+
+\cs_if_exist:cTF { proof }
+  {
+    \RenewDocumentEnvironment{proof}{}
+      {
+        \par\noindent
+        \textbf{\color{second}\proofname\;}
+        \color{black!90}\cfs
+      }
+      { \par }
+  }
+  {
+    \NewDocumentEnvironment{proof}{}
+      {
+        \par\noindent
+        \textbf{\color{second}\proofname\;}
+        \color{black!90}\cfs
+      }
+      { \par }
+  }
+
+\NewDocumentEnvironment{solution}{}
+  {
+    \par\noindent
+    \textbf{\color{main}\elegant_use_name:n { solution }}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{assumption}{}
+  {
+    \par\noindent
+    \textbf{\color{third}\elegant_use_name:n { assumption }}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{conclusion}{}
+  {
+    \par\noindent
+    \textbf{\color{third}\elegant_use_name:n { conclusion }}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{property}{}
+  {
+    \par\noindent
+    \textbf{\color{third}\elegant_use_name:n { property }}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{remark}{}
+  {
+    \par\noindent
+    \textbf{\color{second}\elegant_use_name:n { remark }}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{custom}{ m }
+  {
+    \par\noindent
+    \textbf{\color{third}#1}~
+    \citshape
+  }
+  { \par }
+
+\NewDocumentEnvironment{problemset}{ O{ \__elegant_chapter_exercise_title: } }
+  {
+    \vspace*{10pt}
+    \begin{center}
+      \phantomsection
+      \addcontentsline{toc}{section}{\texorpdfstring{#1}{Problemset}}
+      \markright{#1}
+      \textcolor{structurecolor}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
+    \end{center}
+    \begin{enumerate}
+  }
+  { \end{enumerate} }

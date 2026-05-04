@@ -174,7 +174,7 @@
 - [ ] `elegant-toc-module.code.tex`
 
   - [X] 已迁移：模块骨架、`toc` 与 `title style` 变量占位。
-  - [ ] 未迁移：`toc=onecol/twocol`。
+  - [X] 未迁移：`toc=onecol/twocol`。
   - [ ] 未迁移：`\tableofcontents` 重定义、`tocloft`、`\numberline` 定制。
   - [ ] 未迁移：附录目录显示、`\cleardoublepage` 调整和章节名前后缀处理。
 - [ ] `elegant-code-module.code.tex`

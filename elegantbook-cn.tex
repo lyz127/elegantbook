@@ -12,7 +12,7 @@
   % secnumdepth = 4,
   % usesamecnt,
   % thmcnt = section,
-  mode = simple,
+  mode = fancy,
   % 11pt,
   % oneside,
   % openany
@@ -28,6 +28,9 @@
 \usepackage{tcolorbox}
 
 \usepackage{ctex}
+
+\elegantnewtheorem{sampletheorem}{导言区自定义定理}{thmstyle}{sample}
+\elegantnewtheorem{sampledefinition}{导言区自定义定义}{defstyle}{sampledef}
 
 \begin{document}
 
@@ -67,6 +70,109 @@
 \section{如何入门使用 ElegantBook}
 \subsection{如何入门使用 ElegantBook}
 \subsubsection{如何入门使用 ElegantBook}
+
+\section{定理类环境迁移测试}
+
+\begin{theorem}{旧式标题参数}{legacy-title-label}
+  这里测试 \verb|\begin{theorem}{标题}{label}| 写法，引用为
+  \ref{thm:legacy-title-label}。
+\end{theorem}
+
+\begin{theorem}[可选标题参数]\label{native-title-label}
+  这里测试 \verb|\begin{theorem}[标题]\label{label}| 写法，引用为
+  \ref{native-title-label}。
+\end{theorem}
+
+\begin{theorem*}{旧式星号标题}
+  这里测试 \verb|\begin{theorem*}{标题}| 写法。
+\end{theorem*}
+
+\begin{definition}[定义环境]
+  这里测试 \verb|definition| 的 \verb|defstyle|。
+\end{definition}
+
+\begin{postulate}[公设环境]
+  这里测试 \verb|postulate|。
+\end{postulate}
+
+\begin{axiom}[公理环境]
+  这里测试 \verb|axiom|。
+\end{axiom}
+
+\begin{corollary}[推论环境]
+  这里测试 \verb|corollary|。
+\end{corollary}
+
+\begin{lemma}[引理环境]
+  这里测试 \verb|lemma|。
+\end{lemma}
+
+\begin{proposition}[命题环境]
+  这里测试 \verb|proposition| 的 \verb|prostyle|。
+\end{proposition}
+
+\begin{remark}
+  这里测试普通段落式 \verb|remark| 环境。
+\end{remark}
+
+\begin{sampletheorem}{自定义旧式标题}{custom-title-label}
+  这里测试导言区 \verb|\elegantnewtheorem| 声明的自定义环境，引用为
+  \ref{sample:custom-title-label}。
+\end{sampletheorem}
+
+\begin{sampledefinition}[自定义可选标题]\label{custom-native-label}
+  这里测试自定义环境的 \verb|[标题]\label{...}| 写法，引用为
+  \ref{custom-native-label}。
+\end{sampledefinition}
+
+\begin{sampletheorem*}[自定义星号标题]
+  这里测试自定义环境的星号版本。
+\end{sampletheorem*}
+
+\begin{example}[普通例题环境]\label{exam:ordinary}
+  这里测试普通 \verb|example| 环境，引用为 \ref{exam:ordinary}。
+\end{example}
+
+\begin{exercise}[普通练习环境]\label{exer:ordinary}
+  这里测试普通 \verb|exercise| 环境，引用为 \ref{exer:ordinary}。
+\end{exercise}
+
+\begin{problem}[普通问题环境]\label{prob:ordinary}
+  这里测试普通 \verb|problem| 环境，引用为 \ref{prob:ordinary}。
+\end{problem}
+
+\begin{note}
+  这里测试 \verb|note| 环境。
+\end{note}
+
+\begin{proof}
+  这里测试 \verb|proof| 环境。
+\end{proof}
+
+\begin{solution}
+  这里测试 \verb|solution| 环境。
+\end{solution}
+
+\begin{assumption}
+  这里测试 \verb|assumption| 环境。
+\end{assumption}
+
+\begin{conclusion}
+  这里测试 \verb|conclusion| 环境。
+\end{conclusion}
+
+\begin{property}
+  这里测试 \verb|property| 环境。
+\end{property}
+
+\begin{custom}{自定义普通环境标题}
+  这里测试 \verb|custom| 环境。
+\end{custom}
+
+\begin{problemset}[普通 problemset 环境测试]
+  \item 第一题。
+  \item 第二题。
+\end{problemset}
 
 \begin{theorem}[定理类环境均有带星号的版本]
   aaaa
