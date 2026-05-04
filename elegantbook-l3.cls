@@ -167,6 +167,14 @@
     usesamecnt .default:n = true,
     thmcnt .tl_set:N = \g__elegant_thmcnt_tl,
     thmcnt .initial:n = { chapter },
+    citestyle .tl_set:N = \g__elegant_citestyle_tl,
+    citestyle .initial:n = { numeric-comp },
+    bibstyle .tl_set:N = \g__elegant_bibstyle_tl,
+    bibstyle .initial:n = { numeric },
+    bibend .tl_set:N = \g__elegant_bibend_tl,
+    bibend .initial:n = { biber },
+    biber .code:n = \tl_gset:Nn \g__elegant_bibend_tl { biber },
+    bibtex .code:n = \tl_gset:Nn \g__elegant_bibend_tl { bibtex },
     unknown.code:n = \__elegant_parse_unknown_option:n { #1 }
   }
 

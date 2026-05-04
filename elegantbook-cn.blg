@@ -1,0 +1,15 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'elegantbook-cn.blg'
+[76] biber-MSWIN64:342> INFO - === 
+[105] Biber.pm:421> INFO - Reading 'elegantbook-cn.bcf'
+[182] Biber.pm:1002> INFO - Found 7 citekeys in bib section 0
+[193] Biber.pm:4487> INFO - Processing section 0
+[202] Biber.pm:4678> INFO - Looking for bibtex file 'biblatex-examples.bib' for section 0
+[652] bibtex.pm:1713> INFO - LaTeX decoding ...
+[752] bibtex.pm:1519> INFO - Found BibTeX data source 'c:/texlive/2026/texmf-dist/bibtex/bib/biblatex/biblatex/biblatex-examples.bib'
+[806] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[806] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[814] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[814] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[820] bbl.pm:676> INFO - Writing 'elegantbook-cn.bbl' with encoding 'UTF-8'
+[823] bbl.pm:779> INFO - Output to elegantbook-cn.bbl

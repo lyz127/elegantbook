@@ -1,0 +1,321 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{aksin}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=e410078ecf298d6b83792df6633b2b08}{%
+           family={Aks{ı}n},
+           familyi={A\bibinitperiod},
+           given={Özge},
+           giveni={Ö\bibinitperiod}}}%
+        {{hash=e881ffc293766c81018c24d97971f9c3}{%
+           family={Türkmen},
+           familyi={T\bibinitperiod},
+           given={Hayati},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f9be8f5362c3f1a8c57254f421602a77}{%
+           family={Artok},
+           familyi={A\bibinitperiod},
+           given={Levent},
+           giveni={L\bibinitperiod}}}%
+        {{hash=ec020af214a005621e2bee07a4c233b2}{%
+           family={Çetinkaya},
+           familyi={Ç\bibinitperiod},
+           given={Bekir},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3aaac037c43bc853e732168da667cd40}{%
+           family={Ni},
+           familyi={N\bibinitperiod},
+           given={Chaoying},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7936aa08c0b52f024d7a3402b03bf380}{%
+           family={Büyükgüngör},
+           familyi={B\bibinitperiod},
+           given={Orhan},
+           giveni={O\bibinitperiod}}}%
+        {{hash=f37529ce7811acc4b7ecb0d352a007ec}{%
+           family={Özkal},
+           familyi={Ö\bibinitperiod},
+           given={Erhan},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{860705eb8ffac6e40507746c7ede79ca}
+      \strng{fullhash}{f565e365b13f55b7eb75966908d10961}
+      \strng{fullhashraw}{f565e365b13f55b7eb75966908d10961}
+      \strng{bibnamehash}{860705eb8ffac6e40507746c7ede79ca}
+      \strng{authorbibnamehash}{860705eb8ffac6e40507746c7ede79ca}
+      \strng{authornamehash}{860705eb8ffac6e40507746c7ede79ca}
+      \strng{authorfullhash}{f565e365b13f55b7eb75966908d10961}
+      \strng{authorfullhashraw}{f565e365b13f55b7eb75966908d10961}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{indextitle}{Effect of immobilization on catalytic characteristics}
+      \field{journaltitle}{J.~Organomet. Chem.}
+      \field{number}{13}
+      \field{title}{Effect of immobilization on catalytic characteristics of saturated {Pd-N}-heterocyclic carbenes in {Mizoroki-Heck} reactions}
+      \field{volume}{691}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{pages}{3027\bibrangedash 3036}
+      \range{pages}{10}
+    \endentry
+    \entry{angenendt}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9717d2d959a4b18727868ca7928c34b4}{%
+           family={Angenendt},
+           familyi={A\bibinitperiod},
+           given={Arnold},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{fullhash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{fullhashraw}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{bibnamehash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{authorbibnamehash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{authornamehash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{authorfullhash}{9717d2d959a4b18727868ca7928c34b4}
+      \strng{authorfullhashraw}{9717d2d959a4b18727868ca7928c34b4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{annotation}{A German article in a French journal. Apart from that, a typical \texttt{article} entry. Note the \texttt{indextitle} field}
+      \field{indextitle}{In Honore Salvatoris}
+      \field{journaltitle}{Revue d'Histoire Ecclésiastique}
+      \field{langid}{german}
+      \field{shorttitle}{In Honore Salvatoris}
+      \field{title}{In Honore Salvatoris~-- Vom Sinn und Unsinn der Patrozinienkunde}
+      \field{volume}{97}
+      \field{year}{2002}
+      \field{dateera}{ce}
+      \field{pages}{431\bibrangedash 456\bibrangessep 791\bibrangedash 823}
+      \range{pages}{59}
+    \endentry
+    \entry{bertram}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8a5b475249c01d8aa99f2275128c1037}{%
+           family={Bertram},
+           familyi={B\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+        {{hash=60f0568f0258e96055aef41b438ecbd2}{%
+           family={Wentworth},
+           familyi={W\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{fullhash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{fullhashraw}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{bibnamehash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{authorbibnamehash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{authornamehash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{authorfullhash}{4be7c21774d86b9e1f65ca280181467e}
+      \strng{authorfullhashraw}{4be7c21774d86b9e1f65ca280181467e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{annotation}{An \texttt{article} entry with a \texttt{volume} and a \texttt{number} field}
+      \field{journaltitle}{J.~Amer. Math. Soc.}
+      \field{langid}{english}
+      \field{langidopts}{variant=american}
+      \field{number}{2}
+      \field{shorttitle}{Gromov invariants}
+      \field{title}{Gromov invariants for holomorphic maps on {Riemann} surfaces}
+      \field{volume}{9}
+      \field{year}{1996}
+      \field{dateera}{ce}
+      \field{pages}{529\bibrangedash 571}
+      \range{pages}{43}
+    \endentry
+    \entry{companion}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=0743efb276e9219ee664a9b3dbd60619}{%
+           family={Goossens},
+           familyi={G\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9355edd511e3f6fdd880ee98722a53fb}{%
+           family={Mittelbach},
+           familyi={M\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e341c89f7bb5be4f5a050618c0b63942}{%
+           family={Samarin},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{fullhash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{fullhashraw}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{bibnamehash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{authorbibnamehash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{authornamehash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{authorfullhash}{369a4e878eb8157d94588ee72e0b486b}
+      \strng{authorfullhashraw}{369a4e878eb8157d94588ee72e0b486b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{annotation}{A book with three authors. Note the formatting of the author list. By default, only the first name is reversed in the bibliography}
+      \field{edition}{1}
+      \field{indextitle}{LaTeX Companion, The}
+      \field{langid}{english}
+      \field{langidopts}{variant=american}
+      \field{pagetotal}{528}
+      \field{shorttitle}{LaTeX Companion}
+      \field{title}{The {LaTeX} Companion}
+      \field{year}{1994}
+      \field{dateera}{ce}
+    \endentry
+    \entry{knuth:ct:a}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \field{extraname}{1}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{annotation}{The first volume of a five-volume book. Note the \texttt{sorttitle} field. We want this volume to be listed after the entry referring to the entire five-volume set. Also note the \texttt{indextitle} and \texttt{indexsorttitle} fields. Indexing packages that don't generate robust index entries require some control sequences to be protected from expansion}
+      \field{indexsorttitle}{The TeXbook}
+      \field{indextitle}{\protect\TeX book, The}
+      \field{langid}{english}
+      \field{langidopts}{variant=american}
+      \field{maintitle}{Computers \& Typesetting}
+      \field{shorttitle}{\TeX book}
+      \field{title}{The {\TeX book}}
+      \field{volume}{A}
+      \field{year}{1984}
+      \field{dateera}{ce}
+    \endentry
+    \entry{knuth:ct:b}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{annotation}{The second volume of a five-volume book. Note the \texttt{sorttitle} field. Also note the \texttt{indexsorttitle} field}
+      \field{indexsorttitle}{TeX: The Program}
+      \field{langid}{english}
+      \field{langidopts}{variant=american}
+      \field{maintitle}{Computers \& Typesetting}
+      \field{shorttitle}{\TeX}
+      \field{title}{{\TeX}: The Program}
+      \field{volume}{B}
+      \field{year}{1986}
+      \field{dateera}{ce}
+    \endentry
+    \entry{sigfridsson}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=484061f383fb3b729627e12ab42c1963}{%
+           family={Sigfridsson},
+           familyi={S\bibinitperiod},
+           given={Emma},
+           giveni={E\bibinitperiod}}}%
+        {{hash=b7e299b632e5db12681c2decc8ce023f}{%
+           family={Ryde},
+           familyi={R\bibinitperiod},
+           given={Ulf},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{fullhash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{fullhashraw}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{bibnamehash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{authorbibnamehash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{authornamehash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{authorfullhash}{d9015d9f08448ab0cb194bd964d7b44b}
+      \strng{authorfullhashraw}{d9015d9f08448ab0cb194bd964d7b44b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Four methods for deriving partial atomic charges from the quantum chemical electrostatic potential (CHELP, CHELPG, Merz-Kollman, and RESP) have been compared and critically evaluated. It is shown that charges strongly depend on how and where the potential points are selected. Two alternative methods are suggested to avoid the arbitrariness in the point-selection schemes and van der Waals exclusion radii: CHELP-BOW, which also estimates the charges from the electrostatic potential, but with potential points that are Boltzmann-weighted after their occurrence in actual simulations using the energy function of the program in which the charges will be used, and CHELMO, which estimates the charges directly from the electrostatic multipole moments. Different criteria for the quality of the charges are discussed.}
+      \field{annotation}{An \texttt{article} entry with \texttt{volume}, \texttt{number}, and \texttt{doi} fields. Note that the \textsc{doi} is transformed into a clickable link if \texttt{hyperref} support has been enabled}
+      \field{indextitle}{Methods for deriving atomic charges}
+      \field{journaltitle}{Journal of Computational Chemistry}
+      \field{langid}{english}
+      \field{langidopts}{variant=american}
+      \field{number}{4}
+      \field{title}{Comparison of methods for deriving atomic charges from the electrostatic potential and moments}
+      \field{volume}{19}
+      \field{year}{1998}
+      \field{dateera}{ce}
+      \field{pages}{377\bibrangedash 395}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
