@@ -20,7 +20,13 @@
 latexmk -pdfxe elegantbook-cn.tex
 ```
 
-该命令会使用 XeLaTeX 构建中文示例文档，生成 `elegantbook-cn.pdf`。修改模块后，建议至少运行一次该命令，确认没有编译错误、未定义控制序列或明显的接口回归。
+或者
+
+```powershell
+latexmk -pdflua elegantbook-cn.tex
+```
+
+该命令会使用 XeLaTeX/LuaLaTeX 构建中文示例文档，生成 `elegantbook-cn.pdf`。修改模块后，建议至少运行一次该命令，确认没有编译错误、未定义控制序列或明显的接口回归。
 
 清理常见 LaTeX 临时文件可运行：
 
