@@ -2,7 +2,7 @@
 
 ## 建议模块文件划分
 
-若目标是完整迁移原版 `elegantbook.cls`，建议最终划分为 **12 个模块文件**，加上入口类文件 `elegantbook-l3.cls`。当前已有 6 个模块，可继续保留并扩展；另需新增 6 个模块。
+若目标是完整迁移原版 `elegantbook.cls`，建议最终划分为 **11 个模块文件**，加上入口类文件 `elegantbook-l3.cls`。当前已有 6 个模块，可继续保留并扩展；另需新增 5 个模块。
 
 入口文件：
 
@@ -24,7 +24,6 @@
 - `elegant-bibliography-module.code.tex`
 - `elegant-toc-module.code.tex`
 - `elegant-code-module.code.tex`
-- `elegant-history-module.code.tex`
 
 ## 未完成内容与模块归属
 
@@ -88,13 +87,7 @@
 
 原版使用 `listings` 并定义 LaTeX 代码高亮、颜色、关键字和等宽字体切换。该模块应恢复 `lstdefinestyle`、`\lstset`、`lightgrey`、`frenchplum` 等颜色和代码展示默认样式。
 
-### 11. 版本更新历史
-
-归属：`elegant-history-module.code.tex`
-
-原版包含 `\dateinfoline`、`\datechange`、`\listofchanges` 和 `change` 环境，用于生成版本更新历史。该功能独立性强，适合单独成模块，避免污染 core。
-
-### 12. 构建与发布兼容
+### 11. 构建与发布兼容
 
 归属：`elegantbook-l3.cls`、`ElegantBook/build.lua`
 
@@ -107,7 +100,7 @@
 3. 补 `cover` 与 `core` 的原版用户命令，优先保证旧示例文档不改源码即可运行。
 4. 完整迁移 `theorem` 中的练习、证明、解答和 problemset 环境。
 5. 新增 `math`、`bibliography`、`toc` 三个模块，处理数学字体、参考文献、目录附录。
-6. 最后新增 `code` 和 `history` 模块，迁移代码列表和版本历史等文档辅助功能。
+6. 最后新增 `code` 模块，迁移代码列表等文档辅助功能。
 
 ## 按模块迁移清单
 
@@ -134,7 +127,7 @@
   - [X] 已迁移：语言声明框架、中文 `cn` 的部分名称表。
   - [X] 未迁移：`en`、`it`、`fr`、`nl`、`hu`、`de`、`es`、`mn`、`pt`、`jp`。
   - [ ] 未迁移：多语言下的 `babel`、`luatexja`、目录名、附录名、引用名和环境名完整映射。
-  - [ ] 未迁移：`\figref`、`\tabref`、`\authorname`、`\historyname` 等语言化命令。
+  - [ ] 未迁移：`\figref`、`\tabref`、`\authorname` 等语言化命令。
 - [ ] `elegant-theme-module.code.tex`
 
   - [X] 已迁移：主题声明框架和 `Techno Blue`、`Fresh Green`、`Polar Blue`、`Rocky Gray`、`Neon Black`。
@@ -150,9 +143,9 @@
 - [ ] `elegant-math-module.code.tex`
 
   - [X] 已迁移：模块骨架和 `cm/newtx/mtpro2` 数学选项占位。
-  - [ ] 未迁移：`math=cm/newtx/mtpro2` 的实际包加载。
-  - [ ] 未迁移：`newtxmath`、`mtpro2`、`esint`、`bm`、数学符号包和相关字体默认值。
-  - [ ] 未迁移：不同引擎下数学字体与文本字体协调逻辑。
+  - [X] 未迁移：`math=cm/newtx/mtpro2` 的实际包加载。
+  - [X] 未迁移：`newtxmath`、`mtpro2`、`esint`、`bm`、数学符号包和相关字体默认值。
+  - [X] 未迁移：不同引擎下数学字体与文本字体协调逻辑。
 - [ ] `elegant-core-module.code.tex`
 
   - [X] 已迁移：基础 geometry、`graphicspath`、章节标题、页眉页脚、hyperref、英文字体、列表样式。
@@ -168,8 +161,8 @@
 - [ ] `elegant-bibliography-module.code.tex`
 
   - [X] 已迁移：模块骨架和 `citestyle`、`bibstyle`、`bibend` 变量占位。
-  - [ ] 未迁移：`biber/bibtex` 后端选择。
-  - [ ] 未迁移：参考文献包加载、样式选择和 bibliography 名称语言化。
+  - [X] 未迁移：`biber/bibtex` 后端选择。
+  - [X] 未迁移：参考文献包加载、样式选择和 bibliography 名称语言化。
   - [ ] 未迁移：原版示例文档的参考文献编译兼容。
 - [ ] `elegant-toc-module.code.tex`
 
@@ -183,12 +176,6 @@
   - [ ] 未迁移：`listings` 加载与默认样式。
   - [ ] 未迁移：LaTeX 代码高亮关键字、`lightgrey`、`frenchplum` 等颜色。
   - [ ] 未迁移：原版等宽字体切换和代码展示默认行为。
-- [ ] `elegant-history-module.code.tex`
-
-  - [X] 已迁移：模块骨架、版本历史序列和 setup hook。
-  - [ ] 未迁移：`\dateinfoline`、`\datechange`、`\listofchanges`。
-  - [ ] 未迁移：`change` 环境。
-  - [ ] 未迁移：更新历史标题的多语言名称和目录行为。
 
 ## `elegantbook-l3.cls` 中的模块组织顺序
 
@@ -207,7 +194,6 @@
 9. `bibliography`：处理参考文献后端、引用样式和 bibliography 名称。
 10. `toc`：处理目录、附录、章节编号和目录显示；应在语言、标题和核心排版之后加载。
 11. `code`：处理 `listings` 和代码块样式，依赖主题颜色和核心字体设置。
-12. `history`：处理版本更新历史，依赖语言名称和目录机制，适合最后加载。
 
 当前 `elegantbook-l3.cls` 中的实际加载顺序应保持为：
 
@@ -223,7 +209,6 @@
 \elegant_load_module:n { bibliography }
 \elegant_load_module:n { toc }
 \elegant_load_module:n { code }
-\elegant_load_module:n { history }
 ```
 
 后续迁移时，如果某个模块需要新增跨模块依赖，优先通过 `elegant-module / <module> / <name> / before` 与 `after` hook 协调；只有全局选项解析、类加载和模块顺序调整才应修改 `elegantbook-l3.cls`。
@@ -233,3 +218,8 @@
 当前框架仍存在一个不够稳健的设计债：类选项默认值和模块兜底默认值分散在两个位置。例如参考文献接口中，`elegantbook-l3.cls` 通过 `l3keys` 为 `citestyle`、`bibstyle`、`bibend` 设置 `.initial:n`，而 `elegant-bibliography-module.code.tex` 也用 `\tl_if_exist:NF` 在变量不存在时创建同名全局变量并写入默认值。这种写法短期内能让模块在入口类尚未完整声明变量时保持可用，也能避免覆盖用户传入的选项；但长期看默认值重复，维护时容易出现入口类和模块默认值不一致的问题。
 
 后续应统一选项系统的职责边界。较稳妥的方向是：模块可以声明自己使用的变量，但默认值只由 `l3keys` 的 `.initial:n` 提供；或者进一步让各模块声明自己的 key，入口类只负责统一收集和处理 class options。在完成统一前，新增模块若继续使用 `\tl_if_exist:NF` 兜底，应明确它只是兼容性保护，不应成为主要默认值来源。
+
+
+- [ ] 增加关于 `zref-clever` 的多语言样式设置部分的内容
+- [ ] 增加封面的可定义模块设置
+- [ ] 确保mode=simple和fancy都能正常工作

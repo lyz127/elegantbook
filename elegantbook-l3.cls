@@ -175,6 +175,21 @@
     bibend .initial:n = { biber },
     biber .code:n = \tl_gset:Nn \g__elegant_bibend_tl { biber },
     bibtex .code:n = \tl_gset:Nn \g__elegant_bibend_tl { bibtex },
+    gb7714 .code:n =
+      {
+        \tl_gset:Nn \g__elegant_citestyle_tl { gb7714-2015 }
+        \tl_gset:Nn \g__elegant_bibstyle_tl { gb7714-2015 }
+      },
+    gbt7714 .code:n =
+      {
+        \tl_gset:Nn \g__elegant_citestyle_tl { gb7714-2015 }
+        \tl_gset:Nn \g__elegant_bibstyle_tl { gb7714-2015 }
+      },
+    gb7714-2015 .code:n =
+      {
+        \tl_gset:Nn \g__elegant_citestyle_tl { gb7714-2015 }
+        \tl_gset:Nn \g__elegant_bibstyle_tl { gb7714-2015 }
+      },
     unknown.code:n = \__elegant_parse_unknown_option:n { #1 }
   }
 
@@ -250,8 +265,6 @@
 \elegant_load_module:n { toc }
 
 \elegant_load_module:n { code }
-
-\elegant_load_module:n { history }
 
 
 
