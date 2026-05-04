@@ -1,8 +1,5 @@
 \elegant_provide_module:n{theorem}
 
-% \g__elegant_theorem_mode_tl
-
-\clist_new:N \g__elegant_theorem_mode_clist
 \seq_new:N \g__elegant_theorem_declarations_seq
 
 \NewDocumentCommand \elegantnewtheorem { m m m g O{} }
@@ -19,37 +16,8 @@
 \elegantnewtheorem { lemma }       { \elegant_use_name:n { lemma } }       { thmstyle } { lem }
 \elegantnewtheorem { proposition } { \elegant_use_name:n { proposition } } { prostyle } { pro }
 
-\elegant_msg_new:nn { not support theorem mode }
-  {
-    The~theorem~mode~`#1'~is~not~support. \\
-    Please~select~one~of~the~following~theorem~mode. \\
-    \clist_use:Nn \g__elegant_theorem_mode_clist {,~} 
-  }
-
-
-\cs_new_protected_nopar:Npn \elegant_declare_theorem_mode:nn #1#2 
-  {
-    % hooks
-		\hook_new:n { elegant-module / theorem / #1 / before }
-		\hook_new:n { elegant-module / theorem / #1 / after }
-    \tl_gset:cn { g_elegant_theorem_mode_#1_tl } { #2 }
-    \clist_gput_right:Nn \g__elegant_theorem_mode_clist { #1 }
-  }
-
-
-\hook_gput_code:nnn{begindocument/before}{.}
-  {
-    \tl_if_exist:cTF { g_elegant_theorem_mode_ \g__elegant_theorem_mode_tl _tl }
-    {
-			\hook_use:n { elegant-module / theorem / \g__elegant_theorem_mode_tl / before }
-      \tl_use:c { g_elegant_theorem_mode_ \g__elegant_theorem_mode_tl _tl }
-			\hook_use:n { elegant-module / theorem / \g__elegant_theorem_mode_tl / after }
-    }
-    {
-      % error / message
-      \elegant_msg_error:nx { not support theorem mode } { \g__elegant_theorem_mode_tl }
-    }
-  }
+\hook_new:n { elegant-module / theorem / setup / before }
+\hook_new:n { elegant-module / theorem / setup / after }
 
 \bool_if:NT \g__elegant_usesamecnt_bool 
   { 
@@ -57,8 +25,9 @@
     \exp_args:NnV \counterwithin{ elegant@theorem } \g__elegant_thmcnt_tl
   }  
 
-\elegant_declare_theorem_mode:nn { fancy }
+\hook_gput_code:nnn { begindocument/before } { . }
   {
+    \hook_use:n { elegant-module / theorem / setup / before }
     \elegant_if_package_loaded:nTF { tcolorbox }
       {
         \tcbuselibrary{many}
@@ -208,57 +177,8 @@
     \RenewDocumentCommand \elegantnewtheorem { m m m g O{} }
       { \__elegant_theorem_declare_tcolorbox:nnnnn { #1 } { #2 } { #3 } { #4 } { #5 } }
 
+    \hook_use:n { elegant-module / theorem / setup / after }
   }
-
-\elegant_declare_theorem_mode:nn { simple }
-	{
-		\let\openbox\relax
-		\RequirePackage{amsthm}
-    
-		\tl_new:N \l__elegant_tmp_cnt_name_tl 
-
-
-		\cs_new_nopar:Npn \__elegant_theorem_new_enviroment_handle:nn #1#2 
-			{
-				\newtheoremstyle{#1}{3pt}{3pt}{\rmfamily}{-3pt}{
-					\bfseries\color_select:o { \elegant_use_color:n { #1 } }}{}{0.5em}
-					{
-						\thmname{ ##1 }~\thmnumber{ \use:c { the#2} }~\thmnote{(##3) }
-					}
-
-				\theoremstyle{#1}
-				\bool_if:NTF \g__elegant_usesamecnt_bool 
-					{
-						\newtheorem{#1}[elegant@theorem]{ \elegant_use_name:n { #1 } }
-					}
-					{
-						\newtheorem{#1}{ \elegant_use_name:n { #1 } }[\g__elegant_thmcnt_tl]
-					}
-				\newtheorem*{#1*}{ \elegant_use_name:n { #1 } }
-				\elegant_name_if_exist:nT { #1 / icon }
-					{
-						\AddToHook { env/#1/after }{ \hfill \textcolor{ \elegant_use_color:n { #1 } } { \elegant_use_name:n { #1 / icon } } }
-						\AddToHook { env/#1*/after }{ \hfill \textcolor{ \elegant_use_color:n { #1 } } { \elegant_use_name:n { #1 / icon } } }
-					}
-			}
-		\RenewDocumentCommand \elegantnewtheorem { m }
-			{
-				\bool_if:NTF \g__elegant_usesamecnt_bool 
-          {
-            \tl_set:Nn \l__elegant_tmp_cnt_name_tl { elegant@theorem }
-          }
-          {
-            \tl_set:Nn \l__elegant_tmp_cnt_name_tl { #1 }
-          }
-					\exp_args:NnV \__elegant_theorem_new_enviroment_handle:nn { #1 } \l__elegant_tmp_cnt_name_tl
-			}
-		
-		\clist_map_inline:nn 
-      { theorem, definition, postulate, axiom, corollary, lemma, proposition }
-      {
-        \elegantnewtheorem { #1 }
-      }
-	}
 
 \RequirePackage{manfnt, bbding, adforn}
 

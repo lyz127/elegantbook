@@ -154,7 +154,7 @@
   - [ ] 未迁移：`\mailto`、`\question`、`\bioinfo`、`\dollar` 等常用宏。
 - [ ] `elegant-theorem-module.code.tex`
 
-  - [X] 已迁移：`fancy/simple` 模式框架。
+  - [X] 已迁移：固定使用 tcolorbox 的盒式定理框架；已移除 `mode=simple` 切换接口。
   - [X] 已迁移：`theorem`、`definition`、`postulate`、`axiom`、`corollary`、`lemma`、`proposition`、`remark`。
   - [ ] 未迁移：`example`、`exercise`、`problem`、`note`、`proof`、`solution`、`assumption`、`conclusion`、`property`、`custom`、`problemset`。
   - [ ] 未迁移：原版 `\elegantnewtheorem` 的完整参数签名、样式选择、前缀、共享计数、警告和错误处理。
@@ -222,4 +222,3 @@
 
 - [ ] 增加关于 `zref-clever` 的多语言样式设置部分的内容
 - [ ] 增加封面的可定义模块设置
-- [ ] 确保mode=simple和fancy都能正常工作

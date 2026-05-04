@@ -156,8 +156,6 @@
     stixtwo .code:n = \tl_gset:Nn \g__elegant_math_tl { stixtwo },
     xits .code:n = \tl_gset:Nn \g__elegant_math_tl { xits },
     tg .code:n = \tl_gset:Nn \g__elegant_math_tl { tg },
-    mode .tl_set:N = \g__elegant_theorem_mode_tl,
-    mode .initial:n = { fancy },
     tocdepth .int_set:N = \g__elegant_tocdepth_int,
     tocdepth .initial:n = 1,
     secnumdepth .int_set:N = \g__elegant_secnumdepth_int,
