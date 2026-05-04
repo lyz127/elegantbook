@@ -262,6 +262,28 @@
 
 \RequirePackage{manfnt, bbding, adforn}
 
+\dim_new:N \g__elegant_plain_environment_skip_dim
+\dim_gset:Nn \g__elegant_plain_environment_skip_dim { .25\baselineskip }
+
+\cs_new_protected_nopar:Npn \__elegant_plain_environment_begin:
+  {
+    \par
+    \addvspace{\g__elegant_plain_environment_skip_dim}
+    \noindent
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_plain_environment_end:
+  {
+    \par
+    \addvspace{\g__elegant_plain_environment_skip_dim}
+    \ignorespacesafterend
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_plain_environment_icon:nn #1#2
+  {
+    \makebox[0pt][r]{\smash{\raisebox{#1}{\scriptsize\color{red!90}#2}}\quad}
+  }
+
 \cs_if_exist:NF \citshape
   { \cs_new:Npn \citshape { \itshape } }
 \cs_if_exist:NF \cfs
@@ -283,11 +305,11 @@
 \NewDocumentEnvironment{example}{ O{} }
   {
     \refstepcounter{exam}
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{main}\elegant_use_name:n { example }~\theexam\space #1}
     \rmfamily
   }
-  { \par\ignorespacesafterend }
+  { \__elegant_plain_environment_end: }
 
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
@@ -296,12 +318,12 @@
 \NewDocumentEnvironment{exercise}{ O{} }
   {
     \refstepcounter{exer}
-    \par\noindent
-    \makebox[0pt][r]{\scriptsize\color{red!90}\HandPencilLeft\quad}
+    \__elegant_plain_environment_begin:
+    \__elegant_plain_environment_icon:nn { .25ex } { \HandPencilLeft }
     \textbf{\color{main}\elegant_use_name:n { exercise }~\theexer\space #1}
     \rmfamily
   }
-  { \par\ignorespacesafterend }
+  { \__elegant_plain_environment_end: }
 
 \newcounter{prob}[chapter]
 \setcounter{prob}{0}
@@ -310,88 +332,88 @@
 \NewDocumentEnvironment{problem}{ O{} }
   {
     \refstepcounter{prob}
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{main}\elegant_use_name:n { problem }~\theprob\space #1}
     \rmfamily
   }
-  { \par\ignorespacesafterend }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{note}{}
   {
-    \par\noindent
-    \makebox[0pt][r]{\scriptsize\color{red!90}\textdbend\quad}
+    \__elegant_plain_environment_begin:
+    \__elegant_plain_environment_icon:nn { -.45ex } { \textdbend }
     \textbf{\color{second}\elegant_use_name:n { note }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \cs_if_exist:cTF { proof }
   {
     \RenewDocumentEnvironment{proof}{}
       {
-        \par\noindent
+        \__elegant_plain_environment_begin:
         \textbf{\color{second}\proofname\;}
         \color{black!90}\cfs
       }
-      { \par }
+      { \__elegant_plain_environment_end: }
   }
   {
     \NewDocumentEnvironment{proof}{}
       {
-        \par\noindent
+        \__elegant_plain_environment_begin:
         \textbf{\color{second}\proofname\;}
         \color{black!90}\cfs
       }
-      { \par }
+      { \__elegant_plain_environment_end: }
   }
 
 \NewDocumentEnvironment{solution}{}
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{main}\elegant_use_name:n { solution }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{assumption}{}
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{third}\elegant_use_name:n { assumption }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{conclusion}{}
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{third}\elegant_use_name:n { conclusion }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{property}{}
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{third}\elegant_use_name:n { property }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{remark}{}
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{second}\elegant_use_name:n { remark }}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{custom}{ m }
   {
-    \par\noindent
+    \__elegant_plain_environment_begin:
     \textbf{\color{third}#1}~
     \citshape
   }
-  { \par }
+  { \__elegant_plain_environment_end: }
 
 \NewDocumentEnvironment{problemset}{ O{ \__elegant_chapter_exercise_title: } }
   {
