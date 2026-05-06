@@ -1233,10 +1233,10 @@
 
 \RequirePackage{adforn}
 
-\newenvironment{problemset}[1][\xchaptertitle~\exercisename]{
+\newenvironment{problemset}[1][\exercisename]{
   \vspace*{10pt}
   \begin{center}
-    \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\exercisename}{\exercisename}}
+    \phantomsection\addcontentsline{toc}{section}{#1}
     % \markboth{#1}{\rightmark}
     \markright{#1}
     \textcolor{structurecolor}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
