@@ -1,0 +1,14 @@
+# Ignore the font folder
+font/
+ElegantBook/
+
+# Ignore all PDF files
+*.aux
+*.log
+*.synctex.gz
+*.synctex
+*.out
+*.toc
+*.fls 
+*.fdb_latexmk
+*.xdv

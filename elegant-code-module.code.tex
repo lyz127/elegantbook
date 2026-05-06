@@ -1,0 +1,61 @@
+\elegant_provide_module:n{code}
+
+\RequirePackage{listings}
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{frenchplum}{RGB}{190,20,83}
+
+\NewDocumentCommand \dollar {} { \mbox{\textdollar} }
+
+\hook_new:n { elegant-module / code / setup / before }
+\hook_new:n { elegant-module / code / setup / after }
+
+
+\cs_new_protected_nopar:Npn \elegant_code_setup:
+  {
+    \hook_use:n { elegant-module / code / setup / before }
+    \__elegant_code_setup_listings:
+    \hook_use:n { elegant-module / code / setup / after }
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_code_setup_listings:
+  {
+    \renewcommand{\ttdefault}{cmtt}
+    \lstdefinestyle{mystyle}{
+      basicstyle=%
+        \ttfamily
+        \lst@ifdisplaystyle\small\fi
+    }
+
+    \lstset{
+      basicstyle=\ttfamily,
+      style=mystyle,
+      breaklines=true
+    }
+
+    \lstset{
+      language=[LaTeX]TeX,
+      texcsstyle=*\color{winered},
+      numbers=none,
+      mathescape=false,
+      breaklines=true,
+      keywordstyle=\color{winered},
+      commentstyle=\color{gray},
+      emph={elegantpaper,fontenc,fontspec,xeCJK,citestyle,FiraMono,xunicode,figure,fig,image,img,table,itemize,enumerate,ctex,microtype,description,times,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,ctex,listings,base,math,scheme,toc,esint,chinesefont,amsmath,bibstyle,natbib,pgfornament,addbibresource,printbibliography},
+      emphstyle={\color{frenchplum}},
+      morekeywords={DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,section,hypersetup,mainmatter,frontmatter,tableofcontents,elegantpar,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote,marginnote,bioinfo,datechange,listofchange,lvert,lastpage,songti,heiti,fangsong,setCJKfamilyfont,textbf,elegantnewtheorem,thmcnt,colorlet,usesamecnt},
+      frame=single,
+      tabsize=2,
+      rulecolor=\color{structurecolor},
+      framerule=0.2pt,
+      columns=flexible
+    }
+    \renewcommand{\ttdefault}{lmtt}
+  }
+
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  { \elegant_code_setup: }
+
+
+\endinput

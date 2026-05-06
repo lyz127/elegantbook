@@ -1,0 +1,336 @@
+\documentclass[
+  lang = cn,
+  theme = Fresh Green,
+  font = ctex-fandol,
+  thmcnt = chapter,
+  gb7714-2015,
+  bibend = biber
+]{elegantbook-l3}
+
+\usepackage{amsmath, amssymb, array}
+\addbibresource{biblatex-examples.bib}
+
+\elegantnewtheorem{sampletheorem}{自定义定理}{thmstyle}{sample}
+\elegantnewtheorem{sampledefinition}{自定义定义}{defstyle}{sampledef}
+
+\begin{document}
+
+\ElegantCoverInfo{%
+  title = {ElegantBook LaTeX3 迁移验证},
+  subtitle = {当前已实现功能的中文回归测试文档},
+  cover image = {cover.jpg},
+  logo image = {logo-blue},
+  author = {ElegantBook LaTeX3 Refactor},
+  institute = {ElegantBook Program},
+  version = {v1.0},
+  date = {2026/05/04},
+  extrainfo = {本文件用于验证当前重构版已经迁移的功能。}
+}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+\chapter{结构与基础排版}
+
+\section{层级标题}
+
+本节验证章、节、小节和小小节标题的编号、颜色、页眉标记与目录条目。
+
+\subsection{小节层级}
+
+正文段落用于观察基础行距、缩进、中文字体和西文字体的协调性。当前主题色应统一作用于章节标题、页眉线、链接以及后续环境标题。
+
+\subsubsection{小小节层级}
+
+数学公式用于验证基础数学包、编号和交叉引用的配合。式 \eqref{eq:quadratic} 给出一个标准恒等式：
+\begin{equation}
+  (a+b)^2 = a^2 + 2ab + b^2 .
+  \label{eq:quadratic}
+\end{equation}
+
+\section{列表与链接}
+
+列表项目符号应呈现主题色，嵌套层级应保持稳定缩进。
+
+\begin{itemize}
+  \item 一级无序列表项目。
+  \begin{itemize}
+    \item 二级无序列表项目。
+    \begin{itemize}
+      \item 三级无序列表项目。
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+  \item 一级有序列表项目。
+  \item 第二个有序列表项目，包含行内链接：
+    \href{https://github.com/ElegantLaTeX/ElegantBook}{ElegantBook Repository}。
+\end{enumerate}
+
+\section{章节引言}
+
+\begin{introduction}
+  \item 引言环境应使用主题色标题和项目符号。
+  \item 该环境应能容纳多条摘要式内容。
+  \item 盒子宽度应与正文区域对齐。
+\end{introduction}
+
+\chapter{定理与普通环境}
+
+\section{盒式定理类环境}
+
+\begin{definition}[度量空间]\label{def:metric-space}
+  设 $X$ 为集合，若函数 $d:X\times X\to \mathbb{R}$ 满足非负性、同一性、对称性和三角不等式，则称 $(X,d)$ 为度量空间。
+\end{definition}
+
+\begin{theorem}{闭区间连续函数有界}{bounded-continuous}
+  若函数 $f$ 在闭区间 $[a,b]$ 上连续，则 $f$ 在 $[a,b]$ 上有界。
+\end{theorem}
+
+\begin{lemma}[三角不等式的直接推论]\label{lem:triangle}
+  对任意实数 $x,y$，有 $|x+y|\le |x|+|y|$。
+\end{lemma}
+
+\begin{corollary}[连续函数局部有界]
+  若函数在某点连续，则它在该点的某个邻域内有界。
+\end{corollary}
+
+\begin{postulate}[平行公设]
+  过直线外一点有且只有一条直线与已知直线平行。
+\end{postulate}
+
+\begin{axiom}[选择公理]
+  任意一族非空集合存在选择函数。
+\end{axiom}
+
+\begin{proposition}[单调有界收敛]
+  单调有界数列必收敛。
+\end{proposition}
+
+引用检查：定义 \ref{def:metric-space}、定理 \ref{thm:bounded-continuous}、引理 \ref{lem:triangle}。
+
+\begin{theorem*}{无编号定理}
+  该环境验证星号版本不参与编号，但保持相同的视觉风格。
+\end{theorem*}
+
+\section{导言区声明的定理环境}
+
+\begin{sampletheorem}{自定义旧式标题}{custom-theorem}
+  该环境由导言区的 \lstinline|\elegantnewtheorem| 声明，采用旧式标题和标签参数。
+\end{sampletheorem}
+
+\begin{sampledefinition}[自定义可选标题]\label{sampledef:native}
+  该环境验证自定义定义类环境的可选标题与原生标签写法。
+\end{sampledefinition}
+
+\begin{sampletheorem*}[自定义无编号环境]
+  该环境验证自定义定理的星号版本。
+\end{sampletheorem*}
+
+自定义环境引用检查：定理 \ref{sample:custom-theorem}、定义 \ref{sampledef:native}。
+
+\section{非盒式普通环境}
+
+\begin{example}[紧性示例]\label{exam:compact}
+  闭区间 $[0,1]$ 是实数通常拓扑下的紧集。
+\end{example}
+
+\begin{exercise}[基础计算]\label{exer:basic}
+  计算 $\int_0^1 x^2\,dx$。
+\end{exercise}
+
+\begin{problem}[极值问题]\label{prob:extreme}
+  求函数 $f(x)=x^2-2x+1$ 在实数域上的最小值。
+\end{problem}
+
+普通编号环境引用检查：例题 \ref{exam:compact}、练习 \ref{exer:basic}、问题 \ref{prob:extreme}。
+
+\begin{note}
+  笔记环境应以左侧符号和粗体引导词开始，标题文字与其他普通环境左边界对齐。
+\end{note}
+
+\begin{proof}
+  证明环境应以粗体引导词开始，并使用当前设定的正文字体风格。
+\end{proof}
+
+\begin{solution}
+  解答环境用于呈现答案内容；当前文档验证其默认显示状态。
+\end{solution}
+
+\begin{remark}
+  注环境是普通段落式环境，不应被定义为盒式定理环境。
+\end{remark}
+
+\begin{assumption}
+  假设环境用于列出后续论证所依赖的条件。
+\end{assumption}
+
+\begin{conclusion}
+  结论环境用于给出阶段性推论。
+\end{conclusion}
+
+\begin{property}
+  性质环境用于描述对象的稳定属性。
+\end{property}
+
+\begin{custom}{自定义普通环境}
+  自定义普通环境应接受一个标题参数，并保持与结论类环境一致的段落样式。
+\end{custom}
+
+\begin{problemset}[本章综合练习]
+  \item 验证闭区间上连续函数有界。
+  \item 构造一个有界但不闭的实数子集。
+  \item 比较例题、练习和问题三个计数器的显示格式。
+\end{problemset}
+
+\chapter{代码高亮与跨页}
+
+\section{行内与短代码块}
+
+行内代码用于验证 \lstinline|\lstinline| 的字体、断行和颜色设置。下面的短代码块验证默认 LaTeX 语言高亮：
+
+\begin{lstlisting}
+\documentclass[lang=cn, theme=Fresh Green]{elegantbook-l3}
+\begin{document}
+\chapter{Minimal Test}
+\end{document}
+\end{lstlisting}
+
+命令行代码块用于验证显式语言选项：
+
+\begin{lstlisting}[language=bash]
+latexmk -pdfxe elegantbook-cn.tex
+\end{lstlisting}
+
+\section{跨页代码块}
+
+下面的长代码块用于验证普通 \lstinline|lstlisting| 能够自然跨页。
+
+\begin{lstlisting}
+\ExplSyntaxOn
+\cs_new_protected:Npn \demo_listing_cross_page_line:n #1
+  {
+    \iow_term:n { Listing cross page test line #1 }
+  }
+\demo_listing_cross_page_line:n { 001 }
+\demo_listing_cross_page_line:n { 002 }
+\demo_listing_cross_page_line:n { 003 }
+\demo_listing_cross_page_line:n { 004 }
+\demo_listing_cross_page_line:n { 005 }
+\demo_listing_cross_page_line:n { 006 }
+\demo_listing_cross_page_line:n { 007 }
+\demo_listing_cross_page_line:n { 008 }
+\demo_listing_cross_page_line:n { 009 }
+\demo_listing_cross_page_line:n { 010 }
+\demo_listing_cross_page_line:n { 011 }
+\demo_listing_cross_page_line:n { 012 }
+\demo_listing_cross_page_line:n { 013 }
+\demo_listing_cross_page_line:n { 014 }
+\demo_listing_cross_page_line:n { 015 }
+\demo_listing_cross_page_line:n { 016 }
+\demo_listing_cross_page_line:n { 017 }
+\demo_listing_cross_page_line:n { 018 }
+\demo_listing_cross_page_line:n { 019 }
+\demo_listing_cross_page_line:n { 020 }
+\demo_listing_cross_page_line:n { 021 }
+\demo_listing_cross_page_line:n { 022 }
+\demo_listing_cross_page_line:n { 023 }
+\demo_listing_cross_page_line:n { 024 }
+\demo_listing_cross_page_line:n { 025 }
+\demo_listing_cross_page_line:n { 026 }
+\demo_listing_cross_page_line:n { 027 }
+\demo_listing_cross_page_line:n { 028 }
+\demo_listing_cross_page_line:n { 029 }
+\demo_listing_cross_page_line:n { 030 }
+\demo_listing_cross_page_line:n { 031 }
+\demo_listing_cross_page_line:n { 032 }
+\demo_listing_cross_page_line:n { 033 }
+\demo_listing_cross_page_line:n { 034 }
+\demo_listing_cross_page_line:n { 035 }
+\demo_listing_cross_page_line:n { 036 }
+\demo_listing_cross_page_line:n { 037 }
+\demo_listing_cross_page_line:n { 038 }
+\demo_listing_cross_page_line:n { 039 }
+\demo_listing_cross_page_line:n { 040 }
+\demo_listing_cross_page_line:n { 041 }
+\demo_listing_cross_page_line:n { 042 }
+\demo_listing_cross_page_line:n { 043 }
+\demo_listing_cross_page_line:n { 044 }
+\demo_listing_cross_page_line:n { 045 }
+\demo_listing_cross_page_line:n { 046 }
+\demo_listing_cross_page_line:n { 047 }
+\demo_listing_cross_page_line:n { 048 }
+\demo_listing_cross_page_line:n { 049 }
+\demo_listing_cross_page_line:n { 050 }
+\demo_listing_cross_page_line:n { 051 }
+\demo_listing_cross_page_line:n { 052 }
+\demo_listing_cross_page_line:n { 053 }
+\demo_listing_cross_page_line:n { 054 }
+\demo_listing_cross_page_line:n { 055 }
+\demo_listing_cross_page_line:n { 056 }
+\demo_listing_cross_page_line:n { 057 }
+\demo_listing_cross_page_line:n { 058 }
+\demo_listing_cross_page_line:n { 059 }
+\demo_listing_cross_page_line:n { 060 }
+\demo_listing_cross_page_line:n { 061 }
+\demo_listing_cross_page_line:n { 062 }
+\demo_listing_cross_page_line:n { 063 }
+\demo_listing_cross_page_line:n { 064 }
+\demo_listing_cross_page_line:n { 065 }
+\demo_listing_cross_page_line:n { 066 }
+\demo_listing_cross_page_line:n { 067 }
+\demo_listing_cross_page_line:n { 068 }
+\demo_listing_cross_page_line:n { 069 }
+\demo_listing_cross_page_line:n { 070 }
+\demo_listing_cross_page_line:n { 071 }
+\demo_listing_cross_page_line:n { 072 }
+\demo_listing_cross_page_line:n { 073 }
+\demo_listing_cross_page_line:n { 074 }
+\demo_listing_cross_page_line:n { 075 }
+\demo_listing_cross_page_line:n { 076 }
+\demo_listing_cross_page_line:n { 077 }
+\demo_listing_cross_page_line:n { 078 }
+\demo_listing_cross_page_line:n { 079 }
+\demo_listing_cross_page_line:n { 080 }
+\ExplSyntaxOff
+\end{lstlisting}
+
+\chapter{表格与颜色}
+
+\section{主题颜色}
+
+下表用于验证当前主题导出的兼容颜色名是否可用于普通文本、表格和链接上下文。
+
+\begin{center}
+\begin{tabular}{>{\bfseries}m{0.24\textwidth}m{0.55\textwidth}}
+\hline
+颜色名 & 验证文本 \\
+\hline
+structurecolor & \textcolor{structurecolor}{章节结构色与页眉线颜色一致。} \\
+main & \textcolor{main}{定义、例题、练习与问题使用该主色。} \\
+second & \textcolor{second}{定理、笔记、证明与注环境使用该辅助色。} \\
+third & \textcolor{third}{命题、假设、结论、性质与自定义普通环境使用该颜色。} \\
+winered & \textcolor{winered}{代码高亮中的控制序列和关键字颜色。} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{排版收束}
+
+本文档只覆盖当前已经迁移并用于回归检查的功能。尚未迁移的版本历史、完整目录附录样式和旧封面命令不会在此文件中作为测试目标。
+
+\chapter{参考文献}
+
+\section{引用与文献表}
+
+本节使用 TeX Live 自带的 \lstinline|biblatex-examples.bib| 验证参考文献接口。行文引用示例包括 Knuth 的多卷本 \cite{knuth:ct:a,knuth:ct:b}、\TeX{} 参考书 \cite{companion}，以及一篇期刊论文 \cite{sigfridsson}。
+
+也可以在同一句中混合多条文献，观察通过类选项调用的 GB/T 7714-2015 引用样式是否生效 \cite{aksin,angenendt,bertram}.
+
+\printbibliography
+
+\end{document}

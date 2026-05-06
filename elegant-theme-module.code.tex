@@ -1,0 +1,233 @@
+\elegant_provide_module:n{theme}
+
+
+\RequirePackage[table]{xcolor}
+
+\elegant_msg_new:nn { not support theme }
+  {
+    The~theme~`#1'~is~not~support. \\
+    Please~select~one~of~the~following~themes. \\
+    \clist_use:Nn \g__elegant_theme_clist {,~} 
+  }
+
+\elegant_msg_new:nn { undefined color }
+  {
+    The~Elegant~color~`#1'~is~undefined.\\
+    Default~color~used.
+  }
+
+
+\clist_new:N \g__elegant_theme_clist
+
+
+% \tl_new:N \g__elegant_theme_tl 
+
+\prop_new:N \l__elegant_colors_prop
+
+
+% \cs_set_eq:NN \__elegant_declare_color:nnn \definecolor
+
+
+% #1 name, #2 model, #3 value
+
+\cs_new_protected_nopar:Npn \elegant_declare_color:nnn #1#2#3
+  {
+    \definecolor{ elegant_#1_color }{ #2 }{ #3 }
+    \color_set:nnn { elegant_#1_color } { #2 } { #3 }
+  }
+
+\cs_generate_variant:Nn \color_select:n { o }
+
+\cs_new_nopar:Npn \elegant_use_color:n #1 
+  {
+    elegant_#1_color
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_declare_legacy_palette_colors:
+  {
+    \definecolor{structure1}{RGB}{0,120,2}
+    \definecolor{main1}{RGB}{0,120,2}
+    \definecolor{second1}{RGB}{230,90,7}
+    \definecolor{third1}{RGB}{0,160,152}
+    \definecolor{structure2}{RGB}{31,186,190}
+    \definecolor{main2}{RGB}{59,180,5}
+    \definecolor{second2}{RGB}{175,153,8}
+    \definecolor{third2}{RGB}{244,105,102}
+    \definecolor{structure3}{RGB}{60,113,183}
+    \definecolor{main3}{RGB}{0,166,82}
+    \definecolor{second3}{RGB}{255,134,24}
+    \definecolor{third3}{RGB}{0,174,247}
+    \definecolor{structure4}{RGB}{150,150,150}
+    \definecolor{main4}{RGB}{150,150,150}
+    \definecolor{second4}{RGB}{150,150,150}
+    \definecolor{third4}{RGB}{150,150,150}
+    \definecolor{structure5}{RGB}{0,0,0}
+    \definecolor{main5}{RGB}{0,0,0}
+    \definecolor{second5}{RGB}{0,0,0}
+    \definecolor{third5}{RGB}{0,0,0}
+    \definecolor{winered}{rgb}{0.5,0,0}
+    \definecolor{bule}{RGB}{18,29,57}
+  }
+
+\cs_new_protected_nopar:Npn \__elegant_theme_define_legacy_aliases:
+  {
+    \colorlet{structurecolor}{\elegant_use_color:n { structure }}
+    \colorlet{main}{\elegant_use_color:n { definition }}
+    \colorlet{second}{\elegant_use_color:n { theorem }}
+    \colorlet{third}{\elegant_use_color:n { proposition }}
+    \colorlet{coverlinecolor}{\elegant_use_color:n { cover }}
+  }
+
+\cs_new_protected_nopar:Npn \elegant_declare_theme:nn #1#2
+  {
+    \tl_gset:cn { g_elegant_theme_#1_tl } 
+    {
+      \prop_set_from_keyval:Nn \l__elegant_colors_prop { #2 }
+      \prop_map_inline:Nn \l__elegant_colors_prop 
+        {
+          \exp_last_unbraced:Nno \elegant_declare_color:nnn { ##1 }{ ##2 }
+        }
+      
+    }
+    \clist_gput_right:Nn \g__elegant_theme_clist { #1 }
+  }
+
+\hook_gput_code:nnn{begindocument/before}{.}
+  {
+    \__elegant_declare_legacy_palette_colors:
+    \tl_if_exist:cTF { g_elegant_theme_ \g__elegant_theme_tl _tl }
+    {
+      \tl_use:c { g_elegant_theme_ \g__elegant_theme_tl _tl }
+      \__elegant_theme_define_legacy_aliases:
+    }
+    {
+      % error / message
+      \elegant_msg_error:nx { not support theme } { \g__elegant_theme_tl }
+    }
+  }
+
+
+
+
+\elegant_declare_theme:nn { Techno~Blue }
+  {
+    headline     =   {RGB}{ 60,  113, 183 },
+    structure    =   {RGB}{ 60,  113, 183 },
+    chapter      =   {RGB}{ 60,  113, 183 },
+    section      =   {RGB}{ 60,  113, 183 },
+    subsection   =   {RGB}{ 60,  113, 183 },
+    definition   =   {RGB}{ 0,   166, 82  },
+    cover        =   {RGB}{ 0,   166, 82  },
+    exercise     =   {RGB}{ 0,   166, 82  },
+    problem      =   {RGB}{ 0,   166, 82  },
+    theorem      =   {RGB}{ 255, 134, 24  },
+    lemma        =   {RGB}{ 255, 134, 24  },
+    corollary    =   {RGB}{ 255, 134, 24  },
+    axiom        =   {RGB}{ 255, 134, 24  },
+    postulate    =   {RGB}{ 255, 134, 24  },
+    remark       =   {RGB}{ 255, 134, 24  },
+    proposition  =   {RGB}{ 0,   174, 247 }
+  }
+
+\elegant_declare_theme:nn { Fresh~Green }
+  {
+    headline     =   {RGB}{ 60,  113, 183 },
+    structure    =   {RGB}{ 0,   120, 2   },
+    chapter      =   {RGB}{ 0,   120, 2   },
+    section      =   {RGB}{ 0,   120, 2   },
+    subsection   =   {RGB}{ 0,   120, 2   },
+    cover        =   {RGB}{ 0,   120, 2   },
+    definition   =   {RGB}{ 0,   120, 2   },
+    exercise     =   {RGB}{ 0,   120, 2   },
+    problem      =   {RGB}{ 0,   120, 2   },
+    theorem      =   {RGB}{ 230, 90,  7   },
+    lemma        =   {RGB}{ 230, 90,  7   },
+    corollary    =   {RGB}{ 230, 90,  7   },
+    proposition  =   {RGB}{ 0,   160, 152 },
+    postulate    =   {RGB}{ 0,   160, 152 },
+    axiom        =   {RGB}{ 0,   160, 152 },
+    remark       =   {RGB}{ 0,   160, 152 },
+  }
+
+\elegant_declare_theme:nn { Polar~Blue }
+  {
+    headline     =   {RGB}{ 31,  186, 190 },
+    structure    =   {RGB}{ 31,  186, 190 },
+    chapter      =   {RGB}{ 31,  186, 190 },
+    section      =   {RGB}{ 31,  186, 190 },
+    subsection   =   {RGB}{ 31,  186, 190 },
+    cover        =   {RGB}{ 59,  180, 5   },
+    definition   =   {RGB}{ 59,  180, 5   },
+    exercise     =   {RGB}{ 59,  180, 5   },
+    problem      =   {RGB}{ 59,  180, 5   },
+    theorem      =   {RGB}{ 175, 153, 8   },
+    lemma        =   {RGB}{ 175, 153, 8   },
+    corollary    =   {RGB}{ 175, 153, 8   },
+    axiom        =   {RGB}{ 175, 153, 8   },
+    postulate    =   {RGB}{ 175, 153, 8   },
+    remark       =   {RGB}{ 175, 153, 8   },
+    proposition  =   {RGB}{ 244, 105, 102 }
+  }
+
+
+\elegant_declare_theme:nn { Rocky~Gray }
+  {
+    headline     =   {RGB}{ 150, 150, 150 },
+    structure    =   {RGB}{ 150, 150, 150 },
+    chapter      =   {RGB}{ 150, 150, 150 },
+    section      =   {RGB}{ 150, 150, 150 },
+    subsection   =   {RGB}{ 150, 150, 150 },
+    cover        =   {RGB}{ 150, 150, 150 },
+    definition   =   {RGB}{ 150, 150, 150 },
+    exercise     =   {RGB}{ 150, 150, 150 },
+    problem      =   {RGB}{ 150, 150, 150 },
+    theorem      =   {RGB}{ 150, 150, 150 },
+    lemma        =   {RGB}{ 150, 150, 150 },
+    corollary    =   {RGB}{ 150, 150, 150 },
+    axiom        =   {RGB}{ 150, 150, 150 },
+    postulate    =   {RGB}{ 150, 150, 150 },
+    remark       =   {RGB}{ 150, 150, 150 },
+    proposition  =   {RGB}{ 150, 150, 150 },
+  }
+
+\elegant_declare_theme:nn { Neon~Black }
+  {
+    headline     =   {RGB}{ 0,   0,   0   },
+    structure    =   {RGB}{ 0,   0,   0   },
+    chapter      =   {RGB}{ 0,   0,   0   },
+    section      =   {RGB}{ 0,   0,   0   },
+    subsection   =   {RGB}{ 0,   0,   0   },
+    cover        =   {RGB}{ 0,   0,   0   },
+    definition   =   {RGB}{ 0,   0,   0   },
+    exercise     =   {RGB}{ 0,   0,   0   },
+    problem      =   {RGB}{ 0,   0,   0   },
+    theorem      =   {RGB}{ 0,   0,   0   },
+    lemma        =   {RGB}{ 0,   0,   0   },
+    corollary    =   {RGB}{ 0,   0,   0   },
+    axiom        =   {RGB}{ 0,   0,   0   },
+    postulate    =   {RGB}{ 0,   0,   0   },
+    remark       =   {RGB}{ 0,   0,   0   },
+    proposition  =   {RGB}{ 0,   0,   0   },
+  }
+
+\elegant_declare_theme:nn { Plain }
+  {
+    headline     =   {RGB}{ 0,   0,   0   },
+    structure    =   {RGB}{ 0,   0,   0   },
+    chapter      =   {RGB}{ 0,   0,   0   },
+    section      =   {RGB}{ 0,   0,   0   },
+    subsection   =   {RGB}{ 0,   0,   0   },
+    cover        =   {RGB}{ 0,   0,   0   },
+    definition   =   {RGB}{ 0,   0,   0   },
+    exercise     =   {RGB}{ 0,   0,   0   },
+    problem      =   {RGB}{ 0,   0,   0   },
+    theorem      =   {RGB}{ 0,   0,   0   },
+    lemma        =   {RGB}{ 0,   0,   0   },
+    corollary    =   {RGB}{ 0,   0,   0   },
+    axiom        =   {RGB}{ 0,   0,   0   },
+    postulate    =   {RGB}{ 0,   0,   0   },
+    remark       =   {RGB}{ 0,   0,   0   },
+    proposition  =   {RGB}{ 0,   0,   0   },
+  }
+
+\endinput

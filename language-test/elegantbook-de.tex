@@ -1,0 +1,39 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[de, font = none, mode = simple]{elegantbook-l3}
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Sprachtest}
+\section{Namen und Verweise}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\rule{0pt}{2cm}\rule{3cm}{0pt}}
+  \caption{Eine Figur}\label{fig:language-test}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Eine Tabelle}\label{tab:language-test}
+  \begin{tabular}{cc}
+    A & B
+  \end{tabular}
+\end{table}
+
+\figref{fig:language-test}; \tabref{tab:language-test}.
+
+\begin{theorem}[Beispiel]
+  Dies ist ein Theorem.
+\end{theorem}
+
+\begin{definition}
+  Dies ist eine Definition.
+\end{definition}
+
+\end{document}

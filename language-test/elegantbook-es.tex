@@ -1,0 +1,39 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[es, font = none, mode = simple]{elegantbook-l3}
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Prueba de idioma}
+\section{Nombres y referencias}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\rule{0pt}{2cm}\rule{3cm}{0pt}}
+  \caption{Una figura}\label{fig:language-test}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Una tabla}\label{tab:language-test}
+  \begin{tabular}{cc}
+    A & B
+  \end{tabular}
+\end{table}
+
+\figref{fig:language-test}; \tabref{tab:language-test}.
+
+\begin{theorem}[Ejemplo]
+  Este es un teorema.
+\end{theorem}
+
+\begin{definition}
+  Esta es una definicion.
+\end{definition}
+
+\end{document}
