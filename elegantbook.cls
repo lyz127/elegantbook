@@ -9,7 +9,7 @@
 % LPPL maintenance status: maintained
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2026/05/01 v4.7-r0.0 ElegantBook document class (unofficial)]
+\ProvidesClass{elegantbook}[2026/05/01 v4.7-r0.1 ElegantBook document class (unofficial)]
 
 %%%
 \RequirePackage{kvoptions}
