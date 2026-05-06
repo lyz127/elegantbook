@@ -870,18 +870,14 @@
   {\newcommand{\xchaptertitle}{\chaptername~\thechapter~}}
 
 \setcounter{secnumdepth}{5}
-\titleformat{\chapter}[\style]{\bfseries}{
-  \filcenter\LARGE\enspace\bfseries{\color{structurecolor} \IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}}{1pt}{
-  \LARGE\bfseries\color{structurecolor}\filcenter}[]
-\titleformat{\section}[hang]{\bfseries}{
-  \Large\bfseries{\color{structurecolor}\thesection}\enspace}{1pt}{%
-  \color{structurecolor}\Large\bfseries\filright}
-\titleformat{\subsection}[hang]{\bfseries}{
-  \large\bfseries\color{structurecolor}\thesubsection\enspace}{1pt}{%
-  \color{structurecolor}\large\bfseries\filright}
-\titleformat{\subsubsection}[hang]{\bfseries}{
-  \large\bfseries\color{structurecolor}\thesubsubsection\enspace}{1pt}{%
-  \color{structurecolor}\large\bfseries\filright}
+\ifdefstring{\style}{display}{
+  \titleformat{\chapter}[display]{\filcenter\LARGE\bfseries\color{structurecolor}}{\IfAppendix{\appendixname\;\thechapter}{\xchaptertitle}}{1pt}{}[]
+}{
+  \titleformat{\chapter}[hang]{\filcenter\LARGE\bfseries\color{structurecolor}}{\IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}{1pt}{}[]
+}
+\titleformat{\section}[hang]{\filright\Large\bfseries\color{structurecolor}}{\thesection}{0.5em}{}
+\titleformat{\subsection}[hang]{\filright\large\bfseries\color{structurecolor}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}[hang]{\filright\large\bfseries\color{structurecolor}}{\thesubsubsection}{0.5em}{}
 
 \titlespacing{\chapter}{0pt}{-20pt}{1.3\baselineskip}
 %\titlespacing{\subsection}{0pt}{0.5\baselineskip}{-\baselineskip}
