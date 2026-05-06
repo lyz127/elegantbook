@@ -1,0 +1,294 @@
+\documentclass[de]{../../elegantbook}
+% ========== Titelblatt und Grundinformationen ==========
+\title{ElegantBook Testdokument}
+\subtitle{Kernmerkmale der Vorlage}
+\author{Testingenieur}
+\institute{Vorlagen-Testgruppe}
+\date{\today}
+\version{v1.0}
+\extrainfo{Dieses Dokument dient ausschließlich zum Testen von Vorlagenfunktionen und hat keinen akademischen Wert}
+\bioinfo{Testcharge}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Inhaltsverzeichnis und Grundeinstellungen ==========
+\setcounter{tocdepth}{3} % Inhaltsverzeichnis bis Ebene 3 anzeigen
+
+% ========== Test-Literaturverzeichnis ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Vorwort (mit Abschnittsgliederung) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Testvorwort}
+\markboth{Testvorwort}{}
+\section*{Dokumentbeschreibung}
+\markright{Dokumentbeschreibung}
+Dieses Dokument ist ein vollständiger Testfall für ElegantBook und deckt alle grundlegenden und erweiterten Funktionen der Vorlage ab. Alle Inhalte sind fiktive Testdaten ohne praktische Bedeutung.
+\newpage
+\section*{Testumfang}
+\markright{Testumfang}
+Der Test umfasst: Titelblatt, Inhaltsverzeichnis, Schriftarten, mehrstufige Listen, komplexe mathematische Formeln, alle mathematischen Umgebungen, Querverweise, Abbildungen und Tabellen, Randbemerkungen, Kapitelzusammenfassungen, Übungen, Literaturverzeichnis und Anhänge.
+
+\mainmatter
+
+% ========== Kapitel 1: Grundsatzlayout und mehrstufige Listen ==========
+\chapter{Grundlayout- und Listentest}
+\begin{introduction}[Testpunkte dieses Kapitels]
+\item Chinesische Schriftarten und Textformatierung
+\item Verschachtelung ungeordneter Listen mit 3 Ebenen
+\item Verschachtelung geordneter Listen mit 3 Ebenen
+\item Normale Absätze und hervorgehobener Text
+\end{introduction}
+
+\section{Schriftarten- und Textest}
+Normaler Fließtext-Test. \textbf{Fett}, \textit{Kursiv}, \underline{Unterstrichen}, \textcolor{red}{Roter Text-Test}.
+
+\section{Test ungeordnete Liste mit 3 Ebenen}
+\begin{itemize}
+\item Ebene-1-Testpunkt A
+\item Ebene-1-Testpunkt B
+    \begin{itemize}
+    \item Ebene-2-Testpunkt B1
+    \item Ebene-2-Testpunkt B2
+        \begin{itemize}
+        \item Ebene-3-Testpunkt B2-1
+        \item Ebene-3-Testpunkt B2-2
+            \begin{itemize}
+            \item Ebene-4-Testpunkt B2-1a
+            \item Ebene-4-Testpunkt B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Test geordnete Liste mit 3 Ebenen}
+\begin{enumerate}
+\item Ebene-1-geordneter Test 1
+\item Ebene-1-geordneter Test 2
+    \begin{enumerate}
+    \item Ebene-2-geordneter Test 2-1
+    \item Ebene-2-geordneter Test 2-2
+        \begin{enumerate}
+        \item Ebene-3-geordneter Test 2-2-1
+        \item Ebene-3-geordneter Test 2-2-2
+            \begin{enumerate}
+            \item Ebene-4-geordneter Test 2-2-2-1
+            \item Ebene-4-geordneter Test 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Kapitel 2: Test komplexer mathematischer Formeln ==========
+\chapter{Test komplexer mathematischer Formeln}
+\begin{introduction}
+\item Einzeilige komplexe Formel
+\item Mehrzeilige Formeln (align)
+\item Matrizen / Determinanten
+\item Mehrfachintegrale / Summen / Grenzwerte / Brüche
+\item Formelbeschriftungen und Querverweise
+\end{introduction}
+
+\section{Einzeilige komplexe Formel}
+Inline komplexe Formeln: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Mehrzeilige Formeln und Matrizen}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Formeln mit großen Operatoren}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Formel-Querverweis: Satz des Pythagoras \eqref{eq:gougu}, Doppelintegral \eqref{eq:double}, Determinante \eqref{eq:det}, Reihe \eqref{eq:series}.
+
+% ========== Kapitel 3: Vollständiger Test aller mathematischen Umgebungen ==========
+\chapter{Vollständiger Test mathematischer Umgebungen}
+\begin{introduction}
+\item Definition / Satz / Lemma / Korollar / Axiom / Postulat
+\item Proposition / Beispiel / Problem / Übung
+\item Hinweis / Bemerkung / Schlussfolgerung / Annahme / Eigenschaft
+\item Lösung / Beweisumgebung
+\end{introduction}
+
+\section{Umgebungstest}
+
+% 1. Definition
+\ifdefined\simpleTest
+\begin{definition}[Testdefinition]\label{def:test}
+\else
+\begin{definition}[Testdefinition]{test}
+\fi
+Dies ist der Testinhalt der Definitionsumgebung ohne tatsächliche mathematische Bedeutung, nur zur Stilprüfung.
+\end{definition}
+
+% 2. Satz
+\ifdefined\simpleTest
+\begin{theorem}[Testsatz]\label{thm:test}
+\else
+\begin{theorem}[Testsatz]{test}
+\fi
+Wenn $x>0$, dann gilt $x+1>1$, entsprechend Formel \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lemma
+\ifdefined\simpleTest
+\begin{lemma}[Testlemma]\label{lem:test}
+\else
+\begin{lemma}[Testlemma]{test}
+\fi
+Für jede reelle Zahl $x$ gilt $x^2\geq0$.
+\end{lemma}
+
+% 4. Korollar
+\ifdefined\simpleTest
+\begin{corollary}[Testkorollar]\label{cor:test}
+\else
+\begin{corollary}[Testkorollar]{test}
+\fi
+Aus Lemma \ref{lem:test} folgt: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axiom
+\ifdefined\simpleTest
+\begin{axiom}[Testaxiom]\label{axi:test}
+\else
+\begin{axiom}[Testaxiom]{test}
+\fi
+Testaxiom ohne praktische Bedeutung.
+\end{axiom}
+
+% 6. Postulat
+\ifdefined\simpleTest
+\begin{postulate}[Testpostulat]\label{pos:test}
+\else
+\begin{postulate}[Testpostulat]{test}
+\fi
+Testpostulat nur zur Umgebungsprüfung.
+\end{postulate}
+
+% 7. Proposition
+\ifdefined\simpleTest
+\begin{proposition}[Testproposition]\label{pro:test}
+\else
+\begin{proposition}[Testproposition]{test}
+\fi
+Inhalt der Testproposition, verknüpft mit Definition \ref{def:test}.
+\end{proposition}
+
+% 8. Beispiel
+\begin{example}\label{exa:test}
+Beispielumgebungstest mit automatischer Nummerierung.
+\end{example}
+
+% 9. Problem
+\begin{problem}\label{probl:test}
+Problemungebungstest zur Stellung ungelöster Aufgaben.
+\end{problem}
+
+% 10. Übung
+\begin{exercise}\label{exer:test}
+Berechnen Sie: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Hinweis
+\begin{note}
+Hinweisumgebung ohne Nummerierung für wichtige Erinnerungen.
+\end{note}
+
+% 12. Bemerkung
+\begin{remark}
+Bemerkungsumgebung für ergänzende Erklärungen.
+\end{remark}
+
+% 13. Schlussfolgerung
+\begin{conclusion}
+Schlussfolgerungsumgebung für zusammenfassenden Testinhalt.
+\end{conclusion}
+
+% 14. Annahme
+\begin{assumption}
+Annahmeumgebung zur Festlegung von Testbedingungen.
+\end{assumption}
+
+% 15. Eigenschaft
+\begin{property}
+Eigenschaftsumgebung zur Beschreibung von Testmerkmalen.
+\end{property}
+
+% 16. Lösung
+\begin{solution}
+Lösung zu Übung \ref{exer:test}: Die Summe beträgt $55$ (Testantwort).
+\end{solution}
+
+% 17. Beweis
+\begin{proof}
+Beweis zu Satz \ref{thm:test}: Da $x>0$ ist, folgt durch Addition von 1 auf beide Seiten die Behauptung.
+\end{proof}
+
+% ========== Kapitel 4: Querverweise · Abbildungen · Randbemerkungen ==========
+\chapter{Querverweise und erweiterte Funktionen}
+\begin{introduction}
+\item Alle Arten von Querverweisen
+\item Einfacher Abbildungs- und Tabellentest
+\item Randbemerkungsfunktionstest
+\item Kapitelnavigationsprüfung
+\end{introduction}
+
+\section{Zusammenfassung aller Querverweise}
+Definition \ref{def:test}, Satz \ref{thm:test}, Lemma \ref{lem:test}, Korollar \ref{cor:test}, Axiom \ref{axi:test}, Postulat \ref{pos:test}, Proposition \ref{pro:test}, Beispiel \ref{exa:test}, Problem \ref{probl:test}, Übung \ref{exer:test}.
+
+\section{Abbildungs- und Tabellentest}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Testabbildung}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Testtabelle}\label{tab:test}
+\end{table}
+Abbildungs-/Tabellenverweis: \figref{fig:test} ist die Testabbildung, \tabref{tab:test} ist die Testtabelle.
+
+% ========== Kapitelabschlussübungen ==========
+\begin{problemset}[Kapitel-Testübungen]
+\item Überprüfen Sie das Anzeigestil der Definition \ref{def:test}
+\item Herleiten Sie die Formel \eqref{eq:double}
+\item Prüfen Sie, ob Abbildung \ref{fig:test} korrekt angezeigt wird
+\end{problemset}
+
+% ========== Literaturverzeichnis ==========
+\nocite{*}
+\printbibliography
+
+% ========== Anhang ==========
+\appendix
+\chapter{Testanhang}
+Der Anhanginhalt dient zur Prüfung von Anhangskapiteln, Kopfzeilen, Seitenzahlen und Layoutstil ohne tatsächliche Informationen.
+\section{Testanhang 1}
+Der Anhanginhalt dient zur Prüfung von Anhangskapiteln, Kopfzeilen, Seitenzahlen und Layoutstil ohne tatsächliche Informationen.
+\newpage
+\section{Testanhang 2}
+Der Anhanginhalt dient zur Prüfung von Anhangskapiteln, Kopfzeilen, Seitenzahlen und Layoutstil ohne tatsächliche Informationen.
+\end{document}

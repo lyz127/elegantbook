@@ -1,0 +1,291 @@
+% ========== Cover & Basic Information ==========
+\title{ElegantBook Test Document}
+\subtitle{Core Features of the Template}
+\author{Test Engineer}
+\institute{Template Testing Team}
+\date{\today}
+\version{v1.0}
+\extrainfo{This document is only for template function testing and has no academic value}
+\bioinfo{Test Batch}{TEST-FULL-20260506}
+
+% ========== Table of Contents & Basic Settings ==========
+\setcounter{tocdepth}{3} % Show table of contents up to level 3
+
+% ========== Test References ==========
+\addbibresource[location=local]{reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Preface (with Section Subsections) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Test Preface}
+\markboth{Test Preface}{}
+\section*{Document Description}
+\markright{Document Description}
+This document is a full-function test case for ElegantBook, covering all basic and advanced features of the template. All content is fictional test data with no practical significance.
+\newpage
+\section*{Test Scope}
+\markright{Test Scope}
+This test includes: cover, table of contents, fonts, multi-level lists, complex formulas, all mathematical environments, cross-references, figures and tables, marginal notes, chapter summaries, exercises, references, and appendices.
+
+\mainmatter
+
+% ========== Chapter 1: Basic Typesetting & Multi-level Lists ==========
+\chapter{Basic Typesetting and List Testing}
+\begin{introduction}[Test Items of This Chapter]
+\item Chinese Fonts and Text Formatting
+\item 3-level Unordered List Nesting
+\item 3-level Ordered List Nesting
+\item Ordinary Paragraphs and Emphasized Text
+\end{introduction}
+
+\section{Font and Text Testing}
+Normal body text test. \textbf{Bold}, \textit{Italic}, \underline{Underline}, \textcolor{red}{Red Text Test}.
+
+\section{3-level Unordered List Test}
+\begin{itemize}
+\item Level 1 Test Item A
+\item Level 1 Test Item B
+    \begin{itemize}
+    \item Level 2 Test Item B1
+    \item Level 2 Test Item B2
+        \begin{itemize}
+        \item Level 3 Test Item B2-1
+        \item Level 3 Test Item B2-2
+            \begin{itemize}
+            \item Level 4 Test Item B2-1a
+            \item Level 4 Test Item B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{3-level Ordered List Test}
+\begin{enumerate}
+\item Level 1 Ordered Test 1
+\item Level 1 Ordered Test 2
+    \begin{enumerate}
+    \item Level 2 Ordered Test 2-1
+    \item Level 2 Ordered Test 2-2
+        \begin{enumerate}
+        \item Level 3 Ordered Test 2-2-1
+        \item Level 3 Ordered Test 2-2-2
+            \begin{enumerate}
+            \item Level 4 Ordered Test 2-2-2-1
+            \item Level 4 Ordered Test 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Chapter 2: Complex Mathematical Formula Testing ==========
+\chapter{Complex Mathematical Formula Testing}
+\begin{introduction}
+\item Single-line Complex Formula
+\item Multi-line Formula (align)
+\item Matrix/Determinant
+\item Multiple Integrals/Summations/Limits/Fractions
+\item Formula Labels and Cross-references
+\end{introduction}
+
+\section{Single-line Complex Formula}
+Inline complex formulas: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Multi-line Formulas and Matrices}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Large Operator Formulas}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Formula cross-reference: Pythagorean theorem \eqref{eq:gougu}, double integral \eqref{eq:double}, determinant \eqref{eq:det}, series \eqref{eq:series}.
+
+% ========== Chapter 3: Full Mathematical Environment Testing ==========
+\chapter{Full Mathematical Environment Testing}
+\begin{introduction}
+\item Definition/Theorem/Lemma/Corollary/Axiom/Postulate
+\item Proposition/Example/Problem/Exercise
+\item Note/Remark/Conclusion/Assumption/Property
+\item Solution/Proof Environment
+\end{introduction}
+
+\section{Environment Testing}
+
+% 1. Definition
+\ifdefined\simpleTest
+\begin{definition}[Test Definition]\label{def:test}
+\else
+\begin{definition}[Test Definition]{test}
+\fi
+This is the test content of the definition environment, with no practical mathematical meaning, only for style verification.
+\end{definition}
+
+% 2. Theorem
+\ifdefined\simpleTest
+\begin{theorem}[Test Theorem]\label{thm:test}
+\else
+\begin{theorem}[Test Theorem]{test}
+\fi
+If $x>0$, then $x+1>1$, corresponding to Formula \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lemma
+\ifdefined\simpleTest
+\begin{lemma}[Test Lemma]\label{lem:test}
+\else
+\begin{lemma}[Test Lemma]{test}
+\fi
+For any real number $x$, $x^2\geq0$ holds.
+\end{lemma}
+
+% 4. Corollary
+\ifdefined\simpleTest
+\begin{corollary}[Test Corollary]\label{cor:test}
+\else
+\begin{corollary}[Test Corollary]{test}
+\fi
+From Lemma \ref{lem:test}, we can get: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axiom
+\ifdefined\simpleTest
+\begin{axiom}[Test Axiom]\label{axi:test}
+\else
+\begin{axiom}[Test Axiom]{test}
+\fi
+Test axiom, no practical meaning.
+\end{axiom}
+
+% 6. Postulate
+\ifdefined\simpleTest
+\begin{postulate}[Test Postulate]\label{pos:test}
+\else
+\begin{postulate}[Test Postulate]{test}
+\fi
+Test postulate, only for environment verification.
+\end{postulate}
+
+% 7. Proposition
+\ifdefined\simpleTest
+\begin{proposition}[Test Proposition]\label{pro:test}
+\else
+\begin{proposition}[Test Proposition]{test}
+\fi
+Test proposition content, associated with Definition \ref{def:test}.
+\end{proposition}
+
+% 8. Example
+\begin{example}\label{exa:test}
+Example environment test, automatic numbering.
+\end{example}
+
+% 9. Problem
+\begin{problem}\label{probl:test}
+Problem environment test, used to propose unsolved problems.
+\end{problem}
+
+% 10. Exercise
+\begin{exercise}\label{exer:test}
+Calculate: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Note
+\begin{note}
+Note environment: no numbering, for key reminders.
+\end{note}
+
+% 12. Remark
+\begin{remark}
+Remark environment: for supplementary explanations.
+\end{remark}
+
+% 13. Conclusion
+\begin{conclusion}
+Conclusion environment: test summary content.
+\end{conclusion}
+
+% 14. Assumption
+\begin{assumption}
+Assumption environment: test condition setting.
+\end{assumption}
+
+% 15. Property
+\begin{property}
+Property environment: test object characteristics.
+\end{property}
+
+% 16. Solution
+\begin{solution}
+Solution to Exercise \ref{exer:test}: The sum is $55$ (test answer).
+\end{solution}
+
+% 17. Proof
+\begin{proof}
+Proof of Theorem \ref{thm:test}: Since $x>0$, add 1 to both sides to prove it.
+\end{proof}
+
+% ========== Chapter 4: Cross-references, Figures & Marginal Notes Testing ==========
+\chapter{Cross-references and Extended Functions}
+\begin{introduction}
+\item All Types of Cross-references
+\item Simple Figure and Table Test
+\item Marginal Note Function Test
+\item Chapter Jump Verification
+\end{introduction}
+
+\section{All Cross-references Summary}
+Definition \ref{def:test}, Theorem \ref{thm:test}, Lemma \ref{lem:test}, Corollary \ref{cor:test}, Axiom \ref{axi:test}, Postulate \ref{pos:test}, Proposition \ref{pro:test}, Example \ref{exa:test}, Problem \ref{probl:test}, Exercise \ref{exer:test}.
+
+\section{Figure and Table Testing}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Test Figure}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Test Table}\label{tab:test}
+\end{table}
+Figure and table reference: \figref{fig:test} is the test figure, \tabref{tab:test} is the test table.
+
+% ========== End-of-chapter Exercises ==========
+\begin{problemset}[Test Exercises of This Chapter]
+\item Verify the display style of Definition \ref{def:test}
+\item Derive Formula \eqref{eq:double}
+\item Check if Figure \ref{fig:test} is displayed normally
+\end{problemset}
+
+% ========== References ==========
+\nocite{*}
+\printbibliography
+
+% ========== Appendix ==========
+\appendix
+\chapter{Test Appendix}
+The appendix content is used to verify appendix chapters, headers, page numbers, and typesetting styles, with no actual information.
+\section{Appendix Test 1}
+The appendix content is used to verify appendix chapters, headers, page numbers, and typesetting styles, with no actual information.
+\newpage
+\section{Appendix Test 2}
+The appendix content is used to verify appendix chapters, headers, page numbers, and typesetting styles, with no actual information.
+\end{document}

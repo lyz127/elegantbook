@@ -1,0 +1,296 @@
+% ========== 封面与基础信息 ==========
+\title{ElegantBook测试文档}
+\subtitle{模板核心特性}
+\author{测试工程师}
+\institute{模板测试组}
+\date{\today}
+\version{v1.0}
+\extrainfo{本文件仅用于模板功能测试，无任何学术价值}
+\bioinfo{测试批次}{TEST-FULL-20260506}
+
+% ========== 目录与基础设置 ==========
+\setcounter{tocdepth}{3} % 目录显示到3级
+
+% ========== 测试用参考文献 ==========
+\addbibresource[location=local]{reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== 前言（带Section分段） ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{测试前言}
+\markboth{测试前言}{}
+\section*{文档说明}
+\markright{文档说明}
+本文档为 ElegantBook 全功能测试用例，覆盖模板所有基础与高级功能，所有内容均为虚构测试数据，无实际意义。
+\newpage
+\section*{测试范围}
+\markright{测试范围}
+本次测试包含：封面、目录、字体、多级列表、复杂公式、全部数学环境、交叉引用、图表、旁注、章节摘要、习题、参考文献、附录。
+
+\mainmatter
+
+% ========== 第1章：基础排版与多级列表 ==========
+\chapter{基础排版与列表测试}
+\begin{introduction}[本章测试项]
+\item 中文字体与文本格式
+\item 3级无序列表嵌套
+\item 3级有序列表嵌套
+\item 普通段落与强调文本
+\end{introduction}
+
+\section{字体与文本测试}
+正常正文测试。\textbf{加粗}、\textit{斜体}、\underline{下划线}、\textcolor{red}{红色文字测试}。
+
+{\songti 宋体测试：\textbf{加粗}、\textit{斜体}、\underline{下划线}}；\par
+{\heiti 黑体测试：\textbf{加粗}、\textit{斜体}、\underline{下划线}}；\par
+{\kaishu 楷书测试：\textbf{加粗}、\textit{斜体}、\underline{下划线}}；\par
+{\fangsong 仿宋测试：\textbf{加粗}、\textit{斜体}、\underline{下划线}}。
+
+\section{三级无序列表测试}
+\begin{itemize}
+\item 一级测试项 A
+\item 一级测试项 B
+    \begin{itemize}
+    \item 二级测试项 B1
+    \item 二级测试项 B2
+        \begin{itemize}
+        \item 三级测试项 B2-1
+        \item 三级测试项 B2-2
+            \begin{itemize}
+            \item 四级测试项 B2-1a
+            \item 四级测试项 B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{三级有序列表测试}
+\begin{enumerate}
+\item 一级有序测试 1
+\item 一级有序测试 2
+    \begin{enumerate}
+    \item 二级有序测试 2-1
+    \item 二级有序测试 2-2
+        \begin{enumerate}
+        \item 三级有序测试 2-2-1
+        \item 三级有序测试 2-2-2
+            \begin{enumerate}
+            \item 四级有序测试 2-2-2-1
+            \item 四级有序测试 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== 第2章：复杂数学公式测试 ==========
+\chapter{复杂数学公式测试}
+\begin{introduction}
+\item 单行复杂公式
+\item 多行公式（align）
+\item 矩阵/行列式
+\item 多重积分/求和/极限/分式
+\item 公式标签与交叉引用
+\end{introduction}
+
+\section{单行复杂公式}
+行内复杂公式：$\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$、$\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$。
+
+\section{多行公式与矩阵}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{大型算子公式}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+公式交叉引用：勾股定理\eqref{eq:gougu}、二重积分\eqref{eq:double}、行列式\eqref{eq:det}、级数\eqref{eq:series}。
+
+% ========== 第3章：全部数学环境测试 ==========
+\chapter{全数学环境测试}
+\begin{introduction}
+\item 定义/定理/引理/推论/公理/公设
+\item 命题/示例/问题/习题
+\item 提示/备注/结论/假设/性质
+\item 解答/证明环境
+\end{introduction}
+
+\section{环境测试}
+
+% 1. 定义
+\ifdefined\simpleTest
+\begin{definition}[测试定义]\label{def:test}
+\else
+\begin{definition}[测试定义]{test}
+\fi
+这是定义环境测试内容，无实际数学意义，仅验证样式。
+\end{definition}
+
+% 2. 定理
+\ifdefined\simpleTest
+\begin{theorem}[测试定理]\label{thm:test}
+\else
+\begin{theorem}[测试定理]{test}
+\fi
+若 $x>0$，则 $x+1>1$，对应公式\eqref{eq:gougu}。
+\end{theorem}
+
+% 3. 引理
+\ifdefined\simpleTest
+\begin{lemma}[测试引理]\label{lem:test}
+\else
+\begin{lemma}[测试引理]{test}
+\fi
+对任意实数 $x$，有 $x^2\geq0$。
+\end{lemma}
+
+% 4. 推论
+\ifdefined\simpleTest
+\begin{corollary}[测试推论]\label{cor:test}
+\else
+\begin{corollary}[测试推论]{test}
+\fi
+由引理\ref{lem:test}可得：$(x-1)^2\geq0$。
+\end{corollary}
+
+% 5. 公理
+\ifdefined\simpleTest
+\begin{axiom}[测试公理]\label{axi:test}
+\else
+\begin{axiom}[测试公理]{test}
+\fi
+测试用公理，无实际含义。
+\end{axiom}
+
+% 6. 公设
+\ifdefined\simpleTest
+\begin{postulate}[测试公设]\label{pos:test}
+\else
+\begin{postulate}[测试公设]{test}
+\fi
+测试用公设，仅验证环境。
+\end{postulate}
+
+% 7. 命题
+\ifdefined\simpleTest
+\begin{proposition}[测试命题]\label{pro:test}
+\else
+\begin{proposition}[测试命题]{test}
+\fi
+测试命题内容，关联定义\ref{def:test}。
+\end{proposition}
+
+% 8. 示例
+\begin{example}\label{exa:test}
+示例环境测试，自动编号。
+\end{example}
+
+% 9. 问题
+\begin{problem}\label{probl:test}
+问题环境测试，用于提出待解决问题。
+\end{problem}
+
+% 10. 习题
+\begin{exercise}\label{exer:test}
+计算：$1+2+3+\dots+10$。
+\end{exercise}
+
+% 11. 提示
+\begin{note}
+提示环境：无编号，用于关键提醒。
+\end{note}
+
+% 12. 备注
+\begin{remark}
+备注环境：补充说明用。
+\end{remark}
+
+% 13. 结论
+\begin{conclusion}
+结论环境：测试总结性内容。
+\end{conclusion}
+
+% 14. 假设
+\begin{assumption}
+假设环境：测试条件设定。
+\end{assumption}
+
+% 15. 性质
+\begin{property}
+性质环境：测试对象特性。
+\end{property}
+
+% 16. 解答
+\begin{solution}
+习题\ref{exer:test}解答：和为 $55$（测试答案）。
+\end{solution}
+
+% 17. 证明
+\begin{proof}
+定理\ref{thm:test}证明：因 $x>0$，两边加1即得证。
+\end{proof}
+
+% ========== 第4章：交叉引用·图表·旁注测试 ==========
+\chapter{交叉引用与拓展功能}
+\begin{introduction}
+\item 全类型交叉引用
+\item 简单图表测试
+\item 旁注功能测试
+\item 章节跳转验证
+\end{introduction}
+
+\section{全交叉引用汇总}
+定义\ref{def:test}、定理\ref{thm:test}、引理\ref{lem:test}、推论\ref{cor:test}、公理\ref{axi:test}、公设\ref{pos:test}、命题\ref{pro:test}、示例\ref{exa:test}、问题\ref{probl:test}、习题\ref{exer:test}。
+
+\section{图表测试}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{测试图}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{测试表}\label{tab:test}
+\end{table}
+图表引用：\figref{fig:test}为测试图片，\tabref{tab:test}为测试表。
+
+% ========== 章后习题 ==========
+\begin{problemset}[本章测试习题]
+\item 验证定义\ref{def:test}的显示样式
+\item 推导公式\eqref{eq:double}
+\item 查看图\ref{fig:test}是否正常显示
+\end{problemset}
+
+% ========== 参考文献 ==========
+\nocite{*}
+\printbibliography
+
+% ========== 附录 ==========
+\appendix
+\chapter{测试附录}
+附录内容用于验证附录章节、页眉、页码、排版样式，无实际信息。
+\section{附录测试一}
+附录内容用于验证附录章节、页眉、页码、排版样式，无实际信息。
+\newpage
+\section{附录测试二}
+附录内容用于验证附录章节、页眉、页码、排版样式，无实际信息。
+\end{document}

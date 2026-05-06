@@ -1,0 +1,294 @@
+\documentclass[jp]{../../elegantbook}
+% ========== 表紙と基本情報 ==========
+\title{ElegantBook テスト文書}
+\subtitle{テンプレートの核心機能}
+\author{テストエンジニア}
+\institute{テンプレート試験グループ}
+\date{\today}
+\version{v1.0}
+\extrainfo{本ファイルはテンプレート機能試験専用であり、学術的価値を一切有しません}
+\bioinfo{試験ロット}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== 目次と基本設定 ==========
+\setcounter{tocdepth}{3} % 目次を第3階層まで表示
+
+% ========== 試験用参考文献 ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== 序文（セクション分割付き） ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{試験序文}
+\markboth{試験序文}{}
+\section*{文書説明}
+\markright{文書説明}
+本文書は ElegantBook 全機能の試験ケースであり、テンプレートの基本機能・高級機能を全て網羅しています。本文中の内容はすべて架空の試験データであり、実質的な意味は持ちません。
+\newpage
+\section*{試験範囲}
+\markright{試験範囲}
+本試験の対象：表紙、目次、フォント、多階層リスト、複雑な数式、全ての数式環境、相互参照、図表、傍注、章概要、演習問題、参考文献、付録。
+
+\mainmatter
+
+% ========== 第1章：基本組版と多階層リスト ==========
+\chapter{基本組版とリスト試験}
+\begin{introduction}[本章試験項目]
+\item 日本語フォントと文字書式
+\item 3階層無順序リストの入れ子
+\item 3階層順序リストの入れ子
+\item 通常段落と強調文字列
+\end{introduction}
+
+\section{フォントと文字試験}
+通常本文の試験。\textbf{太字}、\textit{斜体}、\underline{下線付き}、\textcolor{red}{赤色文字試験}。
+
+\section{3階層無順序リスト試験}
+\begin{itemize}
+\item 第1階層試験項目 A
+\item 第1階層試験項目 B
+    \begin{itemize}
+    \item 第2階層試験項目 B1
+    \item 第2階層試験項目 B2
+        \begin{itemize}
+        \item 第3階層試験項目 B2-1
+        \item 第3階層試験項目 B2-2
+            \begin{itemize}
+            \item 第4階層試験項目 B2-1a
+            \item 第4階層試験項目 B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{3階層順序リスト試験}
+\begin{enumerate}
+\item 第1階層順序試験 1
+\item 第1階層順序試験 2
+    \begin{enumerate}
+    \item 第2階層順序試験 2-1
+    \item 第2階層順序試験 2-2
+        \begin{enumerate}
+        \item 第3階層順序試験 2-2-1
+        \item 第3階層順序試験 2-2-2
+            \begin{enumerate}
+            \item 第4階層順序試験 2-2-2-1
+            \item 第4階層順序試験 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== 第2章：複雑数式試験 ==========
+\chapter{複雑な数式の試験}
+\begin{introduction}
+\item 単一行複雑数式
+\item 複数行数式（align環境）
+\item 行列・行列式
+\item 多重積分・総和・極限・分数式
+\item 数式ラベルと相互参照
+\end{introduction}
+
+\section{単一行複雑数式}
+インライン複雑数式：$\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$、$\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$。
+
+\section{複数行数式と行列}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{大型演算子数式}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+数式相互参照：三平方の定理\eqref{eq:gougu}、二重積分\eqref{eq:double}、行列式\eqref{eq:det}、級数\eqref{eq:series}。
+
+% ========== 第3章：全数式環境試験 ==========
+\chapter{全数式環境の試験}
+\begin{introduction}
+\item 定義・定理・補題・系・公理・公準
+\item 命題・例題・問題・演習
+\item 注意・備考・結論・仮定・性質
+\item 解答・証明環境
+\end{introduction}
+
+\section{環境試験}
+
+% 1. 定義
+\ifdefined\simpleTest
+\begin{definition}[試験定義]\label{def:test}
+\else
+\begin{definition}[試験定義]{test}
+\fi
+本定義環境は試験用内容であり、実際の数学的意味はなく、書式スタイルの検証のみを目的とします。
+\end{definition}
+
+% 2. 定理
+\ifdefined\simpleTest
+\begin{theorem}[試験定理]\label{thm:test}
+\else
+\begin{theorem}[試験定理]{test}
+\fi
+$x>0$ ならば $x+1>1$ が成り立ち、数式\eqref{eq:gougu}に対応します。
+\end{theorem}
+
+% 3. 補題
+\ifdefined\simpleTest
+\begin{lemma}[試験補題]\label{lem:test}
+\else
+\begin{lemma}[試験補題]{test}
+\fi
+任意の実数 $x$ に対し $x^2\geq0$ が成立します。
+\end{lemma}
+
+% 4. 系
+\ifdefined\simpleTest
+\begin{corollary}[試験系]\label{cor:test}
+\else
+\begin{corollary}[試験系]{test}
+\fi
+補題\ref{lem:test}より $(x-1)^2\geq0$ が導かれます。
+\end{corollary}
+
+% 5. 公理
+\ifdefined\simpleTest
+\begin{axiom}[試験公理]\label{axi:test}
+\else
+\begin{axiom}[試験公理]{test}
+\fi
+試験用公理であり、実質的な意味は持ちません。
+\end{axiom}
+
+% 6. 公準
+\ifdefined\simpleTest
+\begin{postulate}[試験公準]\label{pos:test}
+\else
+\begin{postulate}[試験公準]{test}
+\fi
+試験用公準であり、環境動作確認のみを行います。
+\end{postulate}
+
+% 7. 命題
+\ifdefined\simpleTest
+\begin{proposition}[試験命題]\label{pro:test}
+\else
+\begin{proposition}[試験命題]{test}
+\fi
+試験用命題内容で、定義\ref{def:test}と関連付けられています。
+\end{proposition}
+
+% 8. 例題
+\begin{example}\label{exa:test}
+例題環境の試験、自動番号付き。
+\end{example}
+
+% 9. 問題
+\begin{problem}\label{probl:test}
+問題環境の試験、解決すべき課題を記述する用途。
+\end{problem}
+
+% 10. 演習
+\begin{exercise}\label{exer:test}
+計算せよ：$1+2+3+\dots+10$。
+\end{exercise}
+
+% 11. 注意
+\begin{note}
+注意環境：番号なし、重要な補足提醒に使用。
+\end{note}
+
+% 12. 備考
+\begin{remark}
+備考環境：補足説明を記載する用途。
+\end{remark}
+
+% 13. 結論
+\begin{conclusion}
+結論環境：試験のまとめ内容を記載。
+\end{conclusion}
+
+% 14. 仮定
+\begin{assumption}
+仮定環境：試験条件の設定に使用。
+\end{assumption}
+
+% 15. 性質
+\begin{property}
+性質環境：対象の特性を記述。
+\end{property}
+
+% 16. 解答
+\begin{solution}
+演習\ref{exer:test}の解答：総和は $55$（試験回答）。
+\end{solution}
+
+% 17. 証明
+\begin{proof}
+定理\ref{thm:test}の証明：$x>0$ のため両辺に1を加えれば証明完了。
+\end{proof}
+
+% ========== 第4章：相互参照・図表・傍注試験 ==========
+\chapter{相互参照と拡張機能}
+\begin{introduction}
+\item 全種類の相互参照
+\item 簡単な図表試験
+\item 傍注機能試験
+\item 章ジャンプ動作検証
+\end{introduction}
+
+\section{全相互参照一覧}
+定義\ref{def:test}、定理\ref{thm:test}、補題\ref{lem:test}、系\ref{cor:test}、公理\ref{axi:test}、公準\ref{pos:test}、命題\ref{pro:test}、例題\ref{exa:test}、問題\ref{probl:test}、演習\ref{exer:test}。
+
+\section{図表試験}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{試験図}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{試験表}\label{tab:test}
+\end{table}
+図表参照：\figref{fig:test} は試験図、\tabref{tab:test} は試験表です。
+
+% ========== 章末演習 ==========
+\begin{problemset}[本章試験演習]
+\item 定義\ref{def:test}の表示スタイルを検証せよ
+\item 数式\eqref{eq:double}を導出せよ
+\item 図\ref{fig:test}が正常に表示されるか確認せよ
+\end{problemset}
+
+% ========== 参考文献 ==========
+\nocite{*}
+\printbibliography
+
+% ========== 付録 ==========
+\appendix
+\chapter{試験付録}
+付録内容は付録章・ヘッダー・ページ番号・組版スタイルの検証用であり、実質的な情報は含みません。
+\section{付録試験1}
+付録内容は付録章・ヘッダー・ページ番号・組版スタイルの検証用であり、実質的な情報は含みません。
+\newpage
+\section{付録試験2}
+付録内容は付録章・ヘッダー・ページ番号・組版スタイルの検証用であり、実質的な情報は含みません。
+\end{document}

@@ -1,0 +1,294 @@
+\documentclass[hu]{../../elegantbook}
+% ========== Borító és alapinformációk ==========
+\title{ElegantBook teszdokumentum}
+\subtitle{A sablon alapfunkciói}
+\author{Tesztmérnök}
+\institute{Sablon Tesztcsoport}
+\date{\today}
+\version{v1.0}
+\extrainfo{A dokumentum kizárólag sablonfunkció tesztelésére szolgál, nincs tudományos értéke}
+\bioinfo{Tesztköteg}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Tartalomjegyzék és alapbeállítások ==========
+\setcounter{tocdepth}{3} % Tartalomjegyzék megjelenítése 3 szintig
+
+% ========== Teszt irodalomjegyzék ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Előszó (szakaszokra bontva) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Tesztelőszó}
+\markboth{Tesztelőszó}{}
+\section*{Dokumentum leírása}
+\markright{Dokumentum leírása}
+Ez a dokumentum az ElegantBook teljes funkcióinak tesztesete, lefedi a sablon összes alap és haladó funkcióját. Minden tartalom kitalált tesztadat, gyakorlati jelentősége nincs.
+\newpage
+\section*{Teszt hatókör}
+\markright{Teszt hatókör}
+A teszt tartalmazza: borító, tartalomjegyzék, betűtípusok, többszintű listák, összetett matematikai képletek, összes matematikai környezet, kereszthivatkozások, ábrák és táblázatok, margójegyzetek, fejezetösszegzések, feladatok, irodalomjegyzék, függelékek.
+
+\mainmatter
+
+% ========== 1. fejezet: Alapformázás és többszintű listák ==========
+\chapter{Alapformázás és lista teszt}
+\begin{introduction}[A fejezet tesztpontjai]
+\item Kínai betűtípusok és szövegformázás
+\item 3 szintű rendezetlen lista beágyazása
+\item 3 szintű rendezett lista beágyazása
+\item Szokásos bekezdések és hangsúlyozott szöveg
+\end{introduction}
+
+\section{Betűtípus és szöveg teszt}
+Szokásos főszöveg teszt. \textbf{Félkövér}, \textit{Dőlt}, \underline{Aláhúzott}, \textcolor{red}{Piros szöveg teszt}.
+
+\section{3 szintű rendezetlen lista teszt}
+\begin{itemize}
+\item 1. szintű teszt elem A
+\item 1. szintű teszt elem B
+    \begin{itemize}
+    \item 2. szintű teszt elem B1
+    \item 2. szintű teszt elem B2
+        \begin{itemize}
+        \item 3. szintű teszt elem B2-1
+        \item 3. szintű teszt elem B2-2
+            \begin{itemize}
+            \item 4. szintű teszt elem B2-1a
+            \item 4. szintű teszt elem B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{3 szintű rendezett lista teszt}
+\begin{enumerate}
+\item 1. szintű rendezett teszt 1
+\item 1. szintű rendezett teszt 2
+    \begin{enumerate}
+    \item 2. szintű rendezett teszt 2-1
+    \item 2. szintű rendezett teszt 2-2
+        \begin{enumerate}
+        \item 3. szintű rendezett teszt 2-2-1
+        \item 3. szintű rendezett teszt 2-2-2
+            \begin{enumerate}
+            \item 4. szintű rendezett teszt 2-2-2-1
+            \item 4. szintű rendezett teszt 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== 2. fejezet: Összetett matematikai képletek tesztje ==========
+\chapter{Összetett matematikai képletek tesztje}
+\begin{introduction}
+\item Egysoros összetett képlet
+\item Többsoros képletek (align)
+\item Mátrixok / Determinánsok
+\item Többszörös integrálok / Összegzések / Határértékek / Törtek
+\item Képletcímkék és kereszthivatkozások
+\end{introduction}
+
+\section{Egysoros összetett képlet}
+Sorba illesztett összetett képletek: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Többsoros képletek és mátrixok}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Nagy operátoros képletek}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Képlet hivatkozás: Pitagorasz-tétel \eqref{eq:gougu}, kettős integrál \eqref{eq:double}, determináns \eqref{eq:det}, sorozat \eqref{eq:series}.
+
+% ========== 3. fejezet: Összes matematikai környezet tesztje ==========
+\chapter{Összes matematikai környezet teljes tesztje}
+\begin{introduction}
+\item Definíció / Tétel / Lemma / Következtetés / Axióma / Posztulátum
+\item Állítás / Példa / Probléma / Feladat
+\item Megjegyzés / Észrevétel / Következtetés / Feltételezés / Tulajdonság
+\item Megoldás / Bizonyítási környezet
+\end{introduction}
+
+\section{Környezet teszt}
+
+% 1. Definíció
+\ifdefined\simpleTest
+\begin{definition}[Teszt definíció]\label{def:test}
+\else
+\begin{definition}[Teszt definíció]{test}
+\fi
+Ez a definíciós környezet teszt tartalma, nincs valós matematikai jelentése, csak stílus ellenőrzésére szolgál.
+\end{definition}
+
+% 2. Tétel
+\ifdefined\simpleTest
+\begin{theorem}[Teszt tétel]\label{thm:test}
+\else
+\begin{theorem}[Teszt tétel]{test}
+\fi
+Ha $x>0$, akkor $x+1>1$, megfelel a \eqref{eq:gougu} képletnek.
+\end{theorem}
+
+% 3. Lemma
+\ifdefined\simpleTest
+\begin{lemma}[Teszt lemma]\label{lem:test}
+\else
+\begin{lemma}[Teszt lemma]{test}
+\fi
+Bármely valós $x$ esetén teljesül $x^2\geq0$.
+\end{lemma}
+
+% 4. Következtetés
+\ifdefined\simpleTest
+\begin{corollary}[Teszt következtetés]\label{cor:test}
+\else
+\begin{corollary}[Teszt következtetés]{test}
+\fi
+A \ref{lem:test} lemmából következik: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axióma
+\ifdefined\simpleTest
+\begin{axiom}[Teszt axióma]\label{axi:test}
+\else
+\begin{axiom}[Teszt axióma]{test}
+\fi
+Teszt axióma, gyakorlati jelentősége nincs.
+\end{axiom}
+
+% 6. Posztulátum
+\ifdefined\simpleTest
+\begin{postulate}[Teszt posztulátum]\label{pos:test}
+\else
+\begin{postulate}[Teszt posztulátum]{test}
+\fi
+Teszt posztulátum, csak környezet ellenőrzésére.
+\end{postulate}
+
+% 7. Állítás
+\ifdefined\simpleTest
+\begin{proposition}[Teszt állítás]\label{pro:test}
+\else
+\begin{proposition}[Teszt állítás]{test}
+\fi
+Teszt állítás tartalom, kapcsolódik a \ref{def:test} definícióhoz.
+\end{proposition}
+
+% 8. Példa
+\begin{example}\label{exa:test}
+Példa környezet teszt, automatikus számozás.
+\end{example}
+
+% 9. Probléma
+\begin{problem}\label{probl:test}
+Probléma környezet teszt, megoldandó kérdések felvetésére.
+\end{problem}
+
+% 10. Feladat
+\begin{exercise}\label{exer:test}
+Számítsd ki: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Megjegyzés
+\begin{note}
+Megjegyzés környezet: nincs számozás, fontos emlékeztetőkhöz.
+\end{note}
+
+% 12. Észrevétel
+\begin{remark}
+Észrevétel környezet: kiegészítő magyarázatokhoz.
+\end{remark}
+
+% 13. Következtetés
+\begin{conclusion}
+Következtetés környezet: összefoglaló teszt tartalom.
+\end{conclusion}
+
+% 14. Feltételezés
+\begin{assumption}
+Feltételezés környezet: teszt feltételek beállítása.
+\end{assumption}
+
+% 15. Tulajdonság
+\begin{property}
+Tulajdonság környezet: teszt objektum jellemzői.
+\end{property}
+
+% 16. Megoldás
+\begin{solution}
+A \ref{exer:test} feladat megoldása: Az összeg $55$ (teszt válasz).
+\end{solution}
+
+% 17. Bizonyítás
+\begin{proof}
+A \ref{thm:test} tétel bizonyítása: Mivel $x>0$, mindkét oldalhoz 1-et adva a tétel bizonyított.
+\end{proof}
+
+% ========== 4. fejezet: Kereszthivatkozások · Ábrák · Margójegyzetek ==========
+\chapter{Kereszthivatkozások és bővített funkciók}
+\begin{introduction}
+\item Minden típusú kereszthivatkozás
+\item Egyszerű ábra és táblázat teszt
+\item Margójegyzet funkció teszt
+\item Fejezet navigáció ellenőrzése
+\end{introduction}
+
+\section{Összes kereszthivatkozás összefoglalása}
+Definíció \ref{def:test}, Tétel \ref{thm:test}, Lemma \ref{lem:test}, Következtetés \ref{cor:test}, Axióma \ref{axi:test}, Posztulátum \ref{pos:test}, Állítás \ref{pro:test}, Példa \ref{exa:test}, Probléma \ref{probl:test}, Feladat \ref{exer:test}.
+
+\section{Ábra és táblázat teszt}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Teszt ábra}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Teszt táblázat}\label{tab:test}
+\end{table}
+Ábra/táblázat hivatkozás: \figref{fig:test} a teszt ábra, \tabref{tab:test} a teszt táblázat.
+
+% ========== Fejezetvégi feladatok ==========
+\begin{problemset}[Fejezet teszt feladatok]
+\item Ellenőrizd a \ref{def:test} definíció megjelenítési stílusát
+\item Vedd le a \eqref{eq:double} képletet
+\item Ellenőrizd, hogy a \ref{fig:test} ábra helyesen jelenik-e meg
+\end{problemset}
+
+% ========== Irodalomjegyzék ==========
+\nocite{*}
+\printbibliography
+
+% ========== Függelék ==========
+\appendix
+\chapter{Teszt függelék}
+A függelék tartalma a függelék fejezetek, fejlécék, oldalszámozás és formázási stílus ellenőrzésére szolgál, nincs valós információja.
+\section{Teszt függelék 1}
+A függelék tartalma a függelék fejezetek, fejlécék, oldalszámozás és formázási stílus ellenőrzésére szolgál, nincs valós információja.
+\newpage
+\section{Teszt függelék 2}
+A függelék tartalma a függelék fejezetek, fejlécék, oldalszámozás és formázási stílus ellenőrzésére szolgál, nincs valós információja.
+\end{document}

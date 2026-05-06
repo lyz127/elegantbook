@@ -1,0 +1,294 @@
+\documentclass[fr]{../../elegantbook}
+% ========== Page de couverture et informations générales ==========
+\title{Document de test ElegantBook}
+\subtitle{Caractéristiques clés du modèle}
+\author{Ingénieur de test}
+\institute{Équipe de test du modèle}
+\date{\today}
+\version{v1.0}
+\extrainfo{Ce document sert uniquement au test des fonctions du modèle, sans aucune valeur académique}
+\bioinfo{Lot de test}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Table des matières et paramètres de base ==========
+\setcounter{tocdepth}{3} % Afficher la table des matières jusqu'au niveau 3
+
+% ========== Références bibliographiques de test ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Préface (avec sections) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Préface de test}
+\markboth{Préface de test}{}
+\section*{Description du document}
+\markright{Description du document}
+Ce document est un cas de test complet pour ElegantBook, couvrant toutes les fonctionnalités de base et avancées du modèle. Tout le contenu est des données de test fictives sans signification pratique.
+\newpage
+\section*{Portée du test}
+\markright{Portée du test}
+Ce test inclut : page de couverture, table des matières, polices, listes à plusieurs niveaux, formules complexes, tous les environnements mathématiques, références croisées, figures et tableaux, notes marginales, résumés de chapitre, exercices, bibliographie, annexes.
+
+\mainmatter
+
+% ========== Chapitre 1 : Mise en page de base et listes hiérarchiques ==========
+\chapter{Test de mise en page et de listes}
+\begin{introduction}[Éléments de test du chapitre]
+\item Police chinoise et mise en forme du texte
+\item Imbrication de liste non ordonnée à 3 niveaux
+\item Imbrication de liste ordonnée à 3 niveaux
+\item Paragraphes normaux et texte mis en valeur
+\end{introduction}
+
+\section{Test de police et de texte}
+Texte normal du corps. \textbf{Gras}, \textit{Italique}, \underline{Souligné}, \textcolor{red}{Texte rouge}.
+
+\section{Test liste non ordonnée à 3 niveaux}
+\begin{itemize}
+\item Élément de test niveau 1 A
+\item Élément de test niveau 1 B
+    \begin{itemize}
+    \item Élément de test niveau 2 B1
+    \item Élément de test niveau 2 B2
+        \begin{itemize}
+        \item Élément de test niveau 3 B2-1
+        \item Élément de test niveau 3 B2-2
+            \begin{itemize}
+            \item Élément de test niveau 4 B2-1a
+            \item Élément de test niveau 4 B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Test liste ordonnée à 3 niveaux}
+\begin{enumerate}
+\item Test ordonné niveau 1 1
+\item Test ordonné niveau 1 2
+    \begin{enumerate}
+    \item Test ordonné niveau 2 2-1
+    \item Test ordonné niveau 2 2-2
+        \begin{enumerate}
+        \item Test ordonné niveau 3 2-2-1
+        \item Test ordonné niveau 3 2-2-2
+            \begin{enumerate}
+            \item Test ordonné niveau 4 2-2-2-1
+            \item Test ordonné niveau 4 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Chapitre 2 : Test des formules mathématiques complexes ==========
+\chapter{Test des formules mathématiques complexes}
+\begin{introduction}
+\item Formule complexe sur une ligne
+\item Formules multilignes (align)
+\item Matrices / Déterminants
+\item Intégrales multiples / Sommes / Limites / Fractions
+\item Étiquettes de formule et références croisées
+\end{introduction}
+
+\section{Formule complexe sur une ligne}
+Formules complexes en ligne : $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Formules multilignes et matrices}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Formules à grands opérateurs}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Référence de formule : Théorème de Pythagore \eqref{eq:gougu}, intégrale double \eqref{eq:double}, déterminant \eqref{eq:det}, série \eqref{eq:series}.
+
+% ========== Chapitre 3 : Test complet des environnements mathématiques ==========
+\chapter{Test complet des environnements mathématiques}
+\begin{introduction}
+\item Définition / Théorème / Lemme / Corollaire / Axiome / Postulat
+\item Proposition / Exemple / Problème / Exercice
+\item Note / Remarque / Conclusion / Hypothèse / Propriété
+\item Environnement solution / démonstration
+\end{introduction}
+
+\section{Test des environnements}
+
+% 1. Définition
+\ifdefined\simpleTest
+\begin{definition}[Définition de test]\label{def:test}
+\else
+\begin{definition}[Définition de test]{test}
+\fi
+Ceci est le contenu de test de l'environnement définition, sans signification mathématique réelle, uniquement pour vérifier le style.
+\end{definition}
+
+% 2. Théorème
+\ifdefined\simpleTest
+\begin{theorem}[Théorème de test]\label{thm:test}
+\else
+\begin{theorem}[Théorème de test]{test}
+\fi
+Si $x>0$, alors $x+1>1$, correspondant à la formule \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lemme
+\ifdefined\simpleTest
+\begin{lemma}[Lemme de test]\label{lem:test}
+\else
+\begin{lemma}[Lemme de test]{test}
+\fi
+Pour tout nombre réel $x$, on a $x^2\geq0$.
+\end{lemma}
+
+% 4. Corollaire
+\ifdefined\simpleTest
+\begin{corollary}[Corollaire de test]\label{cor:test}
+\else
+\begin{corollary}[Corollaire de test]{test}
+\fi
+D'après le Lemme \ref{lem:test}, on obtient : $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axiome
+\ifdefined\simpleTest
+\begin{axiom}[Axiome de test]\label{axi:test}
+\else
+\begin{axiom}[Axiome de test]{test}
+\fi
+Axiome de test, sans signification pratique.
+\end{axiom}
+
+% 6. Postulat
+\ifdefined\simpleTest
+\begin{postulate}[Postulat de test]\label{pos:test}
+\else
+\begin{postulate}[Postulat de test]{test}
+\fi
+Postulat de test, uniquement pour vérifier l'environnement.
+\end{postulate}
+
+% 7. Proposition
+\ifdefined\simpleTest
+\begin{proposition}[Proposition de test]\label{pro:test}
+\else
+\begin{proposition}[Proposition de test]{test}
+\fi
+Contenu de la proposition de test, lié à la Définition \ref{def:test}.
+\end{proposition}
+
+% 8. Exemple
+\begin{example}\label{exa:test}
+Test de l'environnement exemple, numérotation automatique.
+\end{example}
+
+% 9. Problème
+\begin{problem}\label{probl:test}
+Test de l'environnement problème, pour poser des questions à résoudre.
+\end{problem}
+
+% 10. Exercice
+\begin{exercise}\label{exer:test}
+Calculer : $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Note
+\begin{note}
+Environnement note : sans numérotation, pour rappels clés.
+\end{note}
+
+% 12. Remarque
+\begin{remark}
+Environnement remarque : pour explications complémentaires.
+\end{remark}
+
+% 13. Conclusion
+\begin{conclusion}
+Environnement conclusion : contenu synthétique de test.
+\end{conclusion}
+
+% 14. Hypothèse
+\begin{assumption}
+Environnement hypothèse : paramétrage des conditions de test.
+\end{assumption}
+
+% 15. Propriété
+\begin{property}
+Environnement propriété : caractéristiques de l'objet de test.
+\end{property}
+
+% 16. Solution
+\begin{solution}
+Solution de l'exercice \ref{exer:test} : La somme vaut $55$ (réponse de test).
+\end{solution}
+
+% 17. Démonstration
+\begin{proof}
+Démonstration du Théorème \ref{thm:test} : Comme $x>0$, ajouter 1 des deux côtés achève la démonstration.
+\end{proof}
+
+% ========== Chapitre 4 : Références croisées · Figures · Notes marginales ==========
+\chapter{Références croisées et fonctionnalités étendues}
+\begin{introduction}
+\item Tous types de références croisées
+\item Test simple de figures et tableaux
+\item Test de la fonction note marginale
+\item Vérification de navigation entre chapitres
+\end{introduction}
+
+\section{Récapitulatif des références croisées}
+Définition \ref{def:test}, Théorème \ref{thm:test}, Lemme \ref{lem:test}, Corollaire \ref{cor:test}, Axiome \ref{axi:test}, Postulat \ref{pos:test}, Proposition \ref{pro:test}, Exemple \ref{exa:test}, Problème \ref{probl:test}, Exercice \ref{exer:test}.
+
+\section{Test de figures et tableaux}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Figure de test}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Tableau de test}\label{tab:test}
+\end{table}
+Référence figure/tableau : \figref{fig:test} est la figure de test, \tabref{tab:test} est le tableau de test.
+
+% ========== Exercices de fin de chapitre ==========
+\begin{problemset}[Exercices de test du chapitre]
+\item Vérifier le style d'affichage de la Définition \ref{def:test}
+\item Dériver la formule \eqref{eq:double}
+\item Vérifier si la Figure \ref{fig:test} s'affiche correctement
+\end{problemset}
+
+% ========== Bibliographie ==========
+\nocite{*}
+\printbibliography
+
+% ========== Annexe ==========
+\appendix
+\chapter{Annexe de test}
+Le contenu de l'annexe sert à vérifier les chapitres d'annexe, en-têtes, numérotation des pages et style de mise en page, sans information réelle.
+\section{Test Annexe 1}
+Le contenu de l'annexe sert à vérifier les chapitres d'annexe, en-têtes, numérotation des pages et style de mise en page, sans information réelle.
+\newpage
+\section{Test Annexe 2}
+Le contenu de l'annexe sert à vérifier les chapitres d'annexe, en-têtes, numérotation des pages et style de mise en page, sans information réelle.
+\end{document}

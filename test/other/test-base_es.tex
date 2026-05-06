@@ -1,0 +1,294 @@
+\documentclass[es]{../../elegantbook}
+% ========== Portada e información básica ==========
+\title{Documento de prueba ElegantBook}
+\subtitle{Características principales de la plantilla}
+\author{Ingeniero de prueba}
+\institute{Grupo de prueba de plantillas}
+\date{\today}
+\version{v1.0}
+\extrainfo{Este documento solo sirve para probar funciones de plantilla y no tiene valor académico}
+\bioinfo{Lote de prueba}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Índice y configuraciones básicas ==========
+\setcounter{tocdepth}{3} % Mostrar índice hasta nivel 3
+
+% ========== Referencias bibliográficas de prueba ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Prólogo (con secciones) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Prólogo de prueba}
+\markboth{Prólogo de prueba}{}
+\section*{Descripción del documento}
+\markright{Descripción del documento}
+Este documento es un caso de prueba completo para ElegantBook, cubriendo todas las funciones básicas y avanzadas de la plantilla. Todo el contenido son datos de prueba ficticios sin significado práctico.
+\newpage
+\section*{Alcance de la prueba}
+\markright{Alcance de la prueba}
+Esta prueba incluye: portada, índice, fuentes, listas multinivel, fórmulas complejas, todos los entornos matemáticos, referencias cruzadas, figuras y tablas, notas marginales, resúmenes de capítulo, ejercicios, bibliografía y apéndices.
+
+\mainmatter
+
+% ========== Capítulo 1: Maquetación básica y listas multinivel ==========
+\chapter{Prueba de maquetación y listas}
+\begin{introduction}[Ítems de prueba de este capítulo]
+\item Fuentes chinas y formato de texto
+\item Anidamiento de lista desordenada de 3 niveles
+\item Anidamiento de lista ordenada de 3 niveles
+\item Párrafos normales y texto enfatizado
+\end{introduction}
+
+\section{Prueba de fuente y texto}
+Prueba de texto normal. \textbf{Negrita}, \textit{Cursiva}, \underline{Subrayado}, \textcolor{red}{Prueba de texto rojo}.
+
+\section{Prueba de lista desordenada de 3 niveles}
+\begin{itemize}
+\item Ítem de prueba nivel 1 A
+\item Ítem de prueba nivel 1 B
+    \begin{itemize}
+    \item Ítem de prueba nivel 2 B1
+    \item Ítem de prueba nivel 2 B2
+        \begin{itemize}
+        \item Ítem de prueba nivel 3 B2-1
+        \item Ítem de prueba nivel 3 B2-2
+            \begin{itemize}
+            \item Ítem de prueba nivel 4 B2-1a
+            \item Ítem de prueba nivel 4 B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Prueba de lista ordenada de 3 niveles}
+\begin{enumerate}
+\item Prueba ordenada nivel 1 1
+\item Prueba ordenada nivel 1 2
+    \begin{enumerate}
+    \item Prueba ordenada nivel 2 2-1
+    \item Prueba ordenada nivel 2 2-2
+        \begin{enumerate}
+        \item Prueba ordenada nivel 3 2-2-1
+        \item Prueba ordenada nivel 3 2-2-2
+            \begin{enumerate}
+            \item Prueba ordenada nivel 4 2-2-2-1
+            \item Prueba ordenada nivel 4 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Capítulo 2: Prueba de fórmulas matemáticas complejas ==========
+\chapter{Prueba de fórmulas matemáticas complejas}
+\begin{introduction}
+\item Fórmula compleja de una sola línea
+\item Fórmulas multilínea (align)
+\item Matrices / Determinantes
+\item Integrales múltiples / Sumas / Límites / Fracciones
+\item Etiquetas de fórmula y referencias cruzadas
+\end{introduction}
+
+\section{Fórmula compleja de una sola línea}
+Fórmulas complejas en línea: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Fórmulas multilínea y matrices}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Fórmulas con operadores grandes}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Referencia de fórmula: Teorema de Pitágoras \eqref{eq:gougu}, integral doble \eqref{eq:double}, determinante \eqref{eq:det}, serie \eqref{eq:series}.
+
+% ========== Capítulo 3: Prueba completa de entornos matemáticos ==========
+\chapter{Prueba completa de entornos matemáticos}
+\begin{introduction}
+\item Definición / Teorema / Lema / Corolario / Axioma / Postulado
+\item Proposición / Ejemplo / Problema / Ejercicio
+\item Nota / Observación / Conclusión / Suposición / Propiedad
+\item Entorno de solución / demostración
+\end{introduction}
+
+\section{Prueba de entornos}
+
+% 1. Definición
+\ifdefined\simpleTest
+\begin{definition}[Definición de prueba]\label{def:test}
+\else
+\begin{definition}[Definición de prueba]{test}
+\fi
+Este es el contenido de prueba del entorno definición, sin significado matemático real, solo para verificación de estilo.
+\end{definition}
+
+% 2. Teorema
+\ifdefined\simpleTest
+\begin{theorem}[Teorema de prueba]\label{thm:test}
+\else
+\begin{theorem}[Teorema de prueba]{test}
+\fi
+Si $x>0$, entonces $x+1>1$, correspondiente a la fórmula \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lema
+\ifdefined\simpleTest
+\begin{lemma}[Lema de prueba]\label{lem:test}
+\else
+\begin{lemma}[Lema de prueba]{test}
+\fi
+Para cualquier número real $x$, se cumple $x^2\geq0$.
+\end{lemma}
+
+% 4. Corolario
+\ifdefined\simpleTest
+\begin{corollary}[Corolario de prueba]\label{cor:test}
+\else
+\begin{corollary}[Corolario de prueba]{test}
+\fi
+Del Lema \ref{lem:test} se deduce: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axioma
+\ifdefined\simpleTest
+\begin{axiom}[Axioma de prueba]\label{axi:test}
+\else
+\begin{axiom}[Axioma de prueba]{test}
+\fi
+Axioma de prueba, sin significado práctico.
+\end{axiom}
+
+% 6. Postulado
+\ifdefined\simpleTest
+\begin{postulate}[Postulado de prueba]\label{pos:test}
+\else
+\begin{postulate}[Postulado de prueba]{test}
+\fi
+Postulado de prueba, solo para verificación de entorno.
+\end{postulate}
+
+% 7. Proposición
+\ifdefined\simpleTest
+\begin{proposition}[Proposición de prueba]\label{pro:test}
+\else
+\begin{proposition}[Proposición de prueba]{test}
+\fi
+Contenido de proposición de prueba, asociado a la Definición \ref{def:test}.
+\end{proposition}
+
+% 8. Ejemplo
+\begin{example}\label{exa:test}
+Prueba de entorno ejemplo, numeración automática.
+\end{example}
+
+% 9. Problema
+\begin{problem}\label{probl:test}
+Prueba de entorno problema, para plantear cuestiones por resolver.
+\end{problem}
+
+% 10. Ejercicio
+\begin{exercise}\label{exer:test}
+Calcular: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Nota
+\begin{note}
+Entorno nota: sin numeración, para recordatorios clave.
+\end{note}
+
+% 12. Observación
+\begin{remark}
+Entorno observación: para explicaciones complementarias.
+\end{remark}
+
+% 13. Conclusión
+\begin{conclusion}
+Entorno conclusión: contenido resumido de prueba.
+\end{conclusion}
+
+% 14. Suposición
+\begin{assumption}
+Entorno suposición: configuración de condiciones de prueba.
+\end{assumption}
+
+% 15. Propiedad
+\begin{property}
+Entorno propiedad: características del objeto de prueba.
+\end{property}
+
+% 16. Solución
+\begin{solution}
+Solución al Ejercicio \ref{exer:test}: La suma vale $55$ (respuesta de prueba).
+\end{solution}
+
+% 17. Demostración
+\begin{proof}
+Demostración del Teorema \ref{thm:test}: Como $x>0$, sumando 1 a ambos lados queda demostrado.
+\end{proof}
+
+% ========== Capítulo 4: Referencias cruzadas · Figuras · Notas marginales ==========
+\chapter{Referencias cruzadas y funciones extendidas}
+\begin{introduction}
+\item Todos los tipos de referencias cruzadas
+\item Prueba sencilla de figuras y tablas
+\item Prueba de función de nota marginal
+\item Verificación de navegación entre capítulos
+\end{introduction}
+
+\section{Resumen de todas las referencias cruzadas}
+Definición \ref{def:test}, Teorema \ref{thm:test}, Lema \ref{lem:test}, Corolario \ref{cor:test}, Axioma \ref{axi:test}, Postulado \ref{pos:test}, Proposición \ref{pro:test}, Ejemplo \ref{exa:test}, Problema \ref{probl:test}, Ejercicio \ref{exer:test}.
+
+\section{Prueba de figuras y tablas}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Figura de prueba}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Tabla de prueba}\label{tab:test}
+\end{table}
+Referencia de figura/tabla: \figref{fig:test} es la figura de prueba, \tabref{tab:test} es la tabla de prueba.
+
+% ========== Ejercicios al final del capítulo ==========
+\begin{problemset}[Ejercicios de prueba del capítulo]
+\item Verificar el estilo de visualización de la Definición \ref{def:test}
+\item Deduzca la fórmula \eqref{eq:double}
+\item Comprobar si la Figura \ref{fig:test} se muestra correctamente
+\end{problemset}
+
+% ========== Bibliografía ==========
+\nocite{*}
+\printbibliography
+
+% ========== Apéndice ==========
+\appendix
+\chapter{Apéndice de prueba}
+El contenido del apéndice sirve para verificar capítulos de apéndice, encabezados, numeración de páginas y estilo de maquetación, sin información real.
+\section{Apéndice de prueba 1}
+El contenido del apéndice sirve para verificar capítulos de apéndice, encabezados, numeración de páginas y estilo de maquetación, sin información real.
+\newpage
+\section{Apéndice de prueba 2}
+El contenido del apéndice sirve para verificar capítulos de apéndice, encabezados, numeración de páginas y estilo de maquetación, sin información real.
+\end{document}

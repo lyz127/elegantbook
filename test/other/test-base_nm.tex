@@ -1,0 +1,294 @@
+\documentclass[nm]{../../elegantbook}
+% ========== Хамар хэсэг болон суурь мэдээлэл ==========
+\title{ElegantBook тестийн баримт}
+\subtitle{Загварын үндсэн шинж чанарууд}
+\author{Тестийн инженер}
+\institute{Загварын тестийн баг}
+\date{\today}
+\version{v1.0}
+\extrainfo{Энэ баримт зөвхөн загварын функцийн туршилтанд зориулагдсан, ямар ч судлаах үнэ цэнэгүй}
+\bioinfo{Тестийн багц}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Гарчиг болон суурь тохируулга ==========
+\setcounter{tocdepth}{3} % Гарчиг 3 түвшин хүртэл харуулна
+
+% ========== Тестийн санал баримт ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Удиртгал (Section-тэй хувааж) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Тестийн удиртгал}
+\markboth{Тестийн удиртгал}{}
+\section*{Баримтын тайлбар}
+\markright{Баримтын тайлбар}
+Энэ баримт бол ElegantBook бүх функцийг турших загвар бөгөөд бүх контент бол хуурамч тестийн өгөгдөл бөгөөд реальный утгагүй.
+\newpage
+\section*{Тестийн хүрээ}
+\markright{Тестийн хүрээ}
+Энэ тест нь дараахь зүйлсийг агуулна: хамар хэсэг, гарчиг, үсэг, олон түвшний жагсаалт, төвөг томъёо, бүх математик орчин, хөрвүүлэлт, зураг/хүснэгт, хавсаргах тайлбар, бүлгийн товчлол, дасгал, санал баримт, хавсаргах хэсэг.
+
+\mainmatter
+
+% ========== 1 Бүлэг: Базар байршуулалт болон олон түвшний жагсаалт ==========
+\chapter{Базар байршуулалт болон жагсаалтын туршилт}
+\begin{introduction}[Энэ бүлгийн тестийн зүйлс]
+\item Монгол үсэг болон текстын формат
+\item 3 түвшний тэгш жагсаалтын гүнзгийрүүлэлт
+\item 3 түвшний дараалсан жагсаалтын гүнзгийрүүлэлт
+\item Хэвийн параграф болон тодотгосон текст
+\end{introduction}
+
+\section{Үсэг болон текстын туршилт}
+Хэвийн основ текст. \textbf{Тодотгосон}、\textit{Налуу}、\underline{Доогуур шугам}、\textcolor{red}{Улаан текстын туршилт}。
+
+\section{3 түвшний тэгш жагсаалтын туршилт}
+\begin{itemize}
+\item Нэгдүгээр түвшний тест A
+\item Нэгдүгээр түвшний тест B
+    \begin{itemize}
+    \item Хоёрдугаар түвшний тест B1
+    \item Хоёрдугаар түвшний тест B2
+        \begin{itemize}
+        \item Гуравдугаар түвшний тест B2-1
+        \item Гуравдугаар түвшний тест B2-2
+            \begin{itemize}
+            \item Дөрөвдүгээр түвшний тест B2-1a
+            \item Дөрөвдүгээр түвшний тест B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{3 түвшний дараалсан жагсаалтын туршилт}
+\begin{enumerate}
+\item Нэгдүгээр түвшний дараалсан тест 1
+\item Нэгдүгээр түвшний дараалсан тест 2
+    \begin{enumerate}
+    \item Хоёрдугаар түвшний дараалсан тест 2-1
+    \item Хоёрдугаар түвшний дараалсан тест 2-2
+        \begin{enumerate}
+        \item Гуравдугаар түвшний дараалсан тест 2-2-1
+        \item Гуравдугаар түвшний дараалсан тест 2-2-2
+            \begin{enumerate}
+            \item Дөрөвдүгээр түвшний дараалсан тест 2-2-2-1
+            \item Дөрөвдүгээр түвшний дараалсан тест 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== 2 Бүлэг: Төвөг математик томъёоны туршилт ==========
+\chapter{Төвөг математик томъёоны туршилт}
+\begin{introduction}
+\item Бодит мөр төвөг томъёо
+\item Олон мөртэй томъёо (align)
+\item Матриц/детерминант
+\item Давхар интеграл/цуврал/хязгаар/фракц
+\item Томъёоны шошго болон хөрвүүлэлт
+\end{introduction}
+
+\section{Бодит мөр төвөг томъёо}
+Мөр дэх төвөг томъёо：$\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$、$\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$。
+
+\section{Олон мөртэй томъёо болон матриц}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Том оператортой томъёо}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Томъёоны хөрвүүлэлт：Гуго теорем\eqref{eq:gougu}、Давхар интеграл\eqref{eq:double}、Детерминант\eqref{eq:det}、Цуврал\eqref{eq:series}。
+
+% ========== 3 Бүлэг: Бүх математик орчны туршилт ==========
+\chapter{Бүх математик орчны туршилт}
+\begin{introduction}
+\item Тодорхойлолт/томьёо/лемма/үр дүн/аксиом/постулат
+\item Таамаглал/жишээ/бодлого/дасгал
+\item Тэмдэглэл/тайлбар/дүгнэлт/урьдчилсан нөхцөл/шинж чанар
+\item Хариулт/баталгааны орчин
+\end{introduction}
+
+\section{Орчны туршилт}
+
+% 1. Тодорхойлолт
+\ifdefined\simpleTest
+\begin{definition}[Тестийн тодорхойлолт]\label{def:test}
+\else
+\begin{definition}[Тестийн тодорхойлолт]{test}
+\fi
+Энэ бол тодорхойлолтын орчны туршилтын контент бөгөөд ямар ч математик утгагүй, зөвхөн загварыг шалгахад зориулагдсан.
+\end{definition}
+
+% 2. Томьёо
+\ifdefined\simpleTest
+\begin{theorem}[Тестийн томьёо]\label{thm:test}
+\else
+\begin{theorem}[Тестийн томьёо]{test}
+\fi
+Хэрэв $x>0$ бол $x+1>1$ бөгөөд \eqref{eq:gougu} томъёотой холбоотой.
+\end{theorem}
+
+% 3. Лемма
+\ifdefined\simpleTest
+\begin{lemma}[Тестийн лемма]\label{lem:test}
+\else
+\begin{lemma}[Тестийн лемма]{test}
+\fi
+Бүх бодит тоо $x$-д $x^2\geq0$ байдаг.
+\end{lemma}
+
+% 4. Үр дүн
+\ifdefined\simpleTest
+\begin{corollary}[Тестийн үр дүн]\label{cor:test}
+\else
+\begin{corollary}[Тестийн үр дүн]{test}
+\fi
+Лемма\ref{lem:test}-ээс дараахь үр дүн гарна：$(x-1)^2\geq0$。
+\end{corollary}
+
+% 5. Аксиом
+\ifdefined\simpleTest
+\begin{axiom}[Тестийн аксиом]\label{axi:test}
+\else
+\begin{axiom}[Тестийн аксиом]{test}
+\fi
+Тестийн аксиом бөгөөд ямар ч утгагүй.
+\end{axiom}
+
+% 6. Постулат
+\ifdefined\simpleTest
+\begin{postulate}[Тестийн постулат]\label{pos:test}
+\else
+\begin{postulate}[Тестийн постулат]{test}
+\fi
+Тестийн постулат бөгөөд зөвхөн орчныг шалгахад зориулагдсан.
+\end{postulate}
+
+% 7. Таамаглал
+\ifdefined\simpleTest
+\begin{proposition}[Тестийн таамаглал]\label{pro:test}
+\else
+\begin{proposition}[Тестийн таамаглал]{test}
+\fi
+Тестийн таамаглалын контент бөгөөд тодорхойлолт\ref{def:test}-тэй холбоотой.
+\end{proposition}
+
+% 8. Жишээ
+\begin{example}\label{exa:test}
+Жишээ орчны туршилт, автоматаар дугаарлагдана.
+\end{example}
+
+% 9. Бодлого
+\begin{problem}\label{probl:test}
+Бодлогын орчны туршилт, шийдэх хэрэгтэй бодлого гаргахад зориулагдсан.
+\end{problem}
+
+% 10. Дасгал
+\begin{exercise}\label{exer:test}
+Тооцоол：$1+2+3+\dots+10$。
+\end{exercise}
+
+% 11. Тэмдэглэл
+\begin{note}
+Тэмдэглэл орчин：дугааргүй, чухал сануулгад зориулагдсан.
+\end{note}
+
+% 12. Тайлбар
+\begin{remark}
+Тайлбар орчин：нэмэлт тайлбарлахад зориулагдсан.
+\end{remark}
+
+% 13. Дүгнэлт
+\begin{conclusion}
+Дүгнэлт орчин：тогтмол дүгнэлтийн контент.
+\end{conclusion}
+
+% 14. Урьдчилсан нөхцөл
+\begin{assumption}
+Урьдчилсан нөхцөл орчин：шалтгааны тохируулгалт.
+\end{assumption}
+
+% 15. Шинж чанар
+\begin{property}
+Шинж чанар орчин：обьектийн шинж чанар.
+\end{property}
+
+% 16. Хариулт
+\begin{solution}
+Дасгал\ref{exer:test} хариулт：Нийт бол $55$ (тестийн хариулт)。
+\end{solution}
+
+% 17. Баталгаа
+\begin{proof}
+Томьёо\ref{thm:test} баталгаа：$x>0$ тул хоёуланд нь 1 нэмэхээр баталгаажна.
+\end{proof}
+
+% ========== 4 Бүлэг: Хөрвүүлэлт·Зураг/Хүснэгт·Хавсаргах тайлбар ==========
+\chapter{Хөрвүүлэлт болон нэмэлт функц}
+\begin{introduction}
+\item Бүх төрлийн хөрвүүлэлт
+\item Энгийн зураг/хүснэгтийн туршилт
+\item Хавсаргах тайлбарын функц
+\item Бүлгийн шилжилтийн шалгалт
+\end{introduction}
+
+\section{Бүх хөрвүүлэлтийн цуглуулга}
+Тодорхойлолт\ref{def:test}、Томьёо\ref{thm:test}、Лемма\ref{lem:test}、Үр дүн\ref{cor:test}、Аксиом\ref{axi:test}、Постулат\ref{pos:test}、Таамаглал\ref{pro:test}、Жишээ\ref{exa:test}、Бодлого\ref{probl:test}、Дасгал\ref{exer:test}。
+
+\section{Зураг/хүснэгтийн туршилт}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Тестийн зураг}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Тестийн хүснэгт}\label{tab:test}
+\end{table}
+Зураг/хүснэгтийн хөрвүүлэлт：\figref{fig:test} бол тестийн зураг，\tabref{tab:test} бол тестийн хүснэгт。
+
+% ========== Бүлгийн хойш дасгал ==========
+\begin{problemset}[Энэ бүлгийн тестийн дасгалууд]
+\item Тодорхойлолт\ref{def:test}ийн харагдах загварыг шалгах
+\item \eqref{eq:double} томъёог гаргах
+\item Зураг\ref{fig:test} зөв харуулж байгаа эсэхийг шалгах
+\end{problemset}
+
+% ========== Санал баримт ==========
+\nocite{*}
+\printbibliography
+
+% ========== Хавсаргах хэсэг ==========
+\appendix
+\chapter{Тестийн хавсаргах хэсэг}
+Хавсаргах хэсгийн контент нь хавсаргах бүлэг, толгой хэсэг, хуудасны дугаар, байршуулалтын загварыг шалгахад зориулагдсан бөгөөд ямар ч мэдээлэлгүй.
+\section{Хавсаргах туршилт 1}
+Хавсаргах хэсгийн контент нь хавсаргах бүлэг, толгой хэсэг, хуудасны дугаар, байршуулалтын загварыг шалгахад зориулагдсан бөгөөд ямар ч мэдээлэлгүй.
+\newpage
+\section{Хавсаргах туршилт 2}
+Хавсаргах хэсгийн контент нь хавсаргах бүлэг, толгой хэсэг, хуудасны дугаар, байршуулалтын загварыг шалгахад зориулагдсан бөгөөд ямар ч мэдээлэлгүй.
+\end{document}

@@ -1,0 +1,294 @@
+\documentclass[nl]{../../elegantbook}
+% ========== Omslag en basisinformatie ==========
+\title{ElegantBook testdocument}
+\subtitle{Kernfuncties van de sjabloon}
+\author{Testingenieur}
+\institute{Sjabloon Testgroep}
+\date{\today}
+\version{v1.0}
+\extrainfo{Dit document is uitsluitend bedoeld voor sjabloonfunctietesten en heeft geen academische waarde}
+\bioinfo{Testbatch}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Inhoudsopgave en basisinstellingen ==========
+\setcounter{tocdepth}{3} % Inhoudsopgave tot niveau 3 weergeven
+
+% ========== Testreferenties ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Voorwoord (met sectieonderverdeling) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Testvoorwoord}
+\markboth{Testvoorwoord}{}
+\section*{Documentbeschrijving}
+\markright{Documentbeschrijving}
+Dit document is een volledige testcase voor ElegantBook en omvat alle basis- en geavanceerde functies van de sjabloon. Alle inhoud is fictieve testgegevens zonder praktische betekenis.
+\newpage
+\section*{Testbereik}
+\markright{Testbereik}
+Deze test omvat: omslag, inhoudsopgave, lettertypen, meerniveaulijsten, complexe formules, alle wiskundige omgevingen, kruisverwijzingen, afbeeldingen en tabellen, kantnotities, hoofdstuksamenvattingen, oefeningen, referenties en bijlagen.
+
+\mainmatter
+
+% ========== Hoofdstuk 1: Basisopmaak en meerniveaulijsten ==========
+\chapter{Basisopmaak en lijsttest}
+\begin{introduction}[Testonderdelen van dit hoofdstuk]
+\item Chinese lettertypen en tekstopmaak
+\item 3-niveau ongenummerde lijstnesting
+\item 3-niveau genummerde lijstnesting
+\item Gewone alinea's en benadrukte tekst
+\end{introduction}
+
+\section{Lettertype en teksttest}
+Normale hoofdteksttest. \textbf{Vet}, \textit{Cursief}, \underline{Onderstreept}, \textcolor{red}{Rode teksttest}.
+
+\section{3-niveau ongenummerde lijsttest}
+\begin{itemize}
+\item Niveau 1 testitem A
+\item Niveau 1 testitem B
+    \begin{itemize}
+    \item Niveau 2 testitem B1
+    \item Niveau 2 testitem B2
+        \begin{itemize}
+        \item Niveau 3 testitem B2-1
+        \item Niveau 3 testitem B2-2
+            \begin{itemize}
+            \item Niveau 4 testitem B2-1a
+            \item Niveau 4 testitem B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{3-niveau genummerde lijsttest}
+\begin{enumerate}
+\item Niveau 1 genummerde test 1
+\item Niveau 1 genummerde test 2
+    \begin{enumerate}
+    \item Niveau 2 genummerde test 2-1
+    \item Niveau 2 genummerde test 2-2
+        \begin{enumerate}
+        \item Niveau 3 genummerde test 2-2-1
+        \item Niveau 3 genummerde test 2-2-2
+            \begin{enumerate}
+            \item Niveau 4 genummerde test 2-2-2-1
+            \item Niveau 4 genummerde test 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Hoofdstuk 2: Test complexe wiskundige formules ==========
+\chapter{Test complexe wiskundige formules}
+\begin{introduction}
+\item Enkelregelige complexe formule
+\item Meerregelige formules (align)
+\item Matrices / Determinanten
+\item Meervoudige integralen / Sommaties / Limieten / Breuken
+\item Formulelabels en kruisverwijzingen
+\end{introduction}
+
+\section{Enkelregelige complexe formule}
+Inline complexe formules: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Meerregelige formules en matrices}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Grote operatorformules}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Formuleverwijzing: Stelling van Pythagoras \eqref{eq:gougu}, dubbele integraal \eqref{eq:double}, determinant \eqref{eq:det}, reeks \eqref{eq:series}.
+
+% ========== Hoofdstuk 3: Volledige test wiskundige omgevingen ==========
+\chapter{Volledige test wiskundige omgevingen}
+\begin{introduction}
+\item Definitie / Stelling / Lemma / Gevolgtrekking / Axioma / Postulaat
+\item Propositie / Voorbeeld / Probleem / Oefening
+\item Opmerking / Aanmerking / Conclusie / Aanname / Eigenschap
+\item Oplossing / Bewijsomgeving
+\end{introduction}
+
+\section{Omgevingstest}
+
+% 1. Definitie
+\ifdefined\simpleTest
+\begin{definition}[Testdefinitie]\label{def:test}
+\else
+\begin{definition}[Testdefinitie]{test}
+\fi
+Dit is de testinhoud van de definitieomgeving, zonder echte wiskundige betekenis, alleen voor stijlverificatie.
+\end{definition}
+
+% 2. Stelling
+\ifdefined\simpleTest
+\begin{theorem}[Teststelling]\label{thm:test}
+\else
+\begin{theorem}[Teststelling]{test}
+\fi
+Als $x>0$, dan $x+1>1$, overeenkomend met formule \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lemma
+\ifdefined\simpleTest
+\begin{lemma}[Testlemma]\label{lem:test}
+\else
+\begin{lemma}[Testlemma]{test}
+\fi
+Voor elk reëel getal $x$ geldt $x^2\geq0$.
+\end{lemma}
+
+% 4. Gevolgtrekking
+\ifdefined\simpleTest
+\begin{corollary}[Testgevolgtrekking]\label{cor:test}
+\else
+\begin{corollary}[Testgevolgtrekking]{test}
+\fi
+Uit Lemma \ref{lem:test} volgt: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Axioma
+\ifdefined\simpleTest
+\begin{axiom}[Testaxioma]\label{axi:test}
+\else
+\begin{axiom}[Testaxioma]{test}
+\fi
+Testaxioma, zonder praktische betekenis.
+\end{axiom}
+
+% 6. Postulaat
+\ifdefined\simpleTest
+\begin{postulate}[Testpostulaat]\label{pos:test}
+\else
+\begin{postulate}[Testpostulaat]{test}
+\fi
+Testpostulaat, alleen voor omgevingsverificatie.
+\end{postulate}
+
+% 7. Propositie
+\ifdefined\simpleTest
+\begin{proposition}[Testpropositie]\label{pro:test}
+\else
+\begin{proposition}[Testpropositie]{test}
+\fi
+Testpropositie-inhoud, gekoppeld aan Definitie \ref{def:test}.
+\end{proposition}
+
+% 8. Voorbeeld
+\begin{example}\label{exa:test}
+Voorbeeldomgevingstest, automatische nummering.
+\end{example}
+
+% 9. Probleem
+\begin{problem}\label{probl:test}
+Probleemomgevingstest, voor het stellen van onopgeloste vragen.
+\end{problem}
+
+% 10. Oefening
+\begin{exercise}\label{exer:test}
+Bereken: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Opmerking
+\begin{note}
+Opmerkingsomgeving: zonder nummering, voor belangrijke herinneringen.
+\end{note}
+
+% 12. Aanmerking
+\begin{remark}
+Aanmerkingsomgeving: voor aanvullende uitleg.
+\end{remark}
+
+% 13. Conclusie
+\begin{conclusion}
+Conclusieomgeving: samenvattende testinhoud.
+\end{conclusion}
+
+% 14. Aanname
+\begin{assumption}
+Aannameomgeving: instelling van testvoorwaarden.
+\end{assumption}
+
+% 15. Eigenschap
+\begin{property}
+Eigenschapsomgeving: kenmerken van het testobject.
+\end{property}
+
+% 16. Oplossing
+\begin{solution}
+Oplossing van Oefening \ref{exer:test}: De som is $55$ (testantwoord).
+\end{solution}
+
+% 17. Bewijs
+\begin{proof}
+Bewijs van Stelling \ref{thm:test}: Omdat $x>0$, tel aan beide zijden 1 op; hiermee is de stelling bewezen.
+\end{proof}
+
+% ========== Hoofdstuk 4: Kruisverwijzingen · Afbeeldingen · Kantnotities ==========
+\chapter{Kruisverwijzingen en uitgebreide functies}
+\begin{introduction}
+\item Alle soorten kruisverwijzingen
+\item Eenvoudige afbeelding- en tabeltest
+\item Kantnotitiefunctietest
+\item Hoofdstuknavigatieverificatie
+\end{introduction}
+
+\section{Samenvatting alle kruisverwijzingen}
+Definitie \ref{def:test}, Stelling \ref{thm:test}, Lemma \ref{lem:test}, Gevolgtrekking \ref{cor:test}, Axioma \ref{axi:test}, Postulaat \ref{pos:test}, Propositie \ref{pro:test}, Voorbeeld \ref{exa:test}, Probleem \ref{probl:test}, Oefening \ref{exer:test}.
+
+\section{Afbeelding en tabeltest}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Testafbeelding}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Testtabel}\label{tab:test}
+\end{table}
+Afbeelding/tabelverwijzing: \figref{fig:test} is de testafbeelding, \tabref{tab:test} is de testtabel.
+
+% ========== Hoofdstukafsluitende oefeningen ==========
+\begin{problemset}[Testhoofdstukoefeningen]
+\item Controleer de weergavestijl van Definitie \ref{def:test}
+\item Leid formule \eqref{eq:double} af
+\item Controleer of Afbeelding \ref{fig:test} correct wordt weergegeven
+\end{problemset}
+
+% ========== Referenties ==========
+\nocite{*}
+\printbibliography
+
+% ========== Bijlage ==========
+\appendix
+\chapter{Testbijlage}
+De bijlage-inhoud dient voor verificatie van bijlagehoofdstukken, kopteksten, paginanummering en opmaakstijl, zonder echte informatie.
+\section{Testbijlage 1}
+De bijlage-inhoud dient voor verificatie van bijlagehoofdstukken, kopteksten, paginanummering en opmaakstijl, zonder echte informatie.
+\newpage
+\section{Testbijlage 2}
+De bijlage-inhoud dient voor verificatie van bijlagehoofdstukken, kopteksten, paginanummering en opmaakstijl, zonder echte informatie.
+\end{document}

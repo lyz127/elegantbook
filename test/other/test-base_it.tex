@@ -1,0 +1,294 @@
+\documentclass[it]{../../elegantbook}
+% ========== Copertina e Informazioni Base ==========
+\title{Documento di test ElegantBook}
+\subtitle{Caratteristiche principali del modello}
+\author{Ingegnere di test}
+\institute{Gruppo di test del modello}
+\date{\today}
+\version{v1.0}
+\extrainfo{Questo documento è solo per il test delle funzioni del modello, non ha alcun valore accademico}
+\bioinfo{Lotto di test}{TEST-FULL-20260506}
+\logo{../../figure/logo-blue.png}
+\cover{../../figure/cover.jpg}
+
+% ========== Indice e Impostazioni Base ==========
+\setcounter{tocdepth}{3} % Indice visibile fino al livello 3
+
+% ========== Bibliografia di test ==========
+\addbibresource[location=local]{../en/reference.bib}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\tableofcontents
+
+% ========== Prefazione (con sezioni) ==========
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\chapter*{Prefazione di test}
+\markboth{Prefazione di test}{}
+\section*{Descrizione documento}
+\markright{Descrizione documento}
+Questo documento è un caso di test completo per ElegantBook, copre tutte le funzionalità base e avanzate del modello. Tutti i contenuti sono dati di test fittizi senza significato pratico.
+\newpage
+\section*{Ambito di test}
+\markright{Ambito di test}
+Questo test include: copertina, indice, caratteri, elenchi multilivello, formule complesse, tutti gli ambienti matematici, riferimenti incrociati, figure e tabelle, note marginali, riassunti di capitolo, esercizi, bibliografia, appendici.
+
+\mainmatter
+
+% ========== Capitolo 1: Impaginazione base ed elenchi multilivello ==========
+\chapter{Test impaginazione base ed elenchi}
+\begin{introduction}[Elementi di test di questo capitolo]
+\item Caratteri cinesi e formattazione testo
+\item Annidamento elenco non ordinato a 3 livelli
+\item Annidamento elenco ordinato a 3 livelli
+\item Paragrafi normali e testo enfatizzato
+\end{introduction}
+
+\section{Test caratteri e testo}
+Testo normale del corpo. \textbf{Grassetto}, \textit{Corsivo}, \underline{Sottolineato}, \textcolor{red}{Testo rosso}.
+
+\section{Test elenco non ordinato a 3 livelli}
+\begin{itemize}
+\item Elemento di test livello 1 A
+\item Elemento di test livello 1 B
+    \begin{itemize}
+    \item Elemento di test livello 2 B1
+    \item Elemento di test livello 2 B2
+        \begin{itemize}
+        \item Elemento di test livello 3 B2-1
+        \item Elemento di test livello 3 B2-2
+            \begin{itemize}
+            \item Elemento di test livello 4 B2-1a
+            \item Elemento di test livello 4 B2-2b
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Test elenco ordinato a 3 livelli}
+\begin{enumerate}
+\item Test ordinato livello 1 1
+\item Test ordinato livello 1 2
+    \begin{enumerate}
+    \item Test ordinato livello 2 2-1
+    \item Test ordinato livello 2 2-2
+        \begin{enumerate}
+        \item Test ordinato livello 3 2-2-1
+        \item Test ordinato livello 3 2-2-2
+            \begin{enumerate}
+            \item Test ordinato livello 4 2-2-2-1
+            \item Test ordinato livello 4 2-2-2-2
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+% ========== Capitolo 2: Test formule matematiche complesse ==========
+\chapter{Test formule matematiche complesse}
+\begin{introduction}
+\item Formula complessa a riga singola
+\item Formule multilinea (align)
+\item Matrici / Determinanti
+\item Integrali multipli / Somme / Limiti / Frazioni
+\item Etichette formule e riferimenti incrociati
+\end{introduction}
+
+\section{Formula complessa a riga singola}
+Formule complesse in linea: $\sum_{i=1}^n \frac{x_i^2}{\sqrt{y_i+1}} \geq \bar{x}^2$, $\lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e$.
+
+\section{Formule multilinea e matrici}
+\begin{align}
+a^2 + b^2 &= c^2 \label{eq:gougu} \\
+\int_{0}^{1}\int_{0}^{1} f(x,y) dxdy &= 1 \label{eq:double} \\
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} &= ad-bc \label{eq:det}
+\end{align}
+
+\section{Formule con operatori grandi}
+\begin{equation}\label{eq:series}
+\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x,\quad \oint_{C} Pdx+Qdy = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy
+\end{equation}
+
+Riferimento formula: Teorema di Pitagora \eqref{eq:gougu}, integrale doppio \eqref{eq:double}, determinante \eqref{eq:det}, serie \eqref{eq:series}.
+
+% ========== Capitolo 3: Test tutti gli ambienti matematici ==========
+\chapter{Test completo ambienti matematici}
+\begin{introduction}
+\item Definizione / Teorema / Lemma / Corollario / Assioma / Postulato
+\item Proposizione / Esempio / Problema / Esercizio
+\item Nota / Osservazione / Conclusione / Ipotesi / Proprietà
+\item Ambiente soluzione / dimostrazione
+\end{introduction}
+
+\section{Test ambienti}
+
+% 1. Definizione
+\ifdefined\simpleTest
+\begin{definition}[Definizione di test]\label{def:test}
+\else
+\begin{definition}[Definizione di test]{test}
+\fi
+Questo è il contenuto di test dell'ambiente definizione, senza significato matematico reale, solo per verifica stile.
+\end{definition}
+
+% 2. Teorema
+\ifdefined\simpleTest
+\begin{theorem}[Teorema di test]\label{thm:test}
+\else
+\begin{theorem}[Teorema di test]{test}
+\fi
+Se $x>0$, allora $x+1>1$, corrispondente alla formula \eqref{eq:gougu}.
+\end{theorem}
+
+% 3. Lemma
+\ifdefined\simpleTest
+\begin{lemma}[Lemma di test]\label{lem:test}
+\else
+\begin{lemma}[Lemma di test]{test}
+\fi
+Per ogni numero reale $x$, vale $x^2\geq0$.
+\end{lemma}
+
+% 4. Corollario
+\ifdefined\simpleTest
+\begin{corollary}[Corollario di test]\label{cor:test}
+\else
+\begin{corollary}[Corollario di test]{test}
+\fi
+Dal Lemma \ref{lem:test} si ottiene: $(x-1)^2\geq0$.
+\end{corollary}
+
+% 5. Assioma
+\ifdefined\simpleTest
+\begin{axiom}[Assioma di test]\label{axi:test}
+\else
+\begin{axiom}[Assioma di test]{test}
+\fi
+Assioma di test, senza significato pratico.
+\end{axiom}
+
+% 6. Postulato
+\ifdefined\simpleTest
+\begin{postulate}[Postulato di test]\label{pos:test}
+\else
+\begin{postulate}[Postulato di test]{test}
+\fi
+Postulato di test, solo per verifica ambiente.
+\end{postulate}
+
+% 7. Proposizione
+\ifdefined\simpleTest
+\begin{proposition}[Proposizione di test]\label{pro:test}
+\else
+\begin{proposition}[Proposizione di test]{test}
+\fi
+Contenuto proposizione di test, collegato alla Definizione \ref{def:test}.
+\end{proposition}
+
+% 8. Esempio
+\begin{example}\label{exa:test}
+Test ambiente esempio, numerazione automatica.
+\end{example}
+
+% 9. Problema
+\begin{problem}\label{probl:test}
+Test ambiente problema, per proporre quesiti da risolvere.
+\end{problem}
+
+% 10. Esercizio
+\begin{exercise}\label{exer:test}
+Calcola: $1+2+3+\dots+10$.
+\end{exercise}
+
+% 11. Nota
+\begin{note}
+Ambiente nota: senza numerazione, per avvertenze chiave.
+\end{note}
+
+% 12. Osservazione
+\begin{remark}
+Ambiente osservazione: per spiegazioni supplementari.
+\end{remark}
+
+% 13. Conclusione
+\begin{conclusion}
+Ambiente conclusione: contenuto riassuntivo di test.
+\end{conclusion}
+
+% 14. Ipotesi
+\begin{assumption}
+Ambiente ipotesi: impostazione condizioni di test.
+\end{assumption}
+
+% 15. Proprietà
+\begin{property}
+Ambiente proprietà: caratteristiche oggetto di test.
+\end{property}
+
+% 16. Soluzione
+\begin{solution}
+Soluzione Esercizio \ref{exer:test}: La somma vale $55$ (risposta di test).
+\end{solution}
+
+% 17. Dimostrazione
+\begin{proof}
+Dimostrazione Teorema \ref{thm:test}: Poiché $x>0$, sommando 1 a entrambi i lati si dimostra la tesi.
+\end{proof}
+
+% ========== Capitolo 4: Riferimenti incrociati · Figure · Note marginali ==========
+\chapter{Riferimenti incrociati e funzionalità avanzate}
+\begin{introduction}
+\item Tutti i tipi di riferimenti incrociati
+\item Test semplici figure e tabelle
+\item Test funzionalità note marginali
+\item Verifica navigazione capitoli
+\end{introduction}
+
+\section{Riepilogo riferimenti incrociati}
+Definizione \ref{def:test}, Teorema \ref{thm:test}, Lemma \ref{lem:test}, Corollario \ref{cor:test}, Assioma \ref{axi:test}, Postulato \ref{pos:test}, Proposizione \ref{pro:test}, Esempio \ref{exa:test}, Problema \ref{probl:test}, Esercizio \ref{exer:test}.
+
+\section{Test figure e tabelle}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../image/scatter.jpg}
+    \caption{Figura di test}\label{fig:test}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c*{6}{c}}
+    \toprule
+        $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \midrule
+        $a_n$ & 1 & 1 & 2 & 3 & 5 & 8 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Tabella di test}\label{tab:test}
+\end{table}
+Riferimento figure/tabelle: \figref{fig:test} è la figura di test, \tabref{tab:test} è la tabella di test.
+
+% ========== Esercizi fine capitolo ==========
+\begin{problemset}[Esercizi di test del capitolo]
+\item Verifica lo stile visualizzazione della Definizione \ref{def:test}
+\item Deriva la formula \eqref{eq:double}
+\item Controlla se la Figura \ref{fig:test} viene visualizzata correttamente
+\end{problemset}
+
+% ========== Bibliografia ==========
+\nocite{*}
+\printbibliography
+
+% ========== Appendice ==========
+\appendix
+\chapter{Appendice di test}
+Il contenuto dell'appendice serve a verificare capitoli appendice, intestazioni, numerazione pagine e stile impaginazione, senza informazioni reali.
+\section{Test Appendice 1}
+Il contenuto dell'appendice serve a verificare capitoli appendice, intestazioni, numerazione pagine e stile impaginazione, senza informazioni reali.
+\newpage
+\section{Test Appendice 2}
+Il contenuto dell'appendice serve a verificare capitoli appendice, intestazioni, numerazione pagine e stile impaginazione, senza informazioni reali.
+\end{document}
