@@ -408,87 +408,99 @@
   citestyle=\ELEGANT@citestyle,
   bibstyle=\ELEGANT@bibstyle]{biblatex}
 
+\NewDocumentCommand{\reprovidecommand}{s m o m}{
+  \ifdefined#2
+   \IfBooleanTF{#1}
+   {\IfNoValueTF{#3}{\renewcommand*{#2}{#4}}{\renewcommand*{#2}[#3]{#4}}}
+   {\IfNoValueTF{#3}{\renewcommand{#2}{#4}}{\renewcommand{#2}[#3]{#4}}}
+  \else
+    \IfBooleanTF{#1}
+    {\IfNoValueTF{#3}{\newcommand*{#2}{#4}}{\newcommand*{#2}[#3]{#4}}}
+    {\IfNoValueTF{#3}{\newcommand{#2}{#4}}{\newcommand{#2}[#3]{#4}}}
+  \fi
+}
+
 \ifdefstring{\ELEGANT@lang}{cn}{
-  \renewcommand{\baselinestretch}{1.3}
-  \renewcommand{\contentsname}{目录}
-  \renewcommand{\figurename}{图}
-  \renewcommand{\tablename}{表}
-  \renewcommand{\partname}{\color{structurecolor}}
-  \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
-  \renewcommand{\listfigurename}{插图目录}
-  \renewcommand{\listtablename}{表格目录}
-  \renewcommand{\bibname}{参考文献}
-  \newcommand{\ebibname}{参考文献}
-  \renewcommand{\appendixname}{附录}
-  \renewcommand{\appendixtocname}{附录}
-  \renewcommand{\indexname}{索\hspace{2em}引}
-  \newcommand\figref[1]{\textbf{图}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
-  \newcommand{\authorname}{\citshape 作者：}
-  \newcommand{\institutename}{\citshape 组织：}
-  \newcommand{\datename}{\citshape 时间：}
-  \newcommand{\versionname}{\citshape 版本：}
-  \newcommand{\notename}{笔记}
-  \renewcommand*{\proofname}{证明}
-  \newcommand{\definitionname}{定义}
-  \newcommand{\theoremname}{定理}
-  \newcommand{\axiomname}{公理}
-  \newcommand{\postulatename}{公设}
-  \newcommand{\lemmaname}{引理}
-  \newcommand{\propositionname}{命题}
-  \newcommand{\corollaryname}{推论}
-  \newcommand{\examplename}{例题} %
-  \newcommand{\instancename}{示例} %
-  \newcommand{\problemname}{问题} % 问题
-  \newcommand{\exercisename}{练习} % 练习=习题
-  \newcommand{\remarkname}{注}
-  \newcommand{\assumptionname}{假设}
-  \newcommand{\conclusionname}{结论}
-  \newcommand{\solutionname}{解}
-  \newcommand{\propertyname}{性质}
-  \newcommand{\introductionname}{内容提要}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
-  \newcommand{\updatename}{更新：}
-  \newcommand{\historyname}{版本更新历史}
-  \newcommand{\beforechap}{第}
-  \newcommand{\afterchap}{章}
+  \reprovidecommand{\baselinestretch}{1.3}
+  \reprovidecommand{\contentsname}{目录}
+  \reprovidecommand{\figurename}{图}
+  \reprovidecommand{\tablename}{表}
+  \reprovidecommand{\partname}{\color{structurecolor}}
+  \reprovidecommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+  \reprovidecommand{\listfigurename}{插图目录}
+  \reprovidecommand{\listtablename}{表格目录}
+  \reprovidecommand{\bibname}{参考文献}
+  \reprovidecommand{\ebibname}{参考文献}
+  \reprovidecommand{\appendixname}{附录}
+  \reprovidecommand{\appendixtocname}{附录}
+  \reprovidecommand{\indexname}{索\hspace{2em}引}
+  \reprovidecommand\figref[1]{\textbf{图}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{表}~\ref{#1}}
+  \reprovidecommand{\authorname}{\citshape 作者：}
+  \reprovidecommand{\institutename}{\citshape 组织：}
+  \reprovidecommand{\datename}{\citshape 时间：}
+  \reprovidecommand{\versionname}{\citshape 版本：}
+  \reprovidecommand{\notename}{笔记}
+  \reprovidecommand*{\proofname}{证明}
+  \reprovidecommand{\definitionname}{定义}
+  \reprovidecommand{\theoremname}{定理}
+  \reprovidecommand{\axiomname}{公理}
+  \reprovidecommand{\postulatename}{公设}
+  \reprovidecommand{\lemmaname}{引理}
+  \reprovidecommand{\propositionname}{命题}
+  \reprovidecommand{\corollaryname}{推论}
+  \reprovidecommand{\examplename}{例题} %
+  \reprovidecommand{\instancename}{示例} %
+  \reprovidecommand{\problemname}{问题} % 问题
+  \reprovidecommand{\exercisename}{练习} % 练习=习题
+  \reprovidecommand{\remarkname}{注}
+  \reprovidecommand{\assumptionname}{假设}
+  \reprovidecommand{\conclusionname}{结论}
+  \reprovidecommand{\solutionname}{解}
+  \reprovidecommand{\propertyname}{性质}
+  \reprovidecommand{\introductionname}{内容提要}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+  \reprovidecommand{\updatename}{更新：}
+  \reprovidecommand{\historyname}{版本更新历史}
+  \reprovidecommand{\beforechap}{第}
+  \reprovidecommand{\afterchap}{章}
 }{\relax}
 
 
 \ifdefstring{\ELEGANT@lang}{en}{
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figure}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Table}~\ref{#1}}
-  \renewcommand{\chaptername}{Chapter}
-  \renewcommand{\partname}{\color{structurecolor} Part}
-  \newcommand{\authorname}{\textbf{Author: }}
-  \newcommand{\institutename}{\textbf{Institute: }}
-  \newcommand{\datename}{\textbf{Date: }}
-  \newcommand{\versionname}{\textbf{Version: }}
-  \newcommand{\notename}{Note}
-  \newcommand{\proofname}{Proof}
-  \newcommand{\problemname}{Problem}
-  \newcommand{\definitionname}{Definition}
-  \newcommand{\theoremname}{Theorem}
-  \newcommand{\axiomname}{Axiom}
-  \newcommand{\postulatename}{Postulate}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Proposition}
-  \newcommand{\corollaryname}{Corollary}
-  \newcommand{\examplename}{Example}
-  \newcommand{\exercisename}{Exercise}
-  \newcommand{\remarkname}{Remark}
-  \newcommand{\assumptionname}{Assumption}
-  \newcommand{\conclusionname}{Conclusion}
-  \newcommand{\solutionname}{Solution}
-  \newcommand{\propertyname}{Property}
-  \newcommand{\introductionname}{Introduction}
-  \renewcommand{\appendixname}{Appendix}
-  \newcommand{\ebibname}{Bibliography}
-  % \newcommand{\problemsetname}{Exercise}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Updates:}
-  \newcommand{\historyname}{Version History}
+  \reprovidecommand\figref[1]{\textbf{Figure}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Table}~\ref{#1}}
+  \reprovidecommand{\chaptername}{Chapter}
+  \reprovidecommand{\partname}{\color{structurecolor} Part}
+  \reprovidecommand{\authorname}{\textbf{Author: }}
+  \reprovidecommand{\institutename}{\textbf{Institute: }}
+  \reprovidecommand{\datename}{\textbf{Date: }}
+  \reprovidecommand{\versionname}{\textbf{Version: }}
+  \reprovidecommand{\notename}{Note}
+  \reprovidecommand{\proofname}{Proof}
+  \reprovidecommand{\problemname}{Problem}
+  \reprovidecommand{\definitionname}{Definition}
+  \reprovidecommand{\theoremname}{Theorem}
+  \reprovidecommand{\axiomname}{Axiom}
+  \reprovidecommand{\postulatename}{Postulate}
+  \reprovidecommand{\lemmaname}{Lemma}
+  \reprovidecommand{\propositionname}{Proposition}
+  \reprovidecommand{\corollaryname}{Corollary}
+  \reprovidecommand{\examplename}{Example}
+  \reprovidecommand{\exercisename}{Exercise}
+  \reprovidecommand{\remarkname}{Remark}
+  \reprovidecommand{\assumptionname}{Assumption}
+  \reprovidecommand{\conclusionname}{Conclusion}
+  \reprovidecommand{\solutionname}{Solution}
+  \reprovidecommand{\propertyname}{Property}
+  \reprovidecommand{\introductionname}{Introduction}
+  \reprovidecommand{\appendixname}{Appendix}
+  \reprovidecommand{\ebibname}{Bibliography}
+  % \reprovidecommand{\problemsetname}{Exercise}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Updates:}
+  \reprovidecommand{\historyname}{Version History}
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{it}{
@@ -496,35 +508,35 @@
   \RequirePackage[italian]{babel}
   % \RequirePackage[T1]{fontenc}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabella}~\ref{#1}}
-  \renewcommand{\chaptername}{Chapter}
-  \newcommand{\authorname}{\textbf{Autore: }}
-  \newcommand{\institutename}{\textbf{Istituto: }}
-  \newcommand{\datename}{\textbf{Data: }}
-  \newcommand{\versionname}{\textbf{Versione: }}
-  \newcommand{\notename}{Nota}
-  \newcommand{\proofname}{Dimostrazione}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definizione}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Assioma}
-  \newcommand{\postulatename}{Postulato}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Proposizione}
-  \newcommand{\corollaryname}{Corollario}
-  \newcommand{\examplename}{Esempio}
-  \newcommand{\exercisename}{Esercizio}
-  \newcommand{\remarkname}{Commento}
-  \newcommand{\assumptionname}{Assunto}
-  \newcommand{\conclusionname}{Conclusione}
-  \newcommand{\solutionname}{Soluzione}
-  \newcommand{\propertyname}{Proprietà}
-  \newcommand{\introductionname}{Introduzione}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Aggiornamenti:}
-  \newcommand{\ebibname}{Bibliografia}
-  \newcommand{\historyname}{Cronologia delle versioni}
+  \reprovidecommand\figref[1]{\textbf{Figura}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tabella}~\ref{#1}}
+  \reprovidecommand{\chaptername}{Chapter}
+  \reprovidecommand{\authorname}{\textbf{Autore: }}
+  \reprovidecommand{\institutename}{\textbf{Istituto: }}
+  \reprovidecommand{\datename}{\textbf{Data: }}
+  \reprovidecommand{\versionname}{\textbf{Versione: }}
+  \reprovidecommand{\notename}{Nota}
+  \reprovidecommand{\proofname}{Dimostrazione}
+  \reprovidecommand{\problemname}{Problema}
+  \reprovidecommand{\definitionname}{Definizione}
+  \reprovidecommand{\theoremname}{Teorema}
+  \reprovidecommand{\axiomname}{Assioma}
+  \reprovidecommand{\postulatename}{Postulato}
+  \reprovidecommand{\lemmaname}{Lemma}
+  \reprovidecommand{\propositionname}{Proposizione}
+  \reprovidecommand{\corollaryname}{Corollario}
+  \reprovidecommand{\examplename}{Esempio}
+  \reprovidecommand{\exercisename}{Esercizio}
+  \reprovidecommand{\remarkname}{Commento}
+  \reprovidecommand{\assumptionname}{Assunto}
+  \reprovidecommand{\conclusionname}{Conclusione}
+  \reprovidecommand{\solutionname}{Soluzione}
+  \reprovidecommand{\propertyname}{Proprietà}
+  \reprovidecommand{\introductionname}{Introduzione}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Aggiornamenti:}
+  \reprovidecommand{\ebibname}{Bibliografia}
+  \reprovidecommand{\historyname}{Cronologia delle versioni}
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{fr}{
@@ -532,182 +544,183 @@
   \RequirePackage[T1]{fontenc}
   \RequirePackage[french]{babel}
   \setlength\parindent{2em}
-  \renewcommand\figref[1]{\textbf{Figure}\ref{#1}}
-  \renewcommand\tabref[1]{\textbf{Tableau}\ref{#1}}
-  \renewcommand{\chaptername}{Chapitre}
-  \renewcommand{\authorname}{\textbf{Auteur: }}
-  \renewcommand{\institutename}{\textbf{Institut: }}
-  \renewcommand{\datename}{\textbf{Date: }}
-  \renewcommand{\versionname}{\textbf{Version: }}
-  \renewcommand{\notename}{Note}
-  \renewcommand{\proofname}{Démonstration}
-  \renewcommand{\problemname}{Problème}
-  \renewcommand{\definitionname}{Définition}
-  \renewcommand{\theoremname}{Théorème}
-  \renewcommand{\axiomname}{Axiôme}
-  \renewcommand{\postulatename}{Postulat}
-  \renewcommand{\lemmaname}{Lemme}
-  \renewcommand{\propositionname}{Proposition}
-  \renewcommand{\corollaryname}{Corollaire}
-  \renewcommand{\examplename}{Exemple}
-  \renewcommand{\exercisename}{Exercice}
-  \renewcommand{\remarkname}{Remarque}
-  \renewcommand{\assumptionname}{Supposition}
-  \renewcommand{\conclusionname}{Conclusion}
-  \renewcommand{\solutionname}{Solution}
-  \renewcommand{\propertyname}{Propriété}
-  \renewcommand{\introductionname}{Introduction}
-  \renewcommand{\problemsetname}{Exercice}
-  \renewcommand{\updatename}{Mises à jour:}
-  \newcommand{\ebibname}{Bibliographie}
-  \renewcommand{\historyname}{Historique des versions}
+  \reprovidecommand\figref[1]{\textbf{Figure}\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tableau}\ref{#1}}
+  \reprovidecommand{\chaptername}{Chapitre}
+  \reprovidecommand{\authorname}{\textbf{Auteur: }}
+  \reprovidecommand{\institutename}{\textbf{Institut: }}
+  \reprovidecommand{\datename}{\textbf{Date: }}
+  \reprovidecommand{\versionname}{\textbf{Version: }}
+  \reprovidecommand{\notename}{Note}
+  \reprovidecommand{\proofname}{Démonstration}
+  \reprovidecommand{\problemname}{Problème}
+  \reprovidecommand{\definitionname}{Définition}
+  \reprovidecommand{\theoremname}{Théorème}
+  \reprovidecommand{\axiomname}{Axiôme}
+  \reprovidecommand{\postulatename}{Postulat}
+  \reprovidecommand{\lemmaname}{Lemme}
+  \reprovidecommand{\propositionname}{Proposition}
+  \reprovidecommand{\corollaryname}{Corollaire}
+  \reprovidecommand{\examplename}{Exemple}
+  \reprovidecommand{\exercisename}{Exercice}
+  \reprovidecommand{\remarkname}{Remarque}
+  \reprovidecommand{\assumptionname}{Supposition}
+  \reprovidecommand{\conclusionname}{Conclusion}
+  \reprovidecommand{\solutionname}{Solution}
+  \reprovidecommand{\propertyname}{Propriété}
+  \reprovidecommand{\introductionname}{Introduction}
+  \reprovidecommand{\problemsetname}{Exercice}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Mises à jour:}
+  \reprovidecommand{\ebibname}{Bibliographie}
+  \reprovidecommand{\historyname}{Historique des versions}
 }{\relax}
 
 
 \ifdefstring{\ELEGANT@lang}{nl}{
   \RequirePackage[dutch]{babel}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figuur}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabel}~\ref{#1}}
-  \renewcommand{\chaptername}{Hoofdstuk}
-  \newcommand{\authorname}{\textbf{Auteur: }}
-  \newcommand{\institutename}{\textbf{Instituut: }}
-  \newcommand{\datename}{\textbf{Datum: }}
-  \newcommand{\versionname}{\textbf{Versie: }}
-  \newcommand{\notename}{Opmerking}
-  \newcommand{\proofname}{Bewijs}
-  \newcommand{\problemname}{Probleem}
-  \newcommand{\definitionname}{Definitie}
-  \newcommand{\theoremname}{Stelling}
-  \newcommand{\axiomname}{Uitgangspunt}
-  \newcommand{\postulatename}{Hypothese}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Voorstel}
-  \newcommand{\corollaryname}{Gevolgtrekking}
-  \newcommand{\examplename}{Voorbeeld}
-  \newcommand{\exercisename}{Oefening}
-  \newcommand{\remarkname}{Commentaar}
-  \newcommand{\assumptionname}{Veronderstelling}
-  \newcommand{\conclusionname}{Besluit}
-  \newcommand{\solutionname}{Oplossing}
-  \newcommand{\propertyname}{Eigenschap}
-  \newcommand{\introductionname}{Introductie}
-  \newcommand{\problemsetname}{Probleemcomplex}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Update:}
-  \newcommand{\ebibname}{Bibliographie}
-  \newcommand{\historyname}{Versie Geschiedenis}
+  \reprovidecommand\figref[1]{\textbf{Figuur}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tabel}~\ref{#1}}
+  \reprovidecommand{\chaptername}{Hoofdstuk}
+  \reprovidecommand{\authorname}{\textbf{Auteur: }}
+  \reprovidecommand{\institutename}{\textbf{Instituut: }}
+  \reprovidecommand{\datename}{\textbf{Datum: }}
+  \reprovidecommand{\versionname}{\textbf{Versie: }}
+  \reprovidecommand{\notename}{Opmerking}
+  \reprovidecommand{\proofname}{Bewijs}
+  \reprovidecommand{\problemname}{Probleem}
+  \reprovidecommand{\definitionname}{Definitie}
+  \reprovidecommand{\theoremname}{Stelling}
+  \reprovidecommand{\axiomname}{Uitgangspunt}
+  \reprovidecommand{\postulatename}{Hypothese}
+  \reprovidecommand{\lemmaname}{Lemma}
+  \reprovidecommand{\propositionname}{Voorstel}
+  \reprovidecommand{\corollaryname}{Gevolgtrekking}
+  \reprovidecommand{\examplename}{Voorbeeld}
+  \reprovidecommand{\exercisename}{Oefening}
+  \reprovidecommand{\remarkname}{Commentaar}
+  \reprovidecommand{\assumptionname}{Veronderstelling}
+  \reprovidecommand{\conclusionname}{Besluit}
+  \reprovidecommand{\solutionname}{Oplossing}
+  \reprovidecommand{\propertyname}{Eigenschap}
+  \reprovidecommand{\introductionname}{Introductie}
+  \reprovidecommand{\problemsetname}{Probleemcomplex}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Update:}
+  \reprovidecommand{\ebibname}{Bibliographie}
+  \reprovidecommand{\historyname}{Versie Geschiedenis}
 }{\relax}
 
 
 \ifdefstring{\ELEGANT@lang}{hu}{
   \RequirePackage[magyar]{babel}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\ref{#1}~\textbf{Ábra}}
-  \newcommand\tabref[1]{\ref{#1}~\textbf{Táblázat}}
-  \renewcommand{\chaptername}{Fejezet}
-  \newcommand{\authorname}{\textbf{Szerző: }}
-  \newcommand{\institutename}{\textbf{Intézmény: }}
-  \newcommand{\datename}{\textbf{Dátum: }}
-  \newcommand{\versionname}{\textbf{Verziószám: }}
-  \newcommand{\notename}{Jegyzet}
-  \newcommand{\proofname}{Bizonyítás}
-  \newcommand{\problemname}{Probléma}
-  \newcommand{\definitionname}{Definíció}
-  \newcommand{\theoremname}{Tétel}
-  \newcommand{\axiomname}{Axióma}
-  \newcommand{\postulatename}{Követelmény}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Előzmény}
-  \newcommand{\corollaryname}{Következmény}
-  \newcommand{\examplename}{Példa}
-  \newcommand{\exercisename}{Feladat}
-  \newcommand{\remarkname}{Megjegyzés}
-  \newcommand{\assumptionname}{Sejtés}
-  \newcommand{\conclusionname}{Összefoglalás}
-  \newcommand{\solutionname}{Megoldás}
-  \newcommand{\propertyname}{Tulajdonság}
-  \newcommand{\introductionname}{Bevezetés}
-  \newcommand{\problemsetname}{Feladatok}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Frissítve:}
-  \newcommand{\ebibname}{Bibliográfia}
-  \newcommand{\historyname}{Korábbi verziók}
+  \reprovidecommand\figref[1]{\ref{#1}~\textbf{Ábra}}
+  \reprovidecommand\tabref[1]{\ref{#1}~\textbf{Táblázat}}
+  \reprovidecommand{\chaptername}{Fejezet}
+  \reprovidecommand{\authorname}{\textbf{Szerző: }}
+  \reprovidecommand{\institutename}{\textbf{Intézmény: }}
+  \reprovidecommand{\datename}{\textbf{Dátum: }}
+  \reprovidecommand{\versionname}{\textbf{Verziószám: }}
+  \reprovidecommand{\notename}{Jegyzet}
+  \reprovidecommand{\proofname}{Bizonyítás}
+  \reprovidecommand{\problemname}{Probléma}
+  \reprovidecommand{\definitionname}{Definíció}
+  \reprovidecommand{\theoremname}{Tétel}
+  \reprovidecommand{\axiomname}{Axióma}
+  \reprovidecommand{\postulatename}{Követelmény}
+  \reprovidecommand{\lemmaname}{Lemma}
+  \reprovidecommand{\propositionname}{Előzmény}
+  \reprovidecommand{\corollaryname}{Következmény}
+  \reprovidecommand{\examplename}{Példa}
+  \reprovidecommand{\exercisename}{Feladat}
+  \reprovidecommand{\remarkname}{Megjegyzés}
+  \reprovidecommand{\assumptionname}{Sejtés}
+  \reprovidecommand{\conclusionname}{Összefoglalás}
+  \reprovidecommand{\solutionname}{Megoldás}
+  \reprovidecommand{\propertyname}{Tulajdonság}
+  \reprovidecommand{\introductionname}{Bevezetés}
+  \reprovidecommand{\problemsetname}{Feladatok}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Frissítve:}
+  \reprovidecommand{\ebibname}{Bibliográfia}
+  \reprovidecommand{\historyname}{Korábbi verziók}
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{de}{
   \setlength\parindent{2em}
-  \renewcommand{\contentsname}{Inhaltsverzeichnis}
-  \newcommand\figref[1]{\textbf{Figur}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabelle}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor} Teil}
-  \renewcommand{\listfigurename}{Abbildungsverzeichnis}
-  \renewcommand{\listtablename}{Tabellenverzeichnis}
-  \renewcommand{\bibname}{Bibliographie}
-  \renewcommand{\appendixname}{Anhang}
-  \renewcommand{\chaptername}{Kapitel}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Institut: }}
-  \newcommand{\datename}{\textbf{Datum: }}
-  \newcommand{\versionname}{\textbf{Version: }}
-  \newcommand{\notename}{Notiz}
-  \newcommand{\proofname}{Beweis}
-  \newcommand{\problemname}{Problem}
-  \newcommand{\definitionname}{Definition}
-  \newcommand{\theoremname}{Theorem}
-  \newcommand{\axiomname}{Axiom}
-  \newcommand{\postulatename}{Postulat}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Behauptung}
-  \newcommand{\corollaryname}{Corollary}
-  \newcommand{\examplename}{Beispiel}
-  \newcommand{\instancename}{Beispiel} %
-  \newcommand{\exercisename}{\"{U}bung}
-  \newcommand{\remarkname}{Anmerkung}
-  \newcommand{\assumptionname}{Annahme}
-  \newcommand{\conclusionname}{Abschluss}
-  \newcommand{\solutionname}{Aufl\"{o}sung}
-  \newcommand{\propertyname}{Property}
-  \newcommand{\introductionname}{Einleitung}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Updates:}
-  \renewcommand{\ebibname}{Bibliographie}
-  \newcommand{\historyname}{Version der Geschichte}
+  \reprovidecommand{\contentsname}{Inhaltsverzeichnis}
+  \reprovidecommand\figref[1]{\textbf{Figur}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tabelle}~\ref{#1}}
+  \reprovidecommand{\partname}{\color{structurecolor} Teil}
+  \reprovidecommand{\listfigurename}{Abbildungsverzeichnis}
+  \reprovidecommand{\listtablename}{Tabellenverzeichnis}
+  \reprovidecommand{\bibname}{Bibliographie}
+  \reprovidecommand{\appendixname}{Anhang}
+  \reprovidecommand{\chaptername}{Kapitel}
+  \reprovidecommand{\authorname}{\textbf{Autor: }}
+  \reprovidecommand{\institutename}{\textbf{Institut: }}
+  \reprovidecommand{\datename}{\textbf{Datum: }}
+  \reprovidecommand{\versionname}{\textbf{Version: }}
+  \reprovidecommand{\notename}{Notiz}
+  \reprovidecommand{\proofname}{Beweis}
+  \reprovidecommand{\problemname}{Problem}
+  \reprovidecommand{\definitionname}{Definition}
+  \reprovidecommand{\theoremname}{Theorem}
+  \reprovidecommand{\axiomname}{Axiom}
+  \reprovidecommand{\postulatename}{Postulat}
+  \reprovidecommand{\lemmaname}{Lemma}
+  \reprovidecommand{\propositionname}{Behauptung}
+  \reprovidecommand{\corollaryname}{Corollary}
+  \reprovidecommand{\examplename}{Beispiel}
+  \reprovidecommand{\instancename}{Beispiel} %
+  \reprovidecommand{\exercisename}{\"{U}bung}
+  \reprovidecommand{\remarkname}{Anmerkung}
+  \reprovidecommand{\assumptionname}{Annahme}
+  \reprovidecommand{\conclusionname}{Abschluss}
+  \reprovidecommand{\solutionname}{Aufl\"{o}sung}
+  \reprovidecommand{\propertyname}{Property}
+  \reprovidecommand{\introductionname}{Einleitung}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Updates:}
+  \reprovidecommand{\ebibname}{Bibliographie}
+  \reprovidecommand{\historyname}{Version der Geschichte}
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{es}{
   \RequirePackage[spanish]{babel}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabla}~\ref{#1}}
-  \renewcommand{\spanishchaptername}{Capítulo}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Instituto: }}
-  \newcommand{\datename}{\textbf{Fecha: }}
-  \newcommand{\versionname}{\textbf{Versión: }}
-  \newcommand{\notename}{Nota}
-  \newcommand{\proofname}{Demostración}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definición}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Axioma}
-  \newcommand{\postulatename}{Postulado}
-  \newcommand{\lemmaname}{Lema}
-  \newcommand{\propositionname}{Proposición}
-  \newcommand{\corollaryname}{Corolario}
-  \newcommand{\examplename}{Ejemplo}
-  \newcommand{\exercisename}{Ejercicio}
-  \newcommand{\remarkname}{Comentario}
-  \newcommand{\assumptionname}{Asunto}
-  \newcommand{\conclusionname}{Conclusión}
-  \newcommand{\solutionname}{Solución}
-  \newcommand{\propertyname}{Propiedad}
-  \newcommand{\introductionname}{Introducción}
-  \newcommand{\problemsetname}{Ejercicio}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Actualización:}
-  \newcommand{\ebibname}{Bibliografía}
-  \newcommand{\historyname}{Historial de versiones}
+  \reprovidecommand\figref[1]{\textbf{Figura}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tabla}~\ref{#1}}
+  \reprovidecommand{\spanishchaptername}{Capítulo}
+  \reprovidecommand{\authorname}{\textbf{Autor: }}
+  \reprovidecommand{\institutename}{\textbf{Instituto: }}
+  \reprovidecommand{\datename}{\textbf{Fecha: }}
+  \reprovidecommand{\versionname}{\textbf{Versión: }}
+  \reprovidecommand{\notename}{Nota}
+  \reprovidecommand{\proofname}{Demostración}
+  \reprovidecommand{\problemname}{Problema}
+  \reprovidecommand{\definitionname}{Definición}
+  \reprovidecommand{\theoremname}{Teorema}
+  \reprovidecommand{\axiomname}{Axioma}
+  \reprovidecommand{\postulatename}{Postulado}
+  \reprovidecommand{\lemmaname}{Lema}
+  \reprovidecommand{\propositionname}{Proposición}
+  \reprovidecommand{\corollaryname}{Corolario}
+  \reprovidecommand{\examplename}{Ejemplo}
+  \reprovidecommand{\exercisename}{Ejercicio}
+  \reprovidecommand{\remarkname}{Comentario}
+  \reprovidecommand{\assumptionname}{Asunto}
+  \reprovidecommand{\conclusionname}{Conclusión}
+  \reprovidecommand{\solutionname}{Solución}
+  \reprovidecommand{\propertyname}{Propiedad}
+  \reprovidecommand{\introductionname}{Introducción}
+  \reprovidecommand{\problemsetname}{Ejercicio}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Actualización:}
+  \reprovidecommand{\ebibname}{Bibliografía}
+  \reprovidecommand{\historyname}{Historial de versiones}
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{mn}{
@@ -715,114 +728,114 @@
   \RequirePackage[utf8]{inputenc}
   \RequirePackage[T2A]{fontenc}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Зураг}\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Хүснэгт}\ref{#1}}
-  \renewcommand{\chaptername}{Бүлэг}
-  \newcommand{\authorname}{\textbf{Зохиогч: }}
-  \newcommand{\institutename}{\textbf{Сургууль: }}
-  \newcommand{\datename}{\textbf{Огноо: }}
-  \newcommand{\versionname}{\textbf{Хувилбар: }}
-  \newcommand{\notename}{Тэмдэглэл}
-  \newcommand{\proofname}{Баталгаа}
-  \newcommand{\problemname}{Бодлого}
-  \newcommand{\definitionname}{Тодорхойлолт}
-  \newcommand{\theoremname}{Томьёо}
-  \newcommand{\axiomname}{Аксиом}
-  \newcommand{\postulatename}{Постулат}
-  \newcommand{\lemmaname}{Лемма}
-  \newcommand{\propositionname}{Таамаглал}
-  \newcommand{\corollaryname}{Үр дүн}
-  \newcommand{\examplename}{Жишээ}
-  \newcommand{\exercisename}{Дасгал}
-  \newcommand{\remarkname}{Тайлбар}
-  \newcommand{\assumptionname}{Урьдчилсан нөхцөл}
-  \newcommand{\conclusionname}{Дүгнэлт}
-  \newcommand{\solutionname}{Хариулт}
-  \newcommand{\propertyname}{Шинж чанар}
-  \newcommand{\introductionname}{Удиртгал}
-  \newcommand{\problemsetname}{Бодлогууд}
-  \newcommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Шинэчлэлтүүд:}
-  \newcommand{\ebibname}{Ном зүй}
-  \newcommand{\historyname}{Хувилбарын түүх}
+  \reprovidecommand\figref[1]{\textbf{Зураг}\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Хүснэгт}\ref{#1}}
+  \reprovidecommand{\chaptername}{Бүлэг}
+  \reprovidecommand{\authorname}{\textbf{Зохиогч: }}
+  \reprovidecommand{\institutename}{\textbf{Сургууль: }}
+  \reprovidecommand{\datename}{\textbf{Огноо: }}
+  \reprovidecommand{\versionname}{\textbf{Хувилбар: }}
+  \reprovidecommand{\notename}{Тэмдэглэл}
+  \reprovidecommand{\proofname}{Баталгаа}
+  \reprovidecommand{\problemname}{Бодлого}
+  \reprovidecommand{\definitionname}{Тодорхойлолт}
+  \reprovidecommand{\theoremname}{Томьёо}
+  \reprovidecommand{\axiomname}{Аксиом}
+  \reprovidecommand{\postulatename}{Постулат}
+  \reprovidecommand{\lemmaname}{Лемма}
+  \reprovidecommand{\propositionname}{Таамаглал}
+  \reprovidecommand{\corollaryname}{Үр дүн}
+  \reprovidecommand{\examplename}{Жишээ}
+  \reprovidecommand{\exercisename}{Дасгал}
+  \reprovidecommand{\remarkname}{Тайлбар}
+  \reprovidecommand{\assumptionname}{Урьдчилсан нөхцөл}
+  \reprovidecommand{\conclusionname}{Дүгнэлт}
+  \reprovidecommand{\solutionname}{Хариулт}
+  \reprovidecommand{\propertyname}{Шинж чанар}
+  \reprovidecommand{\introductionname}{Удиртгал}
+  \reprovidecommand{\problemsetname}{Бодлогууд}
+  \reprovidecommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Шинэчлэлтүүд:}
+  \reprovidecommand{\ebibname}{Ном зүй}
+  \reprovidecommand{\historyname}{Хувилбарын түүх}
 }{\relax}
 
 
 \ifdefstring{\ELEGANT@lang}{pt}{
   \RequirePackage[portuguese]{babel}
   \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabela}~\ref{#1}}
-  \renewcommand{\chaptername}{Capítulo}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Instituição: }}
-  \newcommand{\datename}{\textbf{Data: }}
-  \newcommand{\versionname}{\textbf{Versão: }}
-  \newcommand{\notename}{Observação}
-  \newcommand{\proofname}{Demostração}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definição}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Axioma}
-  \newcommand{\postulatename}{Postulado}
-  \newcommand{\lemmaname}{Lema}
-  \newcommand{\propositionname}{Proposição}
-  \newcommand{\corollaryname}{Corolário}
-  \newcommand{\examplename}{Exemplo}
-  \newcommand{\exercisename}{Exercício}
-  \newcommand{\remarkname}{Comentário}
-  \newcommand{\assumptionname}{Assunto}
-  \newcommand{\conclusionname}{Conclusão}
-  \newcommand{\solutionname}{Soluções}
-  \newcommand{\propertyname}{Propiedade}
-  \newcommand{\introductionname}{Introdução}
-  \newcommand{\problemsetname}{Questão}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Atualização: }
-  \newcommand{\ebibname}{Bibliografia}
-  \newcommand{\historyname}{Histórico de versões}
+  \reprovidecommand\figref[1]{\textbf{Figura}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{Tabela}~\ref{#1}}
+  \reprovidecommand{\chaptername}{Capítulo}
+  \reprovidecommand{\authorname}{\textbf{Autor: }}
+  \reprovidecommand{\institutename}{\textbf{Instituição: }}
+  \reprovidecommand{\datename}{\textbf{Data: }}
+  \reprovidecommand{\versionname}{\textbf{Versão: }}
+  \reprovidecommand{\notename}{Observação}
+  \reprovidecommand{\proofname}{Demostração}
+  \reprovidecommand{\problemname}{Problema}
+  \reprovidecommand{\definitionname}{Definição}
+  \reprovidecommand{\theoremname}{Teorema}
+  \reprovidecommand{\axiomname}{Axioma}
+  \reprovidecommand{\postulatename}{Postulado}
+  \reprovidecommand{\lemmaname}{Lema}
+  \reprovidecommand{\propositionname}{Proposição}
+  \reprovidecommand{\corollaryname}{Corolário}
+  \reprovidecommand{\examplename}{Exemplo}
+  \reprovidecommand{\exercisename}{Exercício}
+  \reprovidecommand{\remarkname}{Comentário}
+  \reprovidecommand{\assumptionname}{Assunto}
+  \reprovidecommand{\conclusionname}{Conclusão}
+  \reprovidecommand{\solutionname}{Soluções}
+  \reprovidecommand{\propertyname}{Propiedade}
+  \reprovidecommand{\introductionname}{Introdução}
+  \reprovidecommand{\problemsetname}{Questão}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{Atualização: }
+  \reprovidecommand{\ebibname}{Bibliografia}
+  \reprovidecommand{\historyname}{Histórico de versões}
 }{\relax}
 
 
 \ifdefstring{\ELEGANT@lang}{jp}{
  \RequirePackage{luatexja}
   \setlength\parindent{2em}
-  \renewcommand{\contentsname}{目次}
-  \newcommand\figref[1]{\textbf{図}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor}}
-  \renewcommand{\listfigurename}{イラストカタログ}
-  \renewcommand{\listtablename}{表カタログ}
-  \renewcommand{\bibname}{参考文献}
-  \renewcommand{\appendixname}{付録}
-  \renewcommand{\chaptername}{第 \thechapter 章}
-  \newcommand{\authorname}{\textbf{著者：}}
-  \newcommand{\institutename}{\textbf{組織団体：}}
-  \newcommand{\datename}{\textbf{日付：}}
-  \newcommand{\versionname}{\textbf{\citshape バージョン：}}
-  \newcommand{\notename}{ノート}
-  \newcommand{\proofname}{証明}
-  \newcommand{\problemname}{問題}
-  \newcommand{\definitionname}{定義}
-  \newcommand{\theoremname}{定理}
-  \newcommand{\axiomname}{公理}
-  \newcommand{\postulatename}{公準}
-  \newcommand{\lemmaname}{補題}
-  \newcommand{\propositionname}{命題}
-  \newcommand{\corollaryname}{系}
-  \newcommand{\examplename}{例題}
-  \newcommand{\instancename}{例}
-  \newcommand{\exercisename}{練習}
-  \newcommand{\remarkname}{注}
-  \newcommand{\assumptionname}{仮設}
-  \newcommand{\conclusionname}{結論}
-  \newcommand{\solutionname}{解答}
-  \newcommand{\propertyname}{性質}
-  \newcommand{\introductionname}{内容概要}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{更新：}
-  \newcommand{\ebibname}{参考文献}
-  \newcommand{\historyname}{バージョン更新履歴}
+  \reprovidecommand{\contentsname}{目次}
+  \reprovidecommand\figref[1]{\textbf{図}~\ref{#1}}
+  \reprovidecommand\tabref[1]{\textbf{表}~\ref{#1}}
+  \reprovidecommand{\partname}{\color{structurecolor}}
+  \reprovidecommand{\listfigurename}{イラストカタログ}
+  \reprovidecommand{\listtablename}{表カタログ}
+  \reprovidecommand{\bibname}{参考文献}
+  \reprovidecommand{\appendixname}{付録}
+  \reprovidecommand{\chaptername}{第 \thechapter 章}
+  \reprovidecommand{\authorname}{\textbf{著者：}}
+  \reprovidecommand{\institutename}{\textbf{組織団体：}}
+  \reprovidecommand{\datename}{\textbf{日付：}}
+  \reprovidecommand{\versionname}{\textbf{\citshape バージョン：}}
+  \reprovidecommand{\notename}{ノート}
+  \reprovidecommand{\proofname}{証明}
+  \reprovidecommand{\problemname}{問題}
+  \reprovidecommand{\definitionname}{定義}
+  \reprovidecommand{\theoremname}{定理}
+  \reprovidecommand{\axiomname}{公理}
+  \reprovidecommand{\postulatename}{公準}
+  \reprovidecommand{\lemmaname}{補題}
+  \reprovidecommand{\propositionname}{命題}
+  \reprovidecommand{\corollaryname}{系}
+  \reprovidecommand{\examplename}{例題}
+  \reprovidecommand{\instancename}{例}
+  \reprovidecommand{\exercisename}{練習}
+  \reprovidecommand{\remarkname}{注}
+  \reprovidecommand{\assumptionname}{仮設}
+  \reprovidecommand{\conclusionname}{結論}
+  \reprovidecommand{\solutionname}{解答}
+  \reprovidecommand{\propertyname}{性質}
+  \reprovidecommand{\introductionname}{内容概要}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand{\updatename}{更新：}
+  \reprovidecommand{\ebibname}{参考文献}
+  \reprovidecommand{\historyname}{バージョン更新履歴}
 }{\relax}
 
 
