@@ -1,13 +1,15 @@
 % -----------------------------------------------------------------------------
 % Start of file `elegantbook.cls'.
+% UNOFFICIAL MODIFIED VERSION
 % Copyright 2013-2022 ElegantLaTeX (elegantlatex2e@gmail.com)
 % Copyright 2026-     ElegantLaTeX (maintained by ranwang.osbert@outlook.com)
-% This work may be distributed and/or modified under the conditions of the LaTeX Project Public License,
-% either version 1.3c of this license or (at your option) any later version.
-% It is available at https://github.com/ElegantLaTeX/ElegantBook
+% Modified by Yingzu Liang (https://github.com/lyz127)
+% This work may be distributed and/or modified under the LaTeX Project Public License v1.3c or later.
+% Official: https://github.com/ElegantLaTeX/ElegantBook | Unofficial: https://github.com/lyz127/elegantbook
+% LPPL maintenance status: maintained
 % -----------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2026/05/01 v4.7 ElegantBook document class]
+\ProvidesClass{elegantbook}[2026/05/01 v4.7-r0.0 ElegantBook document class (unofficial)]
 
 %%%
 \RequirePackage{kvoptions}

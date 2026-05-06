@@ -1,5 +1,7 @@
 <!-- Author : Dongsheng Deng & Liam Huang & Ran Wang-->
+<!-- Modified Maintainer: Yingzu Liang (https://github.com/lyz127) -->
 <!-- Program Email: elegantlatex2e@gmail.com (inactive) & ranwang.osbert@outlook.com -->
+<!-- Repo: Official https://github.com/ElegantLaTeX/ElegantBook | Unofficial Modified https://github.com/lyz127/elegantbook -->
 
 [Github](https://github.com/ElegantLaTeX/ElegantBook) | [CTAN](https://ctan.org/pkg/elegantbook) | [Download](https://github.com/ElegantLaTeX/ElegantBook/releases) | 
 
@@ -9,9 +11,12 @@
 
 # ElegantBook: 优美的 LaTeX 书籍模板 An Elegant LaTeX Template for Books 
 
-ElegantBook 是为 LaTeX 书籍写作而设计的模板，由 [Ethan Deng](https://github.com/EthanDeng) 和 [Liam Huang](https://github.com/Liam0205) 创立，而后由 [Ethan Deng](https://github.com/EthanDeng)、[乙醇](https://github.com/syvshc)和[死抠](https://github.com/sikouhjw)维护。自2026年起，由[啸行](https://github.com/OsbertWang)负责维护和发行。如果你有其他问题、建议或者报告 bug，可以提交 issues 或者加入我们的 QQ 用户交流群：692108391。
+> 本仓库为 **非官方二次修改维护版**，基于官方 ElegantBook 原版定制修复与功能优化
 
-ElegantBook is a template designed for LaTeX book writing, created by [Ethan Deng](https://github.com/EthanDeng) and [Liam Huang](https://github.com/Liam0205), and later maintained by [Ethan Deng](https://github.com/EthanDeng), [ethanol](https://github.com/syvshc), and [sikouhjw](https://github.com/sikouhjw). Since 2026, [Osbert Wang](https://github.com/OsbertWang) has been responsible for its maintenance and distribution. If you have any questions, suggestions, or need to report bugs, feel free to submit issues or join our QQ user group: 692108391.
+ElegantBook 是为 LaTeX 书籍写作而设计的模板，由 [Ethan Deng](https://github.com/EthanDeng) 和 [Liam Huang](https://github.com/Liam0205) 创立，而后由 [Ethan Deng](https://github.com/EthanDeng)、[乙醇](https://github.com/syvshc)和[死抠](https://github.com/sikouhjw)维护。自2026年起，由[啸行](https://github.com/OsbertWang)负责官方维护和发行；本仓库由 [Yingzu Liang](https://github.com/lyz127) 进行非官方 Bug 修复与定制化修改维护。如有使用问题、功能建议或漏洞反馈，可在**本仓库提交 Issues**，也可加入官方 QQ 用户交流群：692108391。
+
+ElegantBook is a template designed for LaTeX book writing, created by [Ethan Deng](https://github.com/EthanDeng) and [Liam Huang](https://github.com/Liam0205), and later maintained by [Ethan Deng](https://github.com/EthanDeng), [ethanol](https://github.com/syvshc), and [sikouhjw](https://github.com/sikouhjw). Since 2026, [Osbert Wang](https://github.com/OsbertWang) has been responsible for official maintenance and distribution. This repository is unofficially maintained and customized with bug fixes by [Yingzu Liang](https://github.com/lyz127). If you have any usage questions, feature suggestions or bug reports, please submit issues in **this repository**, or join our official QQ user group: 692108391.
+
 
 **本模板自 2023 年 1 月 1 日起停止维护，并不建议使用，但鉴于用户群体庞大，自 2026 年起重新发布。为保证之前版本的用户仍能查阅说明文档，本说明文档保留了过往信息。**
 
@@ -27,8 +32,10 @@ Thank [sikouhjw](https://github.com/sikouhjw) and [syvshc](https://github.com/sy
 
 本模板发布遵循 LaTeX 项目公共许可证 1.3 c 或更高版本。
 如果是衍生作品，请务必加入协议声明和模板信息（github、CTAN 地址）。
+本非官方修改版同样遵循 LaTeX 项目公共许可证 1.3c 及后续版本开源分发。
 
 This work is released under the LaTeX Project Public License, v1.3c or later.
+This unofficial modified version is also distributed under the LaTeX Project Public License v1.3c or later.
 
 ## 衍生品 Derivative Works
 
