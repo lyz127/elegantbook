@@ -248,3 +248,6 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# test temporary files
+/test/**/*.pdf
