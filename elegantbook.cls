@@ -760,7 +760,7 @@
   \reprovidecommand{\propertyname}{Шинж чанар}
   \reprovidecommand{\introductionname}{Удиртгал}
   \reprovidecommand{\problemsetname}{Бодлогууд}
-  \reprovidecommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
+  \reprovidecommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \reprovidecommand{\updatename}{Шинэчлэлтүүд:}
   \reprovidecommand{\ebibname}{Ном зүй}
   \reprovidecommand{\historyname}{Хувилбарын түүх}
