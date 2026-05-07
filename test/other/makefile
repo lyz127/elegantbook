@@ -1,5 +1,5 @@
 LUALATEX_TARGETS = test-base_jp
-XELATEX_TARGETS  = test-base_nm
+XELATEX_TARGETS  = test-base_mn
 PDFLATEX_TARGETS = test-base_de test-base_es test-base_fr test-base_hu test-base_it test-base_nl test-base_pt
 TEMP_EXT         = synctex.gz
 
