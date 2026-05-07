@@ -429,7 +429,6 @@
   \reprovidecommand{\thepart}{第\zhnumber{\arabic{part}}部分}
   \reprovidecommand{\listfigurename}{插图目录}
   \reprovidecommand{\listtablename}{表格目录}
-  \reprovidecommand{\bibname}{参考文献}
   \reprovidecommand{\ebibname}{参考文献}
   \reprovidecommand{\appendixname}{附录}
   \reprovidecommand{\appendixtocname}{附录}
@@ -464,6 +463,10 @@
   \reprovidecommand{\historyname}{版本更新历史}
   \reprovidecommand{\beforechap}{第}
   \reprovidecommand{\afterchap}{章}
+  \DefineBibliographyStrings{english}{
+    bibliography = \ebibname,
+    references   = \ebibname,
+  }
 }{\relax}
 
 
@@ -656,7 +659,6 @@
   \reprovidecommand{\partname}{\color{structurecolor} Teil}
   \reprovidecommand{\listfigurename}{Abbildungsverzeichnis}
   \reprovidecommand{\listtablename}{Tabellenverzeichnis}
-  \reprovidecommand{\bibname}{Bibliographie}
   \reprovidecommand{\appendixname}{Anhang}
   \reprovidecommand{\chaptername}{Kapitel}
   \reprovidecommand{\authorname}{\textbf{Autor: }}
@@ -686,6 +688,10 @@
   \reprovidecommand{\updatename}{Updates:}
   \reprovidecommand{\ebibname}{Bibliographie}
   \reprovidecommand{\historyname}{Version der Geschichte}
+  \DefineBibliographyStrings{english}{
+    bibliography = \ebibname,
+    references   = \ebibname,
+  }
 }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{es}{
@@ -806,7 +812,6 @@
   \reprovidecommand{\partname}{\color{structurecolor}}
   \reprovidecommand{\listfigurename}{イラストカタログ}
   \reprovidecommand{\listtablename}{表カタログ}
-  \reprovidecommand{\bibname}{参考文献}
   \reprovidecommand{\appendixname}{付録}
   \reprovidecommand{\chaptername}{第 \thechapter 章}
   \reprovidecommand{\authorname}{\textbf{著者：}}
@@ -836,7 +841,13 @@
   \reprovidecommand{\updatename}{更新：}
   \reprovidecommand{\ebibname}{参考文献}
   \reprovidecommand{\historyname}{バージョン更新履歴}
+  \DefineBibliographyStrings{english}{
+    bibliography = \ebibname,
+    references   = \ebibname,
+  }
 }{\relax}
+
+\ifdefined\ebibname\renewcommand{\bibname}{\ebibname}\fi
 
 
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
